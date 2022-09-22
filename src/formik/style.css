@@ -1,0 +1,22 @@
+ .input__field > * {
+    width: 100%;
+}
+
+
+.error__message {
+    color: white;
+    font-size: 0.9em;
+    margin: 5px;
+    text-align: start;
+}
+
+.error__message::before, .error__message::after{
+    content: "*";
+}
+textarea {
+    resize: none;
+}
+
+.defaultInput {
+    margin: 500px;
+}
