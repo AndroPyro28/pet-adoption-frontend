@@ -1,13 +1,27 @@
+import { ErrorResponse } from "@remix-run/router";
 import * as yup from "yup";
+import { SigninUser, SignupUser } from "../../../models/User";
+import {
+  useSignupMutation,
+  useSigninMutation,
+} from "../../../services/publicApis";
 type logicProps = {
   setCurrentField?: React.Dispatch<React.SetStateAction<number>>;
 };
 
 function Logic({ setCurrentField }: logicProps) {
-  // for sign up
+  /*  for sign up concerns */
+  const [signup] = useSignupMutation();
 
-  const onSubmitSignup = (values: typeof initialValuesSignup) => {
-    console.log(`signup values ${values}`);
+  const onSubmitSignup = async (
+    values:SignupUser
+  ): Promise<void> => {
+    try {
+      const res = await signup(values);
+      console.log(res)
+    } catch (error: any) {
+      console.error(error.message);
+    }
   };
 
   const validationSchemaSignup = yup.object().shape({
@@ -38,8 +52,7 @@ function Logic({ setCurrentField }: logicProps) {
       ),
   });
 
-  const initialValuesSignup = () => {
-    return {
+  const initialValuesSignup = {
       firstname: "",
       lastname: "",
       email: "",
@@ -47,7 +60,7 @@ function Logic({ setCurrentField }: logicProps) {
       contact: "",
       password: "",
       confirmPassword: "",
-    };
+    
   };
 
   const handlePrev = () => {
@@ -64,12 +77,12 @@ function Logic({ setCurrentField }: logicProps) {
       );
     }
   };
-  // for login
-  const initialValuesLogin = () => {
-    return {
+  /*  for sign in concerns */
+
+  const [signin] = useSigninMutation();
+  const initialValuesLogin = {
       email: "",
       password: "",
-    };
   };
 
   const validationSchemaLogin = yup.object().shape({
@@ -80,8 +93,14 @@ function Logic({ setCurrentField }: logicProps) {
     password: yup.string().required("This field is required"),
   });
 
-  const onSubmitLogin = (values: typeof initialValuesLogin) => {
-    console.log(`login values ${values}`);
+  const onSubmitLogin = async (values: SigninUser): Promise<void> => {
+    try {
+      const res = await signin(values);
+      console.log(res);
+      
+    } catch (error: any) {
+      console.error(error.message);
+    }
   };
 
   return {
