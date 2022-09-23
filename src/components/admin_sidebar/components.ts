@@ -23,6 +23,7 @@ export const AdminSidebarContainer = styled.div`
     padding: 10px 30px;
     margin-block: 5px;
     align-self: center;
+    color: gray;
     transition: all .3s ease-in-out;
     &:hover {
         background: #EAEAEA;

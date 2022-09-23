@@ -38,9 +38,9 @@ function App() {
 
             {/* admin routes */}
 
-            <Route path="/admin/animal-record" element={<AdminRoutes Component={AnimalRecord} />} />
-            <Route path="/admin/adoption-record" element={<AdminRoutes Component={AdoptionRecord} />} />
-            <Route path="/admin" element={<AdminRoutes Component={Dashboard} />} />
+            <Route path="admin/animal-record" element={<AdminRoutes Component={AnimalRecord} />} />
+            <Route path="admin/adoption-record" element={<AdminRoutes Component={AdoptionRecord} />} />
+            <Route path="admin/" element={<AdminRoutes Component={Dashboard} />} />
 
             <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes> 

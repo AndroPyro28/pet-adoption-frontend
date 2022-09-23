@@ -1,11 +1,22 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../logo/Logo";
+import { useLocation } from "react-router-dom";
 import {
   AdminSidebarContainer,
   LogoutButton,
   ProfileButton,
 } from "./components";
 function AdminSidebar() {
+  const {pathname} = useLocation()
+  const navLinkStylesFirst = ({isActive}: any) => { // this is temporary cause it bugged
+    if(pathname != '/admin') {
+      isActive=false
+    }
+    return {
+      background: isActive ? "#EAEAEA" : "",
+      color: isActive ? "rgb(65, 65, 65)" : "gray",
+    };
+  }
 
   const navLinkStyles = ({isActive}: any) => {
     return {
@@ -17,7 +28,7 @@ function AdminSidebar() {
   return (
     <AdminSidebarContainer>
       <Logo height={120} width={120} />
-      <NavLink to="/admin" style={navLinkStyles}>
+      <NavLink to="/admin" style={navLinkStylesFirst}>
         <i className="fa-solid fa-house"></i> Home
       </NavLink>
       <NavLink to={"/admin/users"} style={navLinkStyles}>
