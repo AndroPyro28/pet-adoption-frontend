@@ -1,16 +1,15 @@
 import Cookies from "js-cookie";
-import { useEffect } from "react";
 import PublicNavbar from "../components/public_navbar/PublicNavbar";
-import { PublicRouteTypes } from "../types/auth-routes-types/PublicRoutes.Types";
+import { RoutePropTypes } from "../types/auth-routes-types/PublicRoutes.Types";
 import { userToken } from "../types/cookies-types/userToken";
 import { useLocation } from "react-router-dom";
-const PublicRoutes = ({ Component }: PublicRouteTypes): JSX.Element => {
+
+const PublicRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
   const { pathname } = useLocation();
+  let userCookie: string | undefined = Cookies.get("userToken");
 
-  useEffect(() => {
-    let cookie = Cookies.get("userToken");
-
-    let userToken: userToken | undefined = JSON.parse(cookie ?? "{}");
+  if (userCookie) {
+    let userToken: userToken = JSON.parse(userCookie!);
 
     if (userToken != undefined || userToken != null || userToken) {
       if (userToken?.token?.length > 0 && userToken?.role === "user") {
@@ -21,16 +20,15 @@ const PublicRoutes = ({ Component }: PublicRouteTypes): JSX.Element => {
         window.location.assign("/admin");
       }
     }
-  }, []);
+  }
 
-  const excludedRoutes = ['/signup', '/login']
+  const excludedRoutes = ["/signup", "/login"];
 
   return (
     <>
-    {
-        !excludedRoutes.includes(pathname) &&
+      {!excludedRoutes.includes(pathname) && (
         <PublicNavbar color={pathname === "/" ? "white" : "black"} />
-    }
+      )}
       <Component />
     </>
   );

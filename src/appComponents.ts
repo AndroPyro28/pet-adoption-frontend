@@ -6,9 +6,8 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
         scroll-behavior: smooth;
-        font-family: "poppins", "roboto", sans-serif;
+        font-family: "poppins", "roboto", sans-serif !important;
         text-decoration: none;
-
     }
 `
 

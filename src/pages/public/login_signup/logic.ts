@@ -1,15 +1,16 @@
-import { ErrorResponse } from "@remix-run/router";
 import * as yup from "yup";
 import { SigninUser, SignupUser } from "../../../models/User";
 import {
   useSignupMutation,
   useSigninMutation,
 } from "../../../services/publicApis";
+
 type logicProps = {
   setCurrentField?: React.Dispatch<React.SetStateAction<number>>;
 };
 
 function Logic({ setCurrentField }: logicProps) {
+
   /*  for sign up concerns */
   const [signup] = useSignupMutation();
 
@@ -70,6 +71,7 @@ function Logic({ setCurrentField }: logicProps) {
       );
     }
   };
+
   const handleNext = () => {
     if (setCurrentField) {
       setCurrentField((currentValue: number) =>
@@ -77,8 +79,8 @@ function Logic({ setCurrentField }: logicProps) {
       );
     }
   };
+  
   /*  for sign in concerns */
-
   const [signin] = useSigninMutation();
   const initialValuesLogin = {
       email: "",

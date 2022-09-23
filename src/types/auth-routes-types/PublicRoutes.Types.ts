@@ -1,5 +1,5 @@
 import React from "react";
 
-export type PublicRouteTypes = {
+export type RoutePropTypes = {
     Component: React.ComponentType
 }
