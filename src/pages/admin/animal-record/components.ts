@@ -36,7 +36,7 @@ export const AnimalRecordList = styled.div`
     background: white;
     border-radius: 10px;
     height: 80vh;
-    max-height: 75vh;
+    max-height: 70vh;
     padding: 20px;
     flex-direction: column;
 `
