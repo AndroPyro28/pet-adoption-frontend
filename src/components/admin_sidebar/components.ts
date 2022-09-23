@@ -10,7 +10,7 @@ export const AdminSidebarContainer = styled.div`
   font-weight: 600;
   color: rgb(179, 177, 177);
   position: relative;
-  /* height: 100vh; */
+  height: 100vh;
   & > img {
     align-self: center;
     margin-top: 30px;
