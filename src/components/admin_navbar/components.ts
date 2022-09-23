@@ -17,18 +17,7 @@ export const Content = styled.div`
         font-size: 1.3em;
     }
 
-    & > input {
-        background: white;
-        height: fit-content;
-        border: none;
-        outline: none;
-        height: 35px;
-        flex: 1;
-        font-size: 0.9em;
-        border-radius: 10px;
-        padding-inline: 20px;
-        color: gray;
-    }
+    
 
 `
 
@@ -46,4 +35,28 @@ export const ProfileButton = styled.div`
       color: rgb(65, 65, 65);
       margin: 10px;
     }
+`
+
+export const SeachBox = styled.div`
+    display: flex;
+    background: white;
+    align-items: center;
+    padding-inline: 10px;
+    border-radius: 5px;
+
+    & > * {
+        color: gray;
+    }
+    & > input {
+        height: fit-content;
+        border: none;
+        outline: none;
+        height: 35px;
+        flex: 1;
+        font-size: 0.9em;
+        border-radius: 10px;
+        margin: 0px 10px;
+    }
+
+    
 `

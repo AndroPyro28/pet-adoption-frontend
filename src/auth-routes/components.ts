@@ -21,6 +21,6 @@ export const AdminLayout = styled.section`
 export const AdminComponentContainer = styled.div`
     display: flex;
     flex-direction: column;
-    padding-left: 100px;
-    padding-right: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
 `

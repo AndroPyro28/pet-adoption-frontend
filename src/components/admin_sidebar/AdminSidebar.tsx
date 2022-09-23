@@ -6,6 +6,7 @@ import {
   LogoutButton,
   ProfileButton,
 } from "./components";
+
 function AdminSidebar() {
   const {pathname} = useLocation()
   const navLinkStylesFirst = ({isActive}: any) => { // this is temporary cause it bugged

@@ -1,4 +1,4 @@
-import {AdminNavbarContainer, Content, ProfileButton} from "./components"
+import {AdminNavbarContainer, Content, ProfileButton, SeachBox} from "./components"
 function AdminNavbar() {
   return (
     <AdminNavbarContainer>
@@ -8,7 +8,11 @@ function AdminNavbar() {
         </Content>
        
         <Content>
-          <input type={'text'} placeholder="Search..."/>
+          <SeachBox>
+          <i className="fa-solid fa-magnifying-glass"></i>
+            <input type={'text'} placeholder="Search..."/>
+          </SeachBox>
+         
           <ProfileButton>
           <span>Admin Profile</span> <i className="fa-solid fa-user-shield"></i> 
           </ProfileButton>
