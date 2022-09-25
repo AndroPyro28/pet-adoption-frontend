@@ -6,11 +6,13 @@ export const GalleryPageContainer = styled.section`
   justify-content: center;
   width: 100%;
   height: 100%;
-  margin-top: 250px;
+  margin-top: ${({giveMarginToTop}: {giveMarginToTop:boolean}) => giveMarginToTop ? "100px" : "0px"};
+
+  /* margin-top: 250px; */
 `;
 export const Dozens = styled.div`
   margin-bottom: 35px;
-  margin-top: -20px;
+  margin-top: 50px;
   text-align: center;
   font-size: 20px;
 `;

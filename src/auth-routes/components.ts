@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle} from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     body {
@@ -7,20 +7,28 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const AdminLayout = styled.section`
-    display: grid;
-    grid-template-columns: 20% 80%;
-    border-radius: 20px;
-    background: #EAEAEA;
-    @media (max-width: 800px) {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  border-radius: 20px;
+  background: #eaeaea;
+  @media (max-width: 800px) {
     grid-template-columns: 100%;
     & > div:nth-child(1) {
-        display: none;
+      display: none;
     }
-    }
-`
+  }
+`;
 export const AdminComponentContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding-left: 40px;
-    padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  padding-right: 40px;
+`;
+
+export const UserLayout = styled.div`
+  padding-top: ${({givePaddingToTop}: {givePaddingToTop: boolean}) => givePaddingToTop ? "250px" : "0px"};
+`;
+
+export const UserLayout2 = styled.section`
+
 `

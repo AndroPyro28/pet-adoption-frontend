@@ -1,10 +1,10 @@
-import TableDatas from "../../../components/table-components/TableDatas";
+import TableDatas from "../../../components/table-components/TData_AnimalRecord";
 import TableHeaders from "../../../components/table-components/TableHeaders";
 import { Pet } from "../../../models/Pet";
 import {
   AnimalRecordContainer,
-  TitleAndButtons,
-  AnimalRecordList,
+  UpperContents,
+  RecordList,
 } from "./components";
 function AnimalRecord() {
   const mockData: Pet[] = [
@@ -46,13 +46,13 @@ function AnimalRecord() {
   
   return (
     <AnimalRecordContainer>
-      <TitleAndButtons>
+      <UpperContents>
         <h2>Animal Record</h2>
 
         <button>+ Add Record</button>
-      </TitleAndButtons>
+      </UpperContents>
 
-      <AnimalRecordList>
+      <RecordList>
         <TableHeaders
           arrayOfTitles={[
             "#",
@@ -66,7 +66,7 @@ function AnimalRecord() {
           ]}
         />
         {fetchAnimals}
-      </AnimalRecordList>
+      </RecordList>
     </AnimalRecordContainer>
   );
 }

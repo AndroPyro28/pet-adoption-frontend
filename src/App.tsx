@@ -13,12 +13,16 @@ import Home from "./pages/user/home/Home";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import AnimalRecord from "./pages/admin/animal-record/AnimalRecord";
 import AdoptionRecord from "./pages/admin/adopton-record/AdoptionRecord";
+import Adoption from "./pages/user/adoption/Adoption";
 
 function App() {
 
   useEffect(() => {
     // let cookie:string | undefined = Cookies.get("userToken") !;
 
+    // // request auth 
+    // // cookies
+    
     // if(cookie?.length == 0) {
     //   Cookies.remove('userToken');
     // }
@@ -33,8 +37,12 @@ function App() {
             <Route path="/about" element={<PublicRoutes Component={About} />} /> 
             <Route path="/signup" element={<PublicRoutes Component={Signup} />} /> 
             <Route path="/login" element={<PublicRoutes Component={Login} />} /> 
+
             {/* user routes */}
-            <Route path="/user" element={<UserRoutes Component={Home} />} /> 
+            <Route path="/user" element={<UserRoutes Component={Index} />} />
+            <Route path="/user/gallery" element={<UserRoutes Component={Gallery} />} />
+            <Route path="/user/about" element={<UserRoutes Component={About} />} /> 
+            <Route path="/user/adoption" element={<UserRoutes Component={Adoption} />} /> 
 
             {/* admin routes */}
 

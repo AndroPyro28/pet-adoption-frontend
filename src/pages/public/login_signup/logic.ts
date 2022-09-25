@@ -20,6 +20,7 @@ function Logic({ setCurrentField }: logicProps) {
     try {
       const res = await signup(values);
       console.log(res)
+      console.log(values)
     } catch (error: any) {
       console.error(error.message);
     }
@@ -49,7 +50,7 @@ function Logic({ setCurrentField }: logicProps) {
     confirmPassword: yup
       .string()
       .when("password", (password, field) =>
-        password ? field.required().oneOf([yup.ref("password")]) : field
+        password ? field.required().oneOf([yup.ref("password")],'password and confirm password do not match') : field
       ),
   });
 

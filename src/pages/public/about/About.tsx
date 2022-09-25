@@ -1,7 +1,9 @@
 import { Main, AboutPageContainer} from "./components"
+import {useLocation} from "react-router-dom";
 function About() {
+  const {pathname} = useLocation();
   return (
-    <AboutPageContainer>
+    <AboutPageContainer giveMarginToTop={!pathname.includes('user')}>
       <Main>
         <img src="/images/img/aboutpic.jpg" />
         <div className="about-text">

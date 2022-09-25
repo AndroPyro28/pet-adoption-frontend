@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { Content, IndexPageContainer, Banner, About, Main } from "./components";
+import { useLocation } from "react-router-dom";
 const Index = (): JSX.Element => {
+  const {pathname} = useLocation();
   return (
     <IndexPageContainer>
       <Banner>
@@ -16,7 +18,8 @@ const Index = (): JSX.Element => {
             One Life <br /> At A Time
           </h2>
 
-          <div>
+          {
+            !pathname.includes('/user') && <div>
             <NavLink to={'login'}>
               <button className="btn" type="button">
                 <span></span> LOG IN
@@ -28,6 +31,8 @@ const Index = (): JSX.Element => {
               </button>
             </NavLink>
           </div>
+          }
+          
         </Content>
       </Banner>
 

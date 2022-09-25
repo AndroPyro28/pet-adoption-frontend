@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { GalleryPageContainer, Dozens, Pics } from "./components";
 import Modal from "./Modal";
 function Gallery() {
@@ -14,9 +15,10 @@ function Gallery() {
     ])
 
     const [displayPicture, setDisplayPicture] = useState("");
+    const {pathname} = useLocation();
 
   return (
-    <GalleryPageContainer>
+    <GalleryPageContainer giveMarginToTop={!pathname.includes('user')}>
         
         {
            displayPicture && <Modal displayPicture={displayPicture} setDisplayPicture={setDisplayPicture} />

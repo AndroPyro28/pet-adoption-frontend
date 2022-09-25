@@ -11,6 +11,10 @@ export const TableHead = styled.div`
   font-weight: 600;
   display: flex;
   justify-content: center;
+  font-size: 1.1em;
+  &:nth-child(1) {
+    flex: 0.5;
+  }
 `;
 
 export const TableData = styled.div`
@@ -26,8 +30,12 @@ export const TableData = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.8em;
+  font-size:1em;
   text-transform: capitalize;
+  font-family: 'poppins','roboto', sans-serif !important;
+  &:nth-child(1) {
+    flex: 0.5;
+  }
   & > span {
     color: white;
     font-size: inherit;
@@ -43,5 +51,17 @@ export const TableData = styled.div`
     &.pending {
       background: gray;
     }
+  }
+
+  & > button {
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    border-radius: 10px;
+    background: rgb(51,215,119);
+    color: white;
+    font: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
   }
 `;

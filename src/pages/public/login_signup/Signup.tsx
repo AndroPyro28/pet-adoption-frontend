@@ -3,17 +3,16 @@ import Logic from "./logic";
 import { Container, GlobalStyles, Logo, Buttons } from "./components";
 import {useState} from "react"
 import InputWithIcon from "../../../formik/inputs/inputWithIcon";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Signup() {
   const [currentField, setCurrentField] = useState<number>(0);
-  const navigate = useNavigate()
   const { initialValuesSignup, validationSchemaSignup, onSubmitSignup, handlePrev, handleNext } =
     Logic({setCurrentField});
     
   const inputFieldArr = [
     [
-      <InputWithIcon
+      <InputWithIcon  
         values={{
           name: "firstname",
           placeholder:'Enter your firstname',
