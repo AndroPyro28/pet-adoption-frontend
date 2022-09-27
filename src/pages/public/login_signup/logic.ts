@@ -4,35 +4,38 @@ import {
   useSignupMutation,
   useSigninMutation,
 } from "../../../services/publicApis";
-
+import {useNavigate} from "react-router-dom";
+import Cookies from "js-cookie"
 type logicProps = {
   setCurrentField?: React.Dispatch<React.SetStateAction<number>>;
+  toast?: any
 };
 
-function Logic({ setCurrentField }: logicProps) {
-
+function Logic({ setCurrentField, toast }: logicProps) {
   /*  for sign up concerns */
+  const navigate = useNavigate();
   const [signup] = useSignupMutation();
 
-  const onSubmitSignup = async (
-    values:SignupUser
-  ): Promise<void> => {
+  const onSubmitSignup = async (values: SignupUser): Promise<void> => {
     try {
+
       const res = await signup(values);
-      console.log(res)
-      console.log(values)
+      if("data" in res) {
+        toast('Signup successful!', {type: 'success'})
+        setTimeout(() => navigate('/login'), 2500)
+      }
     } catch (error: any) {
       console.error(error.message);
     }
   };
 
   const validationSchemaSignup = yup.object().shape({
-    firstname: yup
+    first_name: yup
       .string()
       .required("This field is required")
       .min(3)
       .matches(/^[a-zA-Z]+$/, "Must container letters only"),
-    lastname: yup
+    last_name: yup
       .string()
       .required("This field is required")
       .min(3)
@@ -47,22 +50,28 @@ function Logic({ setCurrentField }: logicProps) {
       .required()
       .matches(/^[0-9]*$/, "Digits only"),
     password: yup.string().required("This field is required").min(6),
-    confirmPassword: yup
+    password_confirmation: yup
       .string()
       .when("password", (password, field) =>
-        password ? field.required().oneOf([yup.ref("password")],'password and confirm password do not match') : field
+        password
+          ? field
+              .required()
+              .oneOf(
+                [yup.ref("password")],
+                "password and confirm password do not match"
+              )
+          : field
       ),
   });
 
   const initialValuesSignup = {
-      firstname: "",
-      lastname: "",
-      email: "",
-      address: "",
-      contact: "",
-      password: "",
-      confirmPassword: "",
-    
+    first_name: "",
+    last_name: "",
+    email: "",
+    address: "",
+    contact: "",
+    password: "",
+    password_confirmation: "",
   };
 
   const handlePrev = () => {
@@ -80,12 +89,12 @@ function Logic({ setCurrentField }: logicProps) {
       );
     }
   };
-  
+
   /*  for sign in concerns */
   const [signin] = useSigninMutation();
   const initialValuesLogin = {
-      email: "",
-      password: "",
+    email: "",
+    password: "",
   };
 
   const validationSchemaLogin = yup.object().shape({
@@ -98,9 +107,14 @@ function Logic({ setCurrentField }: logicProps) {
 
   const onSubmitLogin = async (values: SigninUser): Promise<void> => {
     try {
-      const res = await signin(values);
-      console.log(res);
-      
+      const res:any = await signin(values);
+
+      if('data' in res) {
+        const {access_token} = res.data;
+        Cookies.set('userToken', access_token);
+        toast('Signin success!', {type:"success"});
+        setTimeout(() => window.location.assign('/user'), 2500)
+      }
     } catch (error: any) {
       console.error(error.message);
     }

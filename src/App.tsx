@@ -2,35 +2,45 @@ import {GlobalStyles, AppComponent} from "./appComponents";
 import { Routes, Route } from "react-router-dom";
 import PublicRoutes from "./auth-routes/PublicRoutes";
 import Index from "./pages/public/index/Index";
-import { useEffect } from "react";
 import Gallery from "./pages/public/gallery/Gallery";
 import About from "./pages/public/about/About";
 import Signup from "./pages/public/login_signup/Signup";
 import Login from "./pages/public/login_signup/Login";
 import AdminRoutes from "./auth-routes/AdminRoutes";
 import UserRoutes from "./auth-routes/UserRoutes";
-import Home from "./pages/user/home/Home";
+import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import AnimalRecord from "./pages/admin/animal-record/AnimalRecord";
 import AdoptionRecord from "./pages/admin/adopton-record/AdoptionRecord";
 import Adoption from "./pages/user/adoption/Adoption";
+import { useAuthMeQuery } from "./services/authApis";
+import {useDispatch, useSelector} from "react-redux";
+import { authenticationSuccess, authenticationFailed } from "./redux/userSlice";
+import Cookies from "js-cookie";
+import Home from "./pages/user/home/Home";
+import LogoutModal from "./components/modal/logout/LogoutModal";
 
 function App() {
-
-  useEffect(() => {
-    // let cookie:string | undefined = Cookies.get("userToken") !;
-
-    // // request auth 
-    // // cookies
-    
-    // if(cookie?.length == 0) {
-    //   Cookies.remove('userToken');
-    // }
-  }, []);
+  
+  const {data, isLoading, error} = useAuthMeQuery();
+  const dispatch = useDispatch();
+    if(!isLoading) {
+      if(error) {
+        dispatch(authenticationFailed({}));
+        Cookies.remove('userToken');
+      } else {
+        dispatch(authenticationSuccess(data));
+      }
+    }
+  
+  if(isLoading) {
+    return <h1>Loading...</h1>
+  }
 
   return (
     <AppComponent>
       <GlobalStyles />
+      
         <Routes>
             <Route path="/" element={<PublicRoutes Component={Index} />} />
             <Route path="/gallery" element={<PublicRoutes Component={Gallery} />} />

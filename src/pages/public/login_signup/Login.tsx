@@ -4,12 +4,14 @@ import { Container, GlobalStyles, Logo, Buttons } from "./components";
 import { useState } from "react";
 import InputWithIcon from "../../../formik/inputs/inputWithIcon";
 import { NavLink } from "react-router-dom";
+import {toast, ToastContainer} from "react-toastify"
+
 function Login() {
   const {
     initialValuesLogin,
     validationSchemaLogin,
     onSubmitLogin,
-  } = Logic({});
+  } = Logic({toast});
 
   return (
     <Container>
@@ -27,12 +29,13 @@ function Login() {
           return (
             <Form autoComplete="off" className="form">
               <Logo src="/images/logo/logowhite.png" width={60} height={60} />
+              <ToastContainer autoClose={1500} />
               <h1>Login</h1>
               <InputWithIcon
                 values={{
                   name: "email",
                   placeholder: "Enter your email",
-                  icon: "fa-solid fa-envelope",
+                  icon: "fa-solid fa-envelope fa-lg",
                   type: "email",
                   className: "input-field",
                 }}
@@ -41,7 +44,7 @@ function Login() {
                 values={{
                   name: "password",
                   placeholder: "Enter your password",
-                  icon: "fa-solid fa-lock",
+                  icon: "fa-solid fa-lock fa-lg",
                   type: "password",
                   className: "input-field",
                 }}

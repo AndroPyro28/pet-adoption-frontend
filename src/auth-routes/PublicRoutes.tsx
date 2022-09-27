@@ -3,24 +3,23 @@ import PublicNavbar from "../components/public_navbar/PublicNavbar";
 import { RoutePropTypes } from "../types/auth-routes-types/PublicRoutes.Types";
 import { userToken } from "../types/cookies-types/userToken";
 import { useLocation } from "react-router-dom";
+import { User } from "../models/User";
+import { useSelector } from "react-redux";
 
 const PublicRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
-  const { pathname } = useLocation();
-  let userCookie: string | undefined = Cookies.get("userToken");
-
-  if (userCookie) {
-    let userToken: userToken = JSON.parse(userCookie!);
+    const { pathname } = useLocation();
+    const state: any = useSelector(state => state);
+    const user: User = state.user;
+    let userToken: userToken | undefined = Cookies.get("userToken");
 
     if (userToken != undefined || userToken != null || userToken) {
-      if (userToken?.token?.length > 0 && userToken?.role === "user") {
-        window.location.assign("/user");
-      }
-
-      if (userToken?.token?.length > 0 && userToken?.role === "admin") {
+      if(user.role === 'ADMIN') {
         window.location.assign("/admin");
       }
+      if(user.role === 'USER') {
+        window.location.assign("/user");
+      }
     }
-  }
 
   const excludedRoutes = ["/signup", "/login"];
 

@@ -3,28 +3,37 @@ import UserNavbar from "../components/user_navbar/UserNavbar";
 import { RoutePropTypes } from "../types/auth-routes-types/PublicRoutes.Types";
 import { userToken } from "../types/cookies-types/userToken";
 import { useLocation } from "react-router-dom";
-import {UserLayout, UserLayout2} from "./components";
+import {UserLayout} from "./components";
+import { useSelector } from "react-redux";
+import { User } from "../models/User";
+import LogoutModal from "../components/modal/logout/LogoutModal";
 
 const UserRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
-  let userCookie: string | undefined = Cookies.get("userToken");
+  const state: any = useSelector(state => state);
+  const user: User = state.user;
+  const logoutModal = state.logoutModal;
   const {pathname} = useLocation();
-
+  let userCookie: string | undefined = Cookies.get("userToken");
   if (!userCookie || userCookie.length <= 0) {
     window.location.assign("/");
   }
-  
-  let userToken:userToken = JSON.parse(userCookie!);
 
-  if (!userToken || userToken?.role?.length <= 0 && userToken?.role?.length <= 0) {
+  let userToken: userToken = userCookie!
+
+  if (!userToken || userToken.length <= 0) {
     window.location.assign("/");
   }
 
-  if (userToken?.role == "admin") {
+  if(user.role === 'ADMIN') {
     window.location.assign("/admin");
   }
+
   const marginedRoutes = ['/user/adoption', '/user/tracker', '/user/gallery', '/user/about']
   return (
       <UserLayout givePaddingToTop={marginedRoutes.includes(pathname)}>
+        {
+            logoutModal && <LogoutModal />
+        }
       <UserNavbar color={pathname === "/user/" || pathname === "/user" ? "white" : "black"}/>
       <Component />
     </UserLayout>

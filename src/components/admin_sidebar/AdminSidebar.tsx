@@ -1,31 +1,19 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../logo/Logo";
-import { useLocation } from "react-router-dom";
 import {
   AdminSidebarContainer,
   LogoutButton,
-  ProfileButton,
+  ProfileButton,  
 } from "./components";
+import Logic from "./Logic";
+import HandleLogout from "../../helper/handleLogout";
+import { useSelector } from 'react-redux';
 
 function AdminSidebar() {
-  const {pathname} = useLocation()
-  const navLinkStylesFirst = ({isActive}: any) => { // this is temporary cause it bugged
-    if(pathname != '/admin') {
-      isActive=false
-    }
-    return {
-      background: isActive ? "#EAEAEA" : "",
-      color: isActive ? "rgb(65, 65, 65)" : "gray",
-    };
-  }
-
-  const navLinkStyles = ({isActive}: any) => {
-    return {
-      background: isActive ? "#EAEAEA" : "",
-      color: isActive ? "rgb(65, 65, 65)" : "gray",
-    };
-  }
-
+  const { navLinkStylesFirst,
+    navLinkStyles } = Logic();
+  const { toggleModalLogout } = HandleLogout()
+  // const { user }: any = useSelector(state => state);
   return (
     <AdminSidebarContainer>
       <Logo height={120} width={120} />
@@ -46,7 +34,7 @@ function AdminSidebar() {
         <i className="fa-solid fa-paw"></i> Adoption Record
       </NavLink>
 
-      <LogoutButton>
+      <LogoutButton onClick={toggleModalLogout}>
         <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
       </LogoutButton>
 

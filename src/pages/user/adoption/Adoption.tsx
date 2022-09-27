@@ -4,6 +4,10 @@ import {
 } from "./components";
 import Pet from "../../../components/adoption/Pet";
 import {PetAdoption} from "../../../types/pet-types/Adoption"
+import { AdoptionForm } from "../../../components/modal/adoption/components";
+import AdoptionModal from "../../../components/modal/adoption/AdoptionForm";
+import {useState} from "react";
+
 function Adoption() {
 
   const mockData: PetAdoption[] = [
@@ -26,11 +30,24 @@ function Adoption() {
       description: 'Lorem ipsum dolor sit amet.'
     },
   ]
+  // const [adoptionData, setAdoptionData] = useState<PetAdoption>({
+  //       imgUrl: '',
+  //       name: '',
+  //       breed: '',
+  //       description: ''
+  // });
+   const [adoptionData, setAdoptionData] = useState<PetAdoption>({} as PetAdoption);
 
-  const fetchdata = mockData.map((data, index) => <Pet data={data} key={index} />)
+  const fetchdata = mockData.map((data, index) => <Pet data={data} key={index} setAdoptionData={setAdoptionData} />)
   return (
     <AdoptionContainer>
+
+      {
+        adoptionData?.name && <AdoptionModal data={adoptionData} setAdoptionData={setAdoptionData}  />
+      }
+      
       {fetchdata}
+
     </AdoptionContainer>
   );
 }

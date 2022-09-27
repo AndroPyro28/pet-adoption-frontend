@@ -8,23 +8,27 @@ import {
 } from "./components";
 import AdminSidebar from "../components/admin_sidebar/AdminSidebar";
 import AdminNavbar from "../components/admin_navbar/AdminNavbar";
-const AdminRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
-  let userCookie: string | undefined = Cookies.get("userToken");
+import { useSelector } from "react-redux";
+import { User } from "../models/User";
+import LogoutModal from "../components/modal/logout/LogoutModal";
 
+const AdminRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
+  const state: any = useSelector(state => state);
+  const user: User = state.user;
+  const logoutModal = state.logoutModal;
+  let userCookie: string | undefined = Cookies.get("userToken");
+  
   if (!userCookie || userCookie.length <= 0) {
     window.location.assign("/");
   }
 
-  let userToken: userToken = JSON.parse(userCookie!);
+  let userToken: userToken = userCookie!
 
-  if (
-    !userToken ||
-    (userToken?.role?.length <= 0 && userToken?.role?.length <= 0)
-  ) {
+  if (!userToken || userToken.length <= 0) {
     window.location.assign("/");
   }
 
-  if (userToken?.role == "user") {
+  if(user.role === 'USER') {
     window.location.assign("/user");
   }
 
@@ -32,6 +36,9 @@ const AdminRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
     <AdminLayout>
       <GlobalStyles />
       <AdminSidebar />
+        {
+            logoutModal && <LogoutModal />
+        }
       <AdminComponentContainer>
         <AdminNavbar />
         <Component />

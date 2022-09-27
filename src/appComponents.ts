@@ -9,6 +9,9 @@ export const GlobalStyles = createGlobalStyle`
         font-family: "poppins", "roboto", sans-serif !important;
         text-decoration: none;
     }
+
+    ::-webkit-calendar-picker-indicator {
+    }
 `
 
 export const AppComponent = styled.main`

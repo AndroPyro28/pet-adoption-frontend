@@ -1,10 +1,15 @@
-import {configureStore} from "@reduxjs/toolkit";
+import {configureStore, combineReducers} from "@reduxjs/toolkit";
 import PublicApis from "../services/publicApis"
-
+import AuthApis from "../services/authApis"
+import userSlice from "./userSlice";
+import logoutModalSlice from "./logoutModalSlice";
     const store = configureStore({
-        reducer: {
-            [PublicApis.reducerPath]: PublicApis.reducer
-        },
+        reducer: combineReducers({
+            [PublicApis.reducerPath]: PublicApis.reducer,
+            [AuthApis.reducerPath]: AuthApis.reducer,
+            user: userSlice,
+            logoutModal: logoutModalSlice,
+        }),
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             immutableCheck: false,
         }).concat(
