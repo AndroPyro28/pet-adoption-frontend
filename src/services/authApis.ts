@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import { User } from "../models/User";
 
 const AuthApis = createApi({
+    reducerPath:`privateAuth`,
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_DEV_URL,
         prepareHeaders: (headers) => {

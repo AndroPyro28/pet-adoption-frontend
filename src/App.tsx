@@ -29,7 +29,7 @@ function App() {
         dispatch(authenticationFailed({}));
         Cookies.remove('userToken');
       } else {
-        dispatch(authenticationSuccess(data));
+          !data ? Cookies.remove('userToken') : dispatch(authenticationSuccess(data));
       }
     }
   
@@ -40,7 +40,6 @@ function App() {
   return (
     <AppComponent>
       <GlobalStyles />
-      
         <Routes>
             <Route path="/" element={<PublicRoutes Component={Index} />} />
             <Route path="/gallery" element={<PublicRoutes Component={Gallery} />} />

@@ -8,20 +8,20 @@ function AdoptionRecord() {
   const mockData: AdoptionRequest[] = [
     {
       id: 1,
-      adopter: 'jean',
-      adoptee: 'andro',
+      adopterId: 'jean',
+      adopteeId: 'andro',
       schedule: 'May 26 | 03:30 pm'
     },
     {
       id: 2,
-      adopter: 'john',
-      adoptee: 'stewie',
+      adopterId: 'john',
+      adopteeId: 'stewie',
       schedule: 'May 27 | 03:30 pm'
     },
     {
       id: 3,
-      adopter: 'peter',
-      adoptee: 'meg',
+      adopterId: 'peter',
+      adopteeId: 'meg',
       schedule: 'May 28 | 03:30 pm'
     },
 

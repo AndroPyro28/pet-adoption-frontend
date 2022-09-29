@@ -4,11 +4,11 @@ import {
   useSignupMutation,
   useSigninMutation,
 } from "../../../services/publicApis";
-import {useNavigate} from "react-router-dom";
-import Cookies from "js-cookie"
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 type logicProps = {
   setCurrentField?: React.Dispatch<React.SetStateAction<number>>;
-  toast?: any
+  toast?: any;
 };
 
 function Logic({ setCurrentField, toast }: logicProps) {
@@ -18,11 +18,16 @@ function Logic({ setCurrentField, toast }: logicProps) {
 
   const onSubmitSignup = async (values: SignupUser): Promise<void> => {
     try {
-
-      const res = await signup(values);
-      if("data" in res) {
-        toast('Signup successful!', {type: 'success'})
-        setTimeout(() => navigate('/login'), 2500)
+      const res: any = await signup(values);
+      if ("data" in res) {
+        toast("Signup successful!", { type: "success" });
+        setTimeout(() => navigate("/login"), 2500);
+      }
+      if ("error" in res) {
+        const { message } = res.error.data;
+        toast(typeof message == "object" ? message[0] : message, {
+          type: "error",
+        });
       }
     } catch (error: any) {
       console.error(error.message);
@@ -107,14 +112,23 @@ function Logic({ setCurrentField, toast }: logicProps) {
 
   const onSubmitLogin = async (values: SigninUser): Promise<void> => {
     try {
-      const res:any = await signin(values);
+      const res: any = await signin(values);
 
-      if('data' in res) {
-        const {access_token} = res.data;
-        Cookies.set('userToken', access_token);
-        toast('Signin success!', {type:"success"});
-        setTimeout(() => window.location.assign('/user'), 2500)
+      if ("data" in res) {
+        const { access_token } = res.data;
+        Cookies.set("userToken", access_token);
+        toast("Signin success!", { type: "success" });
+        setTimeout(() => window.location.assign("/user"), 2500);
+      } 
+      if ("error" in res) {
+        console.log(res);
+        const { message } = res.error.data;
+        toast(typeof message == "object" ? message[0] : message, {
+          type: "error",
+        });
       }
+
+      console.log(res);
     } catch (error: any) {
       console.error(error.message);
     }

@@ -13,7 +13,8 @@ function AdminSidebar() {
   const { navLinkStylesFirst,
     navLinkStyles } = Logic();
   const { toggleModalLogout } = HandleLogout()
-  // const { user }: any = useSelector(state => state);
+   const { user }: any = useSelector(state => state);
+   const {profile} = user;
   return (
     <AdminSidebarContainer>
       <Logo height={120} width={120} />
@@ -39,7 +40,7 @@ function AdminSidebar() {
       </LogoutButton>
 
       <ProfileButton>
-        <i className="fa-solid fa-user-shield"></i> <span>Admin Profile </span>
+        <i className="fa-solid fa-user-shield"></i> <span>{profile.fist_name} {profile.last_name} </span>
       </ProfileButton>
     </AdminSidebarContainer>
   );

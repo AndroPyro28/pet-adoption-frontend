@@ -42,13 +42,13 @@ export const TableData = styled.div`
     padding: 3px 20px;
     border-radius: 20px;
 
-    &.adopted {
+    &.ADOPTED {
       background: rgba(7, 207, 90, 0.822);
     }
-    &.ready {
+    &.READY {
       background: rgb(211, 1, 52);
     }
-    &.pending {
+    &.PENDING {
       background: gray;
     }
   }

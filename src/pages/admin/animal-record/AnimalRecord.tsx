@@ -6,50 +6,28 @@ import {
   UpperContents,
   RecordList,
 } from "./components";
+import AnimalRecordModal from "../../../components/modal/animal-record/AnimalRecordModal";
+import { toast, ToastContainer } from "react-toastify";
+import { useState } from "react"
+import {useGetAllAnimalRecordQuery} from "../../../services/animalRecordApis"
 function AnimalRecord() {
-  const mockData: Pet[] = [
-    {
-      id: 1,
-      name: "jonas",
-      breed: "poodle",
-      type: "dog",
-      gender: "male",
-      age: 72,
-      description: "white",
-      status: "adopted",
-    },
-    {
-      id: 2,
-      name: "lodia",
-      breed: "cat",
-      type: "dog",
-      gender: "female",
-      age: 72,
-      description: "white",
-      status: "ready",
-    },
-    {
-      id: 2,
-      name: "lodia",
-      breed: "cat",
-      type: "dog",
-      gender: "female",
-      age: 72,
-      description: "white",
-      status: "pending",
-    },
-  ];
+  const [openAnimalRecordModal, setOpenAnimalRecordModal] = useState<Boolean>(false)
 
-  const fetchAnimals = mockData.map((data, index) => {
-    return <TableDatas data={data} />;
-  });
+  const {data, isLoading, error} = useGetAllAnimalRecordQuery();
+
+  const fetchAnimals = data?.map((data:Pet, index:number) => <TableDatas data={data} key={index} />);
   
   return (
     <AnimalRecordContainer>
+      {
+        openAnimalRecordModal && <AnimalRecordModal toast={toast} setOpenAnimalRecordModal={setOpenAnimalRecordModal} />
+      }
+
+      <ToastContainer autoClose={1500} />
       <UpperContents>
         <h2>Animal Record</h2>
 
-        <button>+ Add Record</button>
+        <button onClick={() => setOpenAnimalRecordModal(true)}>+ Add Record</button>
       </UpperContents>
 
       <RecordList>
@@ -65,7 +43,10 @@ function AnimalRecord() {
             "Status",
           ]}
         />
-        {fetchAnimals}
+
+        {
+          isLoading ? <h1>loading please wait...</h1> : fetchAnimals
+        }
       </RecordList>
     </AnimalRecordContainer>
   );

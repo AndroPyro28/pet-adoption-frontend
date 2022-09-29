@@ -1,4 +1,4 @@
-import { PetAdoption } from "../../types/pet-types/Adoption"
+import { Pet as PetInteface} from "../../models/Pet"
 import {
     PetContainer,
     PetImage,
@@ -7,12 +7,12 @@ import {
     Description,
     ApplyButton,
 } from "./components"
-type PetAdoptionProps = { data: PetAdoption, setAdoptionData: React.Dispatch<React.SetStateAction<PetAdoption>> }
+type PetAdoptionProps = { data: PetInteface, setAdoptionData: React.Dispatch<React.SetStateAction<PetInteface>> }
 
 function Pet({ data, setAdoptionData }: PetAdoptionProps): JSX.Element {
     return (
         <PetContainer>
-            <PetImage src={`/images/img/${data.imgUrl}`} />
+            <PetImage src={data.imageUrl} />
             <Name>{data.name}</Name>
             <Breed>{data.breed}</Breed>
             <Description>{data.description}</Description>

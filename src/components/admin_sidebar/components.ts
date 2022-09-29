@@ -66,7 +66,7 @@ export const ProfileButton = styled.div`
     border-radius: 10px;
     color: rgb(211,1,52) !important;
     font-size: 0.9em !important;
-
+    text-transform: capitalize;
     & > span {
       color: rgb(65, 65, 65);
 

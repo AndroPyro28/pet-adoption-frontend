@@ -1,15 +1,15 @@
-import { NavLink } from "react-router-dom";
 import {
   AdoptionContainer,
 } from "./components";
 import Pet from "../../../components/adoption/Pet";
 import {PetAdoption} from "../../../types/pet-types/Adoption"
-import { AdoptionForm } from "../../../components/modal/adoption/components";
+import {useGetAllAnimalRecordQuery} from "../../../services/animalRecordApis"
 import AdoptionModal from "../../../components/modal/adoption/AdoptionForm";
 import {useState} from "react";
+import {Pet as PetInterface} from "../../../models/Pet"
+import {toast, ToastContainer} from "react-toastify";
 
 function Adoption() {
-
   const mockData: PetAdoption[] = [
     {
       imgUrl: '/dog1.jpg',
@@ -30,25 +30,34 @@ function Adoption() {
       description: 'Lorem ipsum dolor sit amet.'
     },
   ]
-  // const [adoptionData, setAdoptionData] = useState<PetAdoption>({
-  //       imgUrl: '',
-  //       name: '',
-  //       breed: '',
-  //       description: ''
-  // });
-   const [adoptionData, setAdoptionData] = useState<PetAdoption>({} as PetAdoption);
 
-  const fetchdata = mockData.map((data, index) => <Pet data={data} key={index} setAdoptionData={setAdoptionData} />)
-  return (
-    <AdoptionContainer>
+  const {data: animalRecordData, isLoading, error } = useGetAllAnimalRecordQuery();
+
+  if(error) {
+    console.log(error)
+  }
+
+   const [adoptionData, setAdoptionData] = useState<PetInterface>({} as PetInterface);
+  
+  const fetchdata = animalRecordData?.map((data, index) => <Pet data={data} key={index} setAdoptionData={setAdoptionData} />)
+  
+  return (<>
+      <ToastContainer autoClose={2500} />
+
+      <AdoptionContainer>
+      {
+        isLoading && <h1>loading please wait...</h1>
+      }
 
       {
-        adoptionData?.name && <AdoptionModal data={adoptionData} setAdoptionData={setAdoptionData}  />
+        adoptionData?.id && <AdoptionModal data={adoptionData} setAdoptionData={setAdoptionData} toast={toast}  />
       }
       
       {fetchdata}
 
     </AdoptionContainer>
+  </>
+
   );
 }
 

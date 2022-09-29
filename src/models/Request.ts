@@ -1,6 +1,6 @@
 export interface AdoptionRequest {
-    id: number,
-    adopter: string,
-    adoptee: string,
+    id?: number;
+    adopterId: number | string;
+    adopteeId: number | string;
     schedule: string
 }

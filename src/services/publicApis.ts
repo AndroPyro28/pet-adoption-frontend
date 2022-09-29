@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { SigninUser, SignupUser } from "../models/User";
 
 const PublicApis = createApi({
+    reducerPath:`publicAuth`,
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_DEV_URL,
     }),

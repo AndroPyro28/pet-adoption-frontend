@@ -4,30 +4,14 @@ import {
 } from "./components"
 import { motion } from "framer-motion"
 import HandleLogout from "../../../helper/handleLogout"
+import { animateModalVariant } from "../animationVariants"
 function LogoutModal() {
-    const logoutVariants = {
-        initial: {
-            y: -500
-        },
-        animate: {
-            y: 0,
-            transition: {
-                duration: 1,
-                type: 'spring'
-            }
-        },
-        exit: {
-            x: "100vw",
-            transition: {
-                ease: "easeInOut"
-            }
-        }
-    }
-    const {toggleModalLogout, logoutUser} = HandleLogout();
+
+    const { toggleModalLogout, logoutUser } = HandleLogout();
     return (
         <ModalBackdrop>
             <motion.div className='logout__form'
-                variants={logoutVariants}
+                variants={animateModalVariant}
                 initial="initial"
                 animate="animate"
             >

@@ -7,6 +7,7 @@ type TableDataProps = {
 
 function TableDatas({ data }: TableDataProps) {
   const dataValues = Object.values(data);
+  console.log(data)
   return (
     <TableContainer>
       <TableData> {data.id}</TableData>

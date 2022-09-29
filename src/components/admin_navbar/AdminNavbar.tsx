@@ -1,5 +1,8 @@
+import { useSelector } from "react-redux"
 import {AdminNavbarContainer, Content, ProfileButton, SeachBox} from "./components"
 function AdminNavbar() {
+  const {user}: any = useSelector(state => state);
+  const {profile} = user;
   return (
     <AdminNavbarContainer>
         <Content>
@@ -14,7 +17,7 @@ function AdminNavbar() {
           </SeachBox>
          
           <ProfileButton>
-          <span>Admin Profile</span> <i className="fa-solid fa-user-shield"></i> 
+          <span>{profile.fist_name} {profile.last_name}</span> <i className="fa-solid fa-user-shield"></i> 
           </ProfileButton>
         </Content>
     </AdminNavbarContainer>
