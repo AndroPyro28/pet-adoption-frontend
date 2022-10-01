@@ -18,3 +18,16 @@ export const getDateTodayWithArgs = ({year=0, month=0, date=0}:props ) => {
         const today = `${yyyy}-${mm}-${dd}`;
         return today
 }
+export const dateTimeRemoveZ = (dateTimeLocal: string) => {
+    return dateTimeLocal.substring(0,dateTimeLocal.indexOf("."))
+}
+
+export const dateTimeLocalFormatter = (dateTimeLocal: string) => {
+    // const dateTimeLocalTrimmed = dateTimeRemoveZ(dateTimeLocal);
+    const date = new Date(dateTimeLocal).toISOString().slice(0, 10);
+    const time = new Date(dateTimeLocal).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+    
+    return {
+        date, time
+    }
+}

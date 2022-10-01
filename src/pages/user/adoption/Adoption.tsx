@@ -3,35 +3,16 @@ import {
 } from "./components";
 import Pet from "../../../components/adoption/Pet";
 import {PetAdoption} from "../../../types/pet-types/Adoption"
-import {useGetAllAnimalRecordQuery} from "../../../services/animalRecordApis"
-import AdoptionModal from "../../../components/modal/adoption/AdoptionForm";
+import {useGetAllAnimalRecordExcludeAdoptedQuery} from "../../../services/animalRecordApis"
+import AdoptionModal from "../../../components/modal/adoption/AdoptionFormUser";
 import {useState} from "react";
 import {Pet as PetInterface} from "../../../models/Pet"
 import {toast, ToastContainer} from "react-toastify";
 
 function Adoption() {
-  const mockData: PetAdoption[] = [
-    {
-      imgUrl: '/dog1.jpg',
-      name: 'determined brutos',
-      breed: 'asong kabayo',
-      description: 'Lorem ipsum dolor sit amet.'
-    },
-    {
-      imgUrl: '/dog2.jpg',
-      name: 'innocent brian',
-      breed: 'asong malupet',
-      description: 'Lorem ipsum dolor sit amet.'
-    },
-    {
-      imgUrl: '/pusa1.jpg',
-      name: 'Golden Mingming',
-      breed: 'pusang gala',
-      description: 'Lorem ipsum dolor sit amet.'
-    },
-  ]
+ 
 
-  const {data: animalRecordData, isLoading, error } = useGetAllAnimalRecordQuery();
+  const {data: animalRecordData, isLoading, error } = useGetAllAnimalRecordExcludeAdoptedQuery();
 
   if(error) {
     console.log(error)

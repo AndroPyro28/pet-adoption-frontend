@@ -30,7 +30,7 @@ function AdoptionModal({ data: petData, setAdoptionData, toast }: PetAdoptionPro
   const [date, setDate] = useState<string>('')
   const [time, setTime] = useState<string>('')
   const dateToday = getDateTodayWithArgs({date: 0})
-  const {submitAdoptionForm} = Logic({petData, user, date, time, setAdoptionData, toast })
+  const {submitAdoptionForm} = Logic({petData, user, date, time, setAdoptionDataPet: setAdoptionData, toast })
 
   return (
     <AdoptionBackdrop>
@@ -40,10 +40,8 @@ function AdoptionModal({ data: petData, setAdoptionData, toast }: PetAdoptionPro
         animate="animate"
         exit={'exit'}
         className='form'>
-        <ExitModal onClick={() => {
-          setAdoptionData({} as Pet)
-        }}>
-          X
+        <ExitModal onClick={() => setAdoptionData({} as Pet)}>
+          <i className="fa-solid fa-square-minus minimize"></i>
         </ExitModal>
         <Title>Adoption Form</Title>
 

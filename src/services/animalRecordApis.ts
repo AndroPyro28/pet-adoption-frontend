@@ -28,9 +28,16 @@ const AnimalRecordApis = createApi({
             }),
             providesTags:['Pet']
         }),
+        getAllAnimalRecordExcludeAdopted: builder.query<Pet[], void>({
+            query:() => ({
+                url:'/pets?filter=true',
+                method:'GET',
+            }),
+            providesTags:['Pet']
+        }),
     })
 })
 
 export default AnimalRecordApis;
 
-export const { useCreateRecordMutation, useGetAllAnimalRecordQuery } = AnimalRecordApis;
+export const { useCreateRecordMutation, useGetAllAnimalRecordQuery, useGetAllAnimalRecordExcludeAdoptedQuery } = AnimalRecordApis;

@@ -1,18 +1,27 @@
-import { AdoptionRequest } from '../../models/Request';
+import { dateTimeLocalFormatter, dateTimeRemoveZ } from '../../helper/DateTimeFormmater';
+import { AdoptionRecord } from '../../models/Adoption.ts';
+import { Pet } from '../../models/Pet';
 import { TableContainer, TableData } from './components'
 
 type TableDataProps = {
-    data: AdoptionRequest;
+    data: AdoptionRecord;
+    setAdoptionData: React.Dispatch<React.SetStateAction<AdoptionRecord>>
   };
 
-function TData_AdoptionRecord({data}: TableDataProps) {
+function TData_AdoptionRecord({data, setAdoptionData}: TableDataProps) {
+    const {schedule: rawDateTimeLocal, adoptee, adopter, id } = data;
+    const {fist_name, last_name} = adopter.profile;
+    const {name} = adoptee;
+    const dateTimeLocal = dateTimeRemoveZ(rawDateTimeLocal);
+
+    const {date, time} = dateTimeLocalFormatter(dateTimeLocal)
   return (
     <TableContainer>
-    <TableData> {data.id}</TableData>
-      <TableData> {data.adopterId}</TableData>
-      <TableData> {data.adopteeId}</TableData>
-      <TableData> {data.schedule}</TableData>
-      <TableData> <button>View Details</button> </TableData>
+    <TableData> {id}</TableData>
+      <TableData> {fist_name} {last_name} </TableData>
+      <TableData> {name}</TableData>
+      <TableData> {date} at {time}</TableData>
+      <TableData> <button onClick={() => setAdoptionData(data) }>View Details</button> </TableData>
     </TableContainer>
   )
 }
