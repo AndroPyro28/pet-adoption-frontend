@@ -17,7 +17,7 @@ import { getDateTodayWithArgs } from '../../../helper/DateTimeFormmater'
 import { AdoptionRecord } from '../../../models/Adoption.ts'
 import { ButtonContainer } from '../logout/components'
 import Logic from './Logic'
-import { Pet } from '../../../models/Pet'
+import { dateTimeRemoveZ, dateTimeLocalFormatter } from "../../../helper/DateTimeFormmater"
 
 type PetAdoptionProps = {
   setAdoptionData: React.Dispatch<React.SetStateAction<AdoptionRecord>>
@@ -30,10 +30,11 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
   const dateToday = getDateTodayWithArgs({ date: 0 })
   const { adoptee, adopter } = adoptionData;
   const { profile } = adopter!;
-  const [date, setDate] = useState<string>('')
-  const [time, setTime] = useState<string>('')
-  const {handdleApprove, handleReject} = Logic({date, time, toast, adoptionData, setAdoptionDataRecord: setAdoptionData });
-  
+  const dateLocal = dateTimeRemoveZ(adoptionData.schedule)
+  const [date, setDate] = useState<string>(dateLocal.split('T')[0])
+  const [time, setTime] = useState<string>(dateLocal.split('T')[1].substring(0, dateLocal.split('T')[1].indexOf(':00')))
+  const { handleUpdateAdoptionRequest } = Logic({ date, time, toast, adoptionData, setAdoptionDataRecord: setAdoptionData });
+  console.log()
   return (
     <AdoptionBackdrop>
       <motion.div
@@ -43,39 +44,46 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
         exit={'exit'}
         className='form'>
         <ExitModal onClick={() => setAdoptionData({} as AdoptionRecord)}>
-        <i className="fa-solid fa-square-minus minimize"></i>
+          <i className="fa-solid fa-square-minus minimize"></i>
 
         </ExitModal>
         <Title>Adoption Form</Title>
 
         <PetDetails>
-          <img src={`/images/img${adoptee?.imageUrl}`} />
+          <img src={adoptee?.imageUrl} />
           <div className='pet__details'>
             <h4>Pet Details</h4>
             <Detail>{adoptee?.name}</Detail>
             <Detail>{adoptee?.breed}</Detail>
             <Detail>{adoptee?.description}</Detail>
+            <Detail status={adoptionData?.status}>{adoptionData?.status}</Detail>
           </div>
         </PetDetails>
 
         <AdoptersDetail>
           <h4>Adopter's Details</h4>
-
           <Detail><label>Name</label> <span>{profile.fist_name} {profile.last_name} </span></Detail>
           <Detail><label>Email</label> <span>{adopter?.email}</span></Detail>
           <Detail><label>Address</label> <span>{profile.address}</span></Detail>
           <Detail><label>Contact no.</label> <span>{profile.contact}</span></Detail>
         </AdoptersDetail>
 
-        <DateScheduleInput>
-          <InputDate type={'date'} min={dateToday} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDate(e.target.value)} />
-          <span>at</span>
-          <InputDate type={'time'} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTime(e.target.value)} />
-        </DateScheduleInput>
-        <ButtonContainer>
-        <RejectButton onClick={handleReject}>Reject</RejectButton>
-        <ApproveButton onClick={handdleApprove}>Approve</ApproveButton>
-        </ButtonContainer>
+
+
+        {
+          adoptionData?.status == "PENDING" && <>
+            <DateScheduleInput>
+              <InputDate type={'date'} value={date} min={dateToday} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDate(e.target.value)} />
+              <span>at</span>
+              <InputDate type={'time'} value={time} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTime(e.target.value)} />
+            </DateScheduleInput>
+
+            <ButtonContainer>
+              <RejectButton onClick={() => handleUpdateAdoptionRequest("REJECTED")}>Reject</RejectButton>
+              <ApproveButton onClick={() => handleUpdateAdoptionRequest("APPROVED")}>Approve</ApproveButton>
+            </ButtonContainer>
+          </>
+        }
       </motion.div>
     </AdoptionBackdrop>
   )

@@ -26,7 +26,7 @@ export const AdminComponentContainer = styled.div`
 `;
 
 export const UserLayout = styled.div`
-  padding-top: ${({givePaddingToTop}: {givePaddingToTop: boolean}) => givePaddingToTop ? "250px" : "0px"};
+  padding-top: ${({givePaddingToTop}: {givePaddingToTop: boolean}) => givePaddingToTop ? "220px" : "0px"};
 `;
 
 export const UserLayout2 = styled.section`

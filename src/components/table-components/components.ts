@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const TableContainer = styled.div`
   display: flex;
+  width: 100%;
+  font-size: 0.9em;
+  justify-content: space-evenly;
 `;
 export const TableHead = styled.div`
   flex: 1;
-  color: gray;
+  color: inherit;
   margin-bottom: 15px;
   font-family: "roboto", sans-serif;
   font-weight: 600;
@@ -24,15 +27,15 @@ export const TableData = styled.div`
   padding: 20px 0px;
   font-weight: 600;
   max-height: 60px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size:1em;
   text-transform: capitalize;
   font-family: 'poppins','roboto', sans-serif !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   &:nth-child(1) {
     flex: 0.5;
   }
@@ -65,3 +68,7 @@ export const TableData = styled.div`
     cursor: pointer;
   }
 `;
+
+export const TableHeadUsersContainer = styled.div`
+  display: flex;
+`

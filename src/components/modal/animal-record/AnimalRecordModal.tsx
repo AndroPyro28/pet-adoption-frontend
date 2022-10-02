@@ -27,7 +27,7 @@ function AnimalRecordModal({ toast, setOpenAnimalRecordModal }: modalProps) {
 
   const { onSubmit, handleInputChange,
     handleSelectChange,
-    handleTextAreaChange, } = Logic({ setRecordData, recordData, toast })
+    handleTextAreaChange, } = Logic({ setRecordData, recordData, toast, setOpenAnimalRecordModal })
 
   useEffect(() => {
     try {
@@ -79,7 +79,7 @@ function AnimalRecordModal({ toast, setOpenAnimalRecordModal }: modalProps) {
             <input type="text" placeholder="Name" name="name" onChange={handleInputChange} />
             <input type="text" placeholder="Breed" name="breed" onChange={handleInputChange} />
           </InputCol>
-          <input type="file" name="imageUrl" className="imgUploader" accept="image/*" onChange={handleInputChange} />
+          <input type="file" name="imageUrl" className="imgUploader" accept="image/png, image/jpeg" onChange={handleInputChange} />
         </InputField>
 
         <InputField>

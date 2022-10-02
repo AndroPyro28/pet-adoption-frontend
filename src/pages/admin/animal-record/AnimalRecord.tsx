@@ -3,9 +3,8 @@ import TableHeaders from "../../../components/table-components/TableHeaders";
 import { Pet } from "../../../models/Pet";
 import {
   AnimalRecordContainer,
-  UpperContents,
-  RecordList,
 } from "./components";
+import {UpperContents, RecordListHeaders, RecordList, DataList,} from "../components"
 import AnimalRecordModal from "../../../components/modal/animal-record/AnimalRecordModal";
 import { toast, ToastContainer } from "react-toastify";
 import { useState } from "react"
@@ -15,8 +14,10 @@ function AnimalRecord() {
 
   const {data, isLoading, error} = useGetAllAnimalRecordQuery();
 
-  const fetchAnimals = data?.map((data:Pet, index:number) => <TableDatas data={data} key={index} />);
-  
+  const fetchAnimals = data?.length! > 0 ?
+   data?.map((data:Pet, index:number) => <TableDatas data={data} key={index} />) :
+   <h1>No animals record found!</h1>
+
   return (
     <AnimalRecordContainer>
       {
@@ -31,6 +32,8 @@ function AnimalRecord() {
       </UpperContents>
 
       <RecordList>
+        <RecordListHeaders>
+
         <TableHeaders
           arrayOfTitles={[
             "#",
@@ -43,9 +46,10 @@ function AnimalRecord() {
             "Status",
           ]}
         />
+        </RecordListHeaders>
 
         {
-          isLoading ? <h1>loading please wait...</h1> : fetchAnimals
+          isLoading ? <h1>loading please wait...</h1> : <DataList> {fetchAnimals} </DataList>
         }
       </RecordList>
     </AnimalRecordContainer>

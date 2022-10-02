@@ -20,9 +20,16 @@ const AuthApis = createApi({
             }),
             providesTags: ["User"],
         }),
+        getAllUsers: builder.query<User[], void>({
+            query:() => ({
+                url:'/auth/users',
+                method:'GET',
+            }),
+            providesTags: ["User"],
+        }),
     })
 })
 
 export default AuthApis;
 
-export const { useAuthMeQuery } = AuthApis;
+export const { useAuthMeQuery, useGetAllUsersQuery } = AuthApis;

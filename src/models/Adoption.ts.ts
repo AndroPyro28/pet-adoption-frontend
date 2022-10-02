@@ -18,6 +18,6 @@ export interface AdoptionRecord {
 }
 
 export interface AdoptionUpdate {
-    schedule: string;
+    schedule?: string;
     status: 'PENDING' | 'APPROVED' | 'REJECTED';
 }

@@ -2,14 +2,13 @@ import { Pet } from "../../../models/Pet";
 import {useCreateRecordMutation} from "../../../services/animalRecordApis"
 
 interface Props {
-  setRecordData: React.Dispatch<
-    React.SetStateAction<Pet>
-  >,
+  setRecordData: React.Dispatch<React.SetStateAction<Pet>>,
   recordData: Pet,
-  toast: any
+  toast: any,
+  setOpenAnimalRecordModal: React.Dispatch<React.SetStateAction<Boolean>>
 }
 
-function Logic({setRecordData, recordData, toast} : Props) {
+function Logic({setRecordData, recordData, toast, setOpenAnimalRecordModal} : Props) {
 const [createRecord] = useCreateRecordMutation();
 
   const onSubmit = async () : Promise<void> => {
@@ -18,9 +17,9 @@ const [createRecord] = useCreateRecordMutation();
       if(!isFilled) {
         return toast('All fields are required!', {type:'warning'})
       }
-      console.log(recordData)
+      console.log(recordData);
       const result = await createRecord(recordData);
-      console.log(result);
+      setOpenAnimalRecordModal(false)
       return toast('Nice!', {type:'success'})
     } catch (error) {
       

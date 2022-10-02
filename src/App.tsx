@@ -19,6 +19,7 @@ import { authenticationSuccess, authenticationFailed } from "./redux/userSlice";
 import Cookies from "js-cookie";
 import Home from "./pages/user/home/Home";
 import LogoutModal from "./components/modal/logout/LogoutModal";
+import UserInformation from "./pages/admin/user-information/UserInformation";
 
 function App() {
   
@@ -57,6 +58,7 @@ function App() {
 
             <Route path="admin/animal-record" element={<AdminRoutes Component={AnimalRecord} />} />
             <Route path="admin/adoption-record" element={<AdminRoutes Component={AdoptionRecord} />} />
+            <Route path="admin/user-information" element={<AdminRoutes Component={UserInformation} />} />
             <Route path="admin/" element={<AdminRoutes Component={Dashboard} />} />
 
             <Route path="*" element={<h1>Page Not Found</h1>} />

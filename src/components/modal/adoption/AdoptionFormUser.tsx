@@ -46,7 +46,7 @@ function AdoptionModal({ data: petData, setAdoptionData, toast }: PetAdoptionPro
         <Title>Adoption Form</Title>
 
         <PetDetails>
-          <img src={`/images/img${petData.imageUrl}`} />
+          <img src={petData.imageUrl} />
           <div className='pet__details'>
             <h4>Pet Details</h4>
             <Detail>{petData.name}</Detail>

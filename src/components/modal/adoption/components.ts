@@ -30,7 +30,7 @@ export const AdoptionForm = styled.div``;
 
 export const Title = styled.h2`
   text-align: center;
-  margin: 20px;
+  margin: -10px 20px 20px 20px;
   text-transform: uppercase;
 `;
 
@@ -85,6 +85,12 @@ export const Detail = styled.div`
   display: flex;
   margin: 2.5px;
   align-items: center;
+  color: ${({status}: 
+  {status?: string}) => status === "PENDING" ?
+   "gray" : status === "APPROVED" ? 
+   "green" :  status === "REJECTED" ? 
+   "rgb(210, 0, 51)" : "black"};
+  
   & > label {
     font-size: 1em;
     flex: 1;

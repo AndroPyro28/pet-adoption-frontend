@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {createGlobalStyle} from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     *, *::before, *::after {
@@ -10,10 +10,18 @@ export const GlobalStyles = createGlobalStyle`
         text-decoration: none;
     }
 
-    ::-webkit-calendar-picker-indicator {
+    &::-webkit-scrollbar {
+        width: 5px;
     }
-`
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 2px grey;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgb(210,0,51);
+        border-radius: 10px;
+    }
+`;
 
 export const AppComponent = styled.main`
-    font-family: "poppins", "roboto", sans-serif;
-`
+  font-family: "poppins", "roboto", sans-serif;
+`;
