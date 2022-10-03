@@ -12,7 +12,7 @@ export const GalleryPageContainer = styled.section`
 `;
 export const Dozens = styled.div`
   margin-bottom: 35px;
-  margin-top: 50px;
+  margin-top: 200px;
   text-align: center;
   font-size: 20px;
 `;

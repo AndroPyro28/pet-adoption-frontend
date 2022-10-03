@@ -29,20 +29,20 @@ function UserNavbar({ color }: { color: string }) {
         </ul>
       </UserNavbarTop>
       {
-        !excludedRoutes.includes(pathname) && <UserNavbarBottom>
-          {/* <span></span> */}
+        // !excludedRoutes.includes(pathname) && <UserNavbarBottom>
+        //   {/* <span></span> */}
 
-          <LittleNavigation>
-            <NavLink to={`/user`}>
-              Home
-            </NavLink>
-            /
-            <NavLink to={`/user/${currentRoute}`}>
-              {currentRoute}
-            </NavLink>
-          </LittleNavigation>
+        //   <LittleNavigation>
+        //     <NavLink to={`/user`}>
+        //       Home
+        //     </NavLink>
+        //     /
+        //     <NavLink to={`/user/${currentRoute}`}>
+        //       {currentRoute}
+        //     </NavLink>
+        //   </LittleNavigation>
 
-        </UserNavbarBottom>
+        // </UserNavbarBottom>
       }
 
     </UserNavbarContainer>

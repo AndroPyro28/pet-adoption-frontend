@@ -18,10 +18,12 @@ export const PetContainer = styled.div`
 export const PetImage = styled.img`
   object-fit: cover;
   width: 85%;
-  height: 200px;
+  height: 150px;
   max-height: 200px;
   align-self: center;
   object-position: top center;
+  border-radius: 10px;
+  max-height: 150px;
 `;
 
 export const Breed = styled.h4`

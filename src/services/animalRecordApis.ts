@@ -28,9 +28,9 @@ const AnimalRecordApis = createApi({
             }),
             providesTags:['Pet']
         }),
-        getAllAnimalRecordExcludeAdopted: builder.query<Pet[], void>({
-            query:() => ({
-                url:'/pets?filter=true',
+        getAllAnimalRecordExcludeAdopted: builder.query<Pet[], {filter: boolean, search: string}>({
+            query:( {filter=false, search=''} : {filter: boolean,search: string}) => ({
+                url:`/pets?filter=${filter}&&search=${search}`,
                 method:'GET',
             }),
             providesTags:['Pet']

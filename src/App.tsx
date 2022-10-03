@@ -20,6 +20,7 @@ import Cookies from "js-cookie";
 import Home from "./pages/user/home/Home";
 import LogoutModal from "./components/modal/logout/LogoutModal";
 import UserInformation from "./pages/admin/user-information/UserInformation";
+import Tracker from "./pages/user/tracker/Tracker";
 
 function App() {
   
@@ -49,10 +50,12 @@ function App() {
             <Route path="/login" element={<PublicRoutes Component={Login} />} /> 
 
             {/* user routes */}
+
             <Route path="/user" element={<UserRoutes Component={Index} />} />
             <Route path="/user/gallery" element={<UserRoutes Component={Gallery} />} />
             <Route path="/user/about" element={<UserRoutes Component={About} />} /> 
             <Route path="/user/adoption" element={<UserRoutes Component={Adoption} />} /> 
+            <Route path="/user/tracker" element={<UserRoutes Component={Tracker} />} /> 
 
             {/* admin routes */}
 
