@@ -154,7 +154,7 @@ function Signup() {
             }
 
 
-            <NavLink to="/login">Already have an account? sign in here</NavLink>
+            <NavLink to="/login">Already have an account? Click here</NavLink>
 
             <Buttons>
               {

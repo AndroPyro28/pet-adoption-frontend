@@ -11,6 +11,7 @@ import AdminNavbar from "../components/admin_navbar/AdminNavbar";
 import { useSelector } from "react-redux";
 import { User } from "../models/User";
 import LogoutModal from "../components/modal/logout/LogoutModal";
+import { Navigate } from "react-router-dom";
 
 const AdminRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
   const state: any = useSelector(state => state);
@@ -19,19 +20,19 @@ const AdminRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
   let userCookie: string | undefined = Cookies.get("userToken");
   
   if (!userCookie || userCookie.length <= 0) {
-    window.location.assign("/");
+    return <Navigate to={'/'} />
   }
 
   let userToken: userToken = userCookie!
 
   if (!userToken || userToken.length <= 0) {
-    window.location.assign("/");
+    return <Navigate to={'/'} />
   }
 
   if(user.role === 'USER') {
-    window.location.assign("/user");
+    return <Navigate to={'/user'} />
   }
-
+  
   return (
     <AdminLayout>
       <GlobalStyles />

@@ -18,14 +18,18 @@ import {useDispatch, useSelector} from "react-redux";
 import { authenticationSuccess, authenticationFailed } from "./redux/userSlice";
 import Cookies from "js-cookie";
 import Home from "./pages/user/home/Home";
-import LogoutModal from "./components/modal/logout/LogoutModal";
 import UserInformation from "./pages/admin/user-information/UserInformation";
 import Tracker from "./pages/user/tracker/Tracker";
+import CodeVerification from "./pages/public/forgot-password/CodeVerification";
+import RecoveryContainer from "./pages/public/forgot-password/RecoveryContainer";
+import UpdatePasswordRoutes from "./auth-routes/UpdatePasswordRoutes";
+import UpdatePassword from "./pages/public/forgot-password/UpdatePassword";
 
 function App() {
   
   const {data, isLoading, error} = useAuthMeQuery();
   const dispatch = useDispatch();
+  
     if(!isLoading) {
       if(error) {
         dispatch(authenticationFailed({}));
@@ -44,10 +48,16 @@ function App() {
       <GlobalStyles />
         <Routes>
             <Route path="/" element={<PublicRoutes Component={Index} />} />
-            <Route path="/gallery" element={<PublicRoutes Component={Gallery} />} />
-            <Route path="/about" element={<PublicRoutes Component={About} />} /> 
-            <Route path="/signup" element={<PublicRoutes Component={Signup} />} /> 
-            <Route path="/login" element={<PublicRoutes Component={Login} />} /> 
+            <Route path="gallery" element={<PublicRoutes Component={Gallery} />} />
+            <Route path="about" element={<PublicRoutes Component={About} />} /> 
+            <Route path="signup" element={<PublicRoutes Component={Signup} />} /> 
+            <Route path="login" element={<PublicRoutes Component={Login} />} /> 
+
+            <Route path="recovery" element={<PublicRoutes Component={RecoveryContainer} />}>
+              <Route index element={<CodeVerification />} /> 
+              <Route path="code-verification" element={<CodeVerification />} /> 
+              <Route path="reset-password" element={<UpdatePasswordRoutes Component={UpdatePassword} />} /> 
+            </Route>
 
             {/* user routes */}
 

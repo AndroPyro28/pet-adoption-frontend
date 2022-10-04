@@ -44,6 +44,11 @@ export const GlobalStyles = createGlobalStyle`
             /* margin-bottom: 20px; */
         }
 
+        & > p {
+            color: white;
+            font-weight: 600;
+        }
+
         & > .input-field {
             width: 80%;
             color: rgb(210,0,51);
@@ -86,7 +91,7 @@ export const Container = styled.div`
     border-radius: 10px;
     padding: 20px;
     position: relative;
-
+   
 `
 
 export const Logo = styled.img`

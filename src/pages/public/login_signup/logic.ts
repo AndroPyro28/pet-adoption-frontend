@@ -116,7 +116,10 @@ function Logic({ setCurrentField, toast }: logicProps) {
 
       if ("data" in res) {
         const { access_token } = res.data;
-        Cookies.set("userToken", access_token);
+        Cookies.set("userToken", access_token, {
+          expires: 1,
+          secure: true
+        });
         toast("Signin success!", { type: "success" });
         setTimeout(() => window.location.assign("/user"), 2500);
       } 
@@ -128,7 +131,6 @@ function Logic({ setCurrentField, toast }: logicProps) {
         });
       }
 
-      console.log(res);
     } catch (error: any) {
       console.error(error.message);
     }

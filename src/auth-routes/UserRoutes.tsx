@@ -7,6 +7,7 @@ import {UserLayout} from "./components";
 import { useSelector } from "react-redux";
 import { User } from "../models/User";
 import LogoutModal from "../components/modal/logout/LogoutModal";
+import { Navigate } from "react-router-dom";
 
 const UserRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
   const state: any = useSelector(state => state);
@@ -14,18 +15,19 @@ const UserRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
   const logoutModal = state.logoutModal;
   const {pathname} = useLocation();
   let userCookie: string | undefined = Cookies.get("userToken");
+
   if (!userCookie || userCookie.length <= 0) {
-    window.location.assign("/");
+    return <Navigate to={'/'} />
   }
 
   let userToken: userToken = userCookie!
 
   if (!userToken || userToken.length <= 0) {
-    window.location.assign("/");
+    return <Navigate to={'/'} />
   }
 
   if(user.role === 'ADMIN') {
-    window.location.assign("/admin");
+    return <Navigate to={'/admin'} />
   }
 
   const marginedRoutes = ['/user/adoption', '/user/tracker', '/user/gallery', '/user/about']

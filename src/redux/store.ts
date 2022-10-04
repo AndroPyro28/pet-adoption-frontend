@@ -5,6 +5,7 @@ import userSlice from "./userSlice";
 import logoutModalSlice from "./logoutModalSlice";
 import AnimalRecordApis from "../services/animalRecordApis";
 import AdoptionRecordApis from "../services/adoptionRecordApis";
+import UpdatePasswordApis from "../services/updatePasswordApis";
 
     const store = configureStore({
         reducer: combineReducers({
@@ -12,6 +13,7 @@ import AdoptionRecordApis from "../services/adoptionRecordApis";
             [AuthApis.reducerPath]: AuthApis.reducer,
             [AnimalRecordApis.reducerPath]: AnimalRecordApis.reducer,
             [AdoptionRecordApis.reducerPath]: AdoptionRecordApis.reducer,
+            [UpdatePasswordApis.reducerPath]: UpdatePasswordApis.reducer,
             user: userSlice,
             logoutModal: logoutModalSlice,
         }),
@@ -21,7 +23,8 @@ import AdoptionRecordApis from "../services/adoptionRecordApis";
             PublicApis.middleware,
             AuthApis.middleware,
             AnimalRecordApis.middleware,
-            AdoptionRecordApis.middleware
+            AdoptionRecordApis.middleware,
+            UpdatePasswordApis.middleware
         )
     })
 

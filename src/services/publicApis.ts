@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { Recovery } from "../models/ResetPassword";
 import { SigninUser, SignupUser } from "../models/User";
 
 const PublicApis = createApi({
@@ -24,9 +25,23 @@ const PublicApis = createApi({
             }),
             invalidatesTags:['SigninUser']
         }),
+        findAccount: builder.mutation<void, string>({
+            query: search => ({
+                url:'/auth/forgot-password',
+                method:'POST',
+                body: {search},
+            }),
+        }),
+        sendCode: builder.mutation<void, Recovery>({
+            query: recovery => ({
+                url:'/auth/congirm-reset-code',
+                method:'POST',
+                body: recovery,
+            }),
+        }),
     })
 })
 
 export default PublicApis;
 
-export const {useSigninMutation, useSignupMutation} = PublicApis;
+export const {useSigninMutation, useSignupMutation, useFindAccountMutation, useSendCodeMutation} = PublicApis;
