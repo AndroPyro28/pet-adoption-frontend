@@ -24,6 +24,7 @@ import CodeVerification from "./pages/public/forgot-password/CodeVerification";
 import RecoveryContainer from "./pages/public/forgot-password/RecoveryContainer";
 import UpdatePasswordRoutes from "./auth-routes/UpdatePasswordRoutes";
 import UpdatePassword from "./pages/public/forgot-password/UpdatePassword";
+import ShelterInformation from "./pages/admin/shelter-information/ShelterInformation";
 
 function App() {
   
@@ -38,7 +39,6 @@ function App() {
           !data ? Cookies.remove('userToken') : dispatch(authenticationSuccess(data));
       }
     }
-  
   if(isLoading) {
     return <h1>Loading...</h1>
   }
@@ -70,6 +70,7 @@ function App() {
             {/* admin routes */}
 
             <Route path="admin/animal-record" element={<AdminRoutes Component={AnimalRecord} />} />
+            <Route path="admin/shelter-information" element={<AdminRoutes Component={ShelterInformation} />} />
             <Route path="admin/adoption-record" element={<AdminRoutes Component={AdoptionRecord} />} />
             <Route path="admin/user-information" element={<AdminRoutes Component={UserInformation} />} />
             <Route path="admin/" element={<AdminRoutes Component={Dashboard} />} />

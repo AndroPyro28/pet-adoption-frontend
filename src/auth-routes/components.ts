@@ -11,6 +11,7 @@ export const AdminLayout = styled.section`
   grid-template-columns: 20% 80%;
   border-radius: 20px;
   background: #eaeaea;
+  overflow-x: hidden;
   @media (max-width: 800px) {
     grid-template-columns: 100%;
     & > div:nth-child(1) {
@@ -27,6 +28,8 @@ export const AdminComponentContainer = styled.div`
 
 export const UserLayout = styled.div`
   padding-top: ${({givePaddingToTop}: {givePaddingToTop: boolean}) => givePaddingToTop ? "220px" : "0px"};
+  overflow-x: hidden;
+
 `;
 
 export const UserLayout2 = styled.section`

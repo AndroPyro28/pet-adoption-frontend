@@ -35,7 +35,8 @@ export const PetImage = styled.img`
   height: 150px;
   max-height: 200px;
   align-self: center;
-  object-position: top center;
+  object-position: center;
+
   border-radius: 10px;
   max-height: 150px;
 `;

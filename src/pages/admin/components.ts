@@ -67,3 +67,25 @@ export const DataList = styled.div`
     }
 
 `
+
+export const Pagination = styled.div`
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    width: fit-content;
+    align-self: flex-end;
+    justify-self: center;
+    box-shadow: 1px 3px 5px gray;
+    border-radius: 10px;
+    margin: 5px;
+    & > span {
+        margin-inline: 2.5px;
+    }
+
+    & > button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+`

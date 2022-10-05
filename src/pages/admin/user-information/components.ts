@@ -10,9 +10,9 @@ export const UserInformationList = styled.div`
     flex-direction: column;
     background: white;
     border-radius: 20px;
-
+    height: 80vh;
+    max-height: 75vh;
 `   
-
 export const UserContainer = styled.div`
     display: flex;
     width: 100%;

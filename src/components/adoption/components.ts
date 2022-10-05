@@ -24,6 +24,7 @@ export const PetImage = styled.img`
   object-position: top center;
   border-radius: 10px;
   max-height: 150px;
+  object-position: center;
 `;
 
 export const Breed = styled.h4`

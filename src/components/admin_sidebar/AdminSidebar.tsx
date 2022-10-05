@@ -24,7 +24,7 @@ function AdminSidebar() {
       <NavLink to={"/admin/user-information"} style={navLinkStyles}>
         <i className="fa-solid fa-user"></i> User Information
       </NavLink>
-      <NavLink to="/admin/shelter" style={navLinkStyles}>
+      <NavLink to="/admin/shelter-information" style={navLinkStyles}>
         <i className="fa-solid fa-tents"></i> Shelter Information
       </NavLink>
 

@@ -24,6 +24,14 @@ export const AdoptionBackdrop = styled.div`
     background: white;
     justify-content: center;
     overflow: hidden;
+
+    & .deleteAdoption {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: maroon;
+      font-size: 1.5em;
+    }
   }
 `;
 export const AdoptionForm = styled.div``;

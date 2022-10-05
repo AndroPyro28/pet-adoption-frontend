@@ -1,13 +1,24 @@
 import {UserInfomationContainer, UserInformationList, } from "./components"
-import {UpperContents, DataList} from "../components";
+import {UpperContents, DataList, Pagination} from "../components";
 import User from './User';
 import Headers from './Headers';
 import {useGetAllUsersQuery} from "../../../services/authApis";
+import {useState, useEffect} from "react";
 
 function UserInformation() {
+  const [maxPage, setMaxPage] = useState<number>()
+  const [currentPage, setCurrentPage] = useState<number>(0)
 
   const {data, isLoading, error} = useGetAllUsersQuery();
-  const fetchusers = data?.map((user) => <User data={user} />)
+
+  useEffect(() => {
+    setMaxPage(Math.ceil(data?.length! / 5));
+  }, [data])
+
+  const fetchusers = data
+  ?.slice(5 * currentPage, 5 * currentPage + 5)
+  ?.map((user) => <User key={user.id} data={user} />)
+
   return (
     <UserInfomationContainer>
 
@@ -20,12 +31,15 @@ function UserInformation() {
 
           <Headers />
 
-          <DataList>
+         
             {
-             isLoading ? <h1>loading...</h1> : fetchusers
+             isLoading ? <h1>loading...</h1> :  <DataList> {fetchusers} </DataList>
             }
-          </DataList>
-
+        {
+          maxPage! > 0 && <Pagination>
+            <button>Prev</button><span>{currentPage + 1}</span> / <span>{maxPage}</span>  <button>Next</button>
+          </Pagination>
+        }
         </UserInformationList>
         
     </UserInfomationContainer>

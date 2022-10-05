@@ -18,6 +18,7 @@ import { AdoptionRecord } from '../../../models/Adoption.ts'
 import { ButtonContainer } from '../logout/components'
 import Logic from './Logic'
 import { dateTimeRemoveZ, dateTimeLocalFormatter } from "../../../helper/DateTimeFormmater"
+import { IconContainer } from '../animal-record/components'
 
 type PetAdoptionProps = {
   setAdoptionData: React.Dispatch<React.SetStateAction<AdoptionRecord>>
@@ -34,7 +35,7 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
   const [date, setDate] = useState<string>(dateLocal.split('T')[0])
   const [time, setTime] = useState<string>(dateLocal.split('T')[1].substring(0, dateLocal.split('T')[1].indexOf(':00')))
   const { handleUpdateAdoptionRequest } = Logic({ date, time, toast, adoptionData, setAdoptionDataRecord: setAdoptionData });
-  console.log()
+ 
   return (
     <AdoptionBackdrop>
       <motion.div
@@ -47,6 +48,11 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
           <i className="fa-solid fa-square-minus minimize"></i>
 
         </ExitModal>
+
+
+        <IconContainer>
+        <i className="fa-regular fa-calendar-xmark deleteAdoption"></i>
+        </IconContainer>
         <Title>Adoption Form</Title>
 
         <PetDetails>
@@ -59,7 +65,6 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
             <Detail status={adoptionData?.status}>{adoptionData?.status}</Detail>
           </div>
         </PetDetails>
-
         <AdoptersDetail>
           <h4>Adopter's Details</h4>
           <Detail><label>Name</label> <span>{profile.fist_name} {profile.last_name} </span></Detail>

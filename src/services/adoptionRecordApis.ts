@@ -36,6 +36,14 @@ const AdoptionRecordApis = createApi({
             }),
             invalidatesTags:['adoption']
         }),
+
+        deleteAdoptionRequest: builder.mutation<void, number>({
+            query: (id) => ({
+                url:`/adoption/${id}`,
+                method:'DELETE',
+            }),
+            invalidatesTags:['adoption']
+        }),
     })
 })
 
