@@ -5,9 +5,6 @@ export const AnimalRecordContainer = styled.div`
     flex-direction: column;
 `
 
-
-
-
 export const TableHead = styled.div`
     flex: 1;
     color: gray;
