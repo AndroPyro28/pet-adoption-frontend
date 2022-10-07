@@ -14,37 +14,20 @@ function UserNavbar({ color }: { color: string }) {
             <NavLink to="/user"> Home </NavLink>
           </li>
           <li>
-            <NavLink to="/user/about"> About </NavLink>
-          </li>
-          <li>
-            <NavLink to="/user/gallery"> Gallery </NavLink>
-          </li>
-          <li>
             <NavLink to="/user/tracker"> Tracker </NavLink>
           </li>
           <li>
             <NavLink to="/user/adoption"> Adoption </NavLink>
           </li>
+          <li>
+            <NavLink to="/user/gallery"> Gallery </NavLink>
+          </li>
+          <li>
+            <NavLink to="/user/about"> About </NavLink>
+          </li>
           <User className="fa-solid fa-circle-user" />
         </ul>
       </UserNavbarTop>
-      {
-        // !excludedRoutes.includes(pathname) && <UserNavbarBottom>
-        //   {/* <span></span> */}
-
-        //   <LittleNavigation>
-        //     <NavLink to={`/user`}>
-        //       Home
-        //     </NavLink>
-        //     /
-        //     <NavLink to={`/user/${currentRoute}`}>
-        //       {currentRoute}
-        //     </NavLink>
-        //   </LittleNavigation>
-
-        // </UserNavbarBottom>
-      }
-
     </UserNavbarContainer>
   );
 }

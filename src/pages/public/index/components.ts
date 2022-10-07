@@ -111,3 +111,80 @@ export const Main = styled.div`
     }
   }
 `;
+
+export const Donation = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin: 100px 0px;
+  padding: 100px 0px;
+  background: #EAEAEA;
+`
+
+export const Gcash = styled.div`
+  display: flex;
+  align-items: center;
+  width: 80%;
+
+  & > ol {
+    flex: 1;
+    & > li {
+      margin: 15px 20px;
+      font-size: 1em;
+    }
+  }
+  & > img {
+    flex: 0.6;
+    height: 400px;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+
+`
+
+export const Bank = styled.div`
+  display: flex;
+  margin: 70px 0px;
+  flex-direction: column;
+  width: 80%;
+
+  & > h3 {
+    margin: 30px 0px;
+  }
+`
+
+export const Detail = styled.div`
+  display: flex;
+  width: 50%;
+  margin: 10px 0px;
+  & > label {
+    font-weight: 600;
+    flex: 1;
+  }
+  & > span {
+    font-weight: 500;
+    flex: 1;
+  }
+`
+
+export const Paypal = styled.div`
+    width: 80%;
+
+    & > h3 {
+        margin: 10px 0px;
+    }
+
+    & > p {
+      font-size: 0.9em;
+      margin: 2.5px 0px;
+    }
+
+    & > h4 {
+      font-size: 1.1em;
+      margin: 25px 0px;
+      color: rgb(19,93,205);
+      text-decoration: underline;
+    }
+`
