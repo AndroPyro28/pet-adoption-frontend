@@ -45,8 +45,7 @@ export const Data = styled.div`
 
 export const CalendarContainer = styled.div`
   height: 500px;
-
-  & > .allDays {
-    background: red;
-  }
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
 `

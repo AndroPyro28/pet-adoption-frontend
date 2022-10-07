@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import NavlinkStyles from "../../helper/NavlinkStyles";
 function PublicNavbar({ color }: { color: string }) {
   const {navLinkStyleForUserAndPublic} = NavlinkStyles();
+  
   return (
     <PublicNavbarContainer color={color}>
       <img src="/images/logo/logo.png" className="logo" />

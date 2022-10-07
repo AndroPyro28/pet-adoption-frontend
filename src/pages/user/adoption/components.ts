@@ -8,6 +8,9 @@ export const AdoptionFrontPage = styled.div`
     background-size: cover;
     background-position: center;
     display: flex;
+    clip-path: polygon(0 3%, 100% 0, 100% 96%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 96%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 94%);
 `
 export const AdoptionContainer = styled.div`
     display: grid;
@@ -16,6 +19,7 @@ export const AdoptionContainer = styled.div`
     grid-gap: 20px;
     padding: 50px 20px;
     place-items: center;
+    margin: 100px 0px;
 `
 export const SearchBar = styled.div`
     display: flex;
@@ -67,5 +71,23 @@ export const Search = styled.div`
         height: 100%;
         padding: 10px 20px;
         cursor: pointer;
+    }
+`
+
+export const AdoptionProcedure = styled.div`
+    display: flex;
+    flex-direction: column;
+    background: aliceblue;
+    margin: 100px 0px;
+    align-items: center;
+    clip-path: polygon(0 5%, 100% 0, 100% 94%, 0% 100%);
+    clip-path: polygon(0 3%, 100% 0, 100% 96%, 0% 100%);
+    padding-block: 200px;
+    background: url('/images/content/bg2.png');
+    background-size: cover;
+    color: white;
+
+    & * {
+        color: inherit;
     }
 `

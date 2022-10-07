@@ -7,8 +7,8 @@ export const ModalBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
   backdrop-filter: blur(2px);
+  z-index: 5;
   & > .logout__form {
     width: 40%;
     height: fit-content;

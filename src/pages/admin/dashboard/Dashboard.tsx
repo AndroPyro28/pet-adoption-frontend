@@ -16,14 +16,11 @@ function Dashboard() {
         <AdoptionRecord records={data}/>
         <AdoptionStatus records={data}/>
       </FirstCol>
-
       <SecondCol>
         <Calendar records={data}/>
       </SecondCol>
-
     </DashboardContainer>
   </>
-
   )
 }
 

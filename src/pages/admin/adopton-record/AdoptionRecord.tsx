@@ -1,13 +1,13 @@
 import TableHeaders from "../../../components/table-components/TableHeaders"
 import TData_AdoptionRecord from "../../../components/table-components/TData_AdoptionRecord"
-import { AdoptionRecordContainer } from "./components"
+import { AdoptionRecordContainer,  } from "./components"
 import { useGetAllAdoptionRequestQuery } from "../../../services/adoptionRecordApis"
 import { useEffect, useState } from "react";
 import { AdoptionRecord as AdoptionRecordInterface } from "../../../models/Adoption.ts"
 import AdoptionFormAdmin from "../../../components/modal/adoption/AdoptionFormAdmin"
 import { toast, ToastContainer } from "react-toastify";
 import { UpperContents, RecordListHeaders, RecordList, DataList, Pagination } from "../components"
-import { IconContainer } from "../../../components/modal/animal-record/components";
+
 function AdoptionRecord() {
   const { data, isLoading, error } = useGetAllAdoptionRequestQuery();
   const [adoptionData, setAdoptionData] = useState<AdoptionRecordInterface>({} as AdoptionRecordInterface);
@@ -56,7 +56,7 @@ function AdoptionRecord() {
         }
 
       </RecordList>
-
+     
     </AdoptionRecordContainer>
   )
 }

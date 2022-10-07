@@ -31,12 +31,13 @@ const UserRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
   }
 
   const marginedRoutes = ['/user/adoption', '/user/tracker', '/user/gallery', '/user/about']
+  const colorChanger = pathname === "/user/" || pathname === "/user" || pathname === "/user/tracker" || pathname  === '/user/adoption'
   return (
       <UserLayout givePaddingToTop={ false /* marginedRoutes.includes(pathname) */ }>
         {
             logoutModal && <LogoutModal />
         }
-      <UserNavbar color={pathname === "/user/" || pathname === "/user" || pathname === "/user/tracker" ? "white" : "black"}/>
+      <UserNavbar color={ colorChanger ? "white" : "black"}/>
       <Component />
     </UserLayout>
   );

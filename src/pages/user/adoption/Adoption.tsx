@@ -2,7 +2,8 @@ import {
   AdoptionContainer,
   AdoptionFrontPage,
   SearchBar,
-  Search
+  Search,
+  AdoptionProcedure
 } from "./components";
 import Pet from "../../../components/adoption/Pet";
 import AdoptionModal from "../../../components/modal/adoption/AdoptionFormUser";
@@ -10,6 +11,8 @@ import { useGetAllAnimalRecordExcludeAdoptedQuery } from "../../../services/anim
 import { useState } from "react";
 import { Pet as PetInterface } from "../../../models/Pet"
 import { toast, ToastContainer } from "react-toastify";
+import Procedure from "../../../components/adoption/Procedure";
+import Policies from "../../../components/adoption/Policies";
 
 function Adoption() {
 
@@ -44,9 +47,14 @@ function Adoption() {
 
     <AdoptionContainer>
       {
-        isLoading ? <h1>loading please wait...</h1> : fetchdata
+        isLoading ? <h1>loading please wait...</h1> : fetchdata 
       }
     </AdoptionContainer>
+
+    <AdoptionProcedure>
+        <Procedure />
+        <Policies />
+    </AdoptionProcedure>
   </>
 
   );
