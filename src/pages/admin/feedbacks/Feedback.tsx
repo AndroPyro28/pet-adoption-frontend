@@ -38,7 +38,7 @@ function Feedback() {
                     
                 </FeedbackListHeaders>
                 {
-                    fetchFeedbacks && <DataList> {fetchFeedbacks} </DataList>
+                    isLoading ? <h1>loading...</h1> : <DataList> {fetchFeedbacks} </DataList>
                 }
             </RecordList>
         </FeedbackContainerList>
