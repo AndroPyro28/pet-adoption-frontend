@@ -16,8 +16,9 @@ function Feedback() {
         }
     }, [data])
 
-    const fetchFeedbacks = feedbacks?.map((feedback) => <FeedbackData key={feedback.id} data={feedback} />);
-    
+    const fetchFeedbacks = feedbacks?.length > 0 ? 
+    feedbacks?.map((feedback) => <FeedbackData key={feedback.id} data={feedback} />):
+    <h1>No animals record found!</h1>
     return (
         <FeedbackContainerList >
             <UpperContents>

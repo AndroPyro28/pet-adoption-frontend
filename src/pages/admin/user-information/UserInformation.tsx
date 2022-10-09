@@ -15,9 +15,10 @@ function UserInformation() {
     setMaxPage(Math.ceil(data?.length! / 5));
   }, [data])
 
-  const fetchusers = data
+  const fetchusers = data?.length! > 0 ? data
   ?.slice(5 * currentPage, 5 * currentPage + 5)
-  ?.map((user) => <User key={user.id} data={user} />)
+  ?.map((user) => <User key={user.id} data={user} /> ) :  
+  <h1>No animals record found!</h1>
 
   return (
     <UserInfomationContainer>
