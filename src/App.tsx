@@ -31,7 +31,7 @@ function App() {
   
   const {data, isLoading, error} = useAuthMeQuery();
   const dispatch = useDispatch();
-  
+    console.log(process.env.REACT_APP_DEV_URL)
     if(!isLoading) {
       if(error) {
         dispatch(authenticationFailed({}));
