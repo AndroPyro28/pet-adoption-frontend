@@ -33,7 +33,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build-update-deploy": "npm build && git add . && git commit -m 'update' && git push && firebase deploy",
+    "build-update-deploy": "npm build && git add . && git commit -m 'update' && git push origin test_production && firebase deploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
