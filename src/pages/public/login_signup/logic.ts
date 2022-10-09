@@ -121,7 +121,7 @@ function Logic({ setCurrentField, toast }: logicProps) {
           secure: true
         });
         toast("Signin success!", { type: "success" });
-        setTimeout(() => window.location.assign("/user"), 2500);
+        setTimeout(() => window.location.assign("/"), 2500);
       } 
       if ("error" in res) {
         console.log(res);
