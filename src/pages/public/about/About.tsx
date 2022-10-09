@@ -33,12 +33,15 @@ function About() {
         </div>
       </Main>
 
-    <FeedbackSection>
-    <h1 className="feedback__h1">Feedbacks</h1>
-      <PinnedFeedbackList>
-          {fetchFeedback}
-      </PinnedFeedbackList>
-    </FeedbackSection>
+    {
+      fetchFeedback?.length! > 0 && <FeedbackSection>
+      <h1 className="feedback__h1">Feedbacks</h1>
+        <PinnedFeedbackList>
+            {fetchFeedback}
+        </PinnedFeedbackList>
+      </FeedbackSection>
+    }
+    
     </AboutPageContainer>
   );
 }
