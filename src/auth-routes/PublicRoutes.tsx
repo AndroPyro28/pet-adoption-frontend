@@ -24,12 +24,12 @@ const PublicRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
 
   const excludedRoutes = ["/signup", "/login", '/recovery/reset-password', '/recovery/code-verification', '/recovery'];
   return (
-    <>
+    <PublicRoutesContainer>
       {!excludedRoutes.includes(pathname) && (
         <PublicNavbar color={pathname === "/" ? "white" : "black"} />
       )}
       <Component />
-    </>
+    </PublicRoutesContainer>
   );
 };
 

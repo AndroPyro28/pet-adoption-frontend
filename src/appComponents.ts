@@ -11,6 +11,7 @@ export const GlobalStyles = createGlobalStyle`
         scroll-behavior: smooth;
         font-family: "roboto", "poppins", sans-serif !important;
         text-decoration: none;
+        overflow-x: hidden;
     }
 
     &::-webkit-scrollbar {
