@@ -51,7 +51,7 @@ function AdoptionRecord() {
         }
         {
           maxPage! > 0 && <Pagination>
-            <button onClick={() => setCurrentPage(prev => prev > 1 ? prev - 1 : prev )}>Prev</button><span>{currentPage + 1}</span> / <span>{maxPage}</span>  <button onClick={() => setCurrentPage(prev => prev < maxPage! ? prev + 1 : prev )}>Next</button>
+            <button onClick={() => setCurrentPage(prev => prev > 1 ? prev - 1 : prev )}>Prev</button><span>{currentPage + 1}</span> / <span>{maxPage}</span>  <button onClick={() => setCurrentPage(prev => prev + 1< maxPage! ? prev + 1 : prev )}>Next</button>
           </Pagination>
         }
 

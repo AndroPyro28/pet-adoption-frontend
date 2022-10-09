@@ -14,6 +14,7 @@ export const Information = styled.div`
     background: white;
     border-radius: 20px;
     align-items: center;
+    overflow-y: auto;
 `
 export const ShelterTeam = styled.div`
     margin: 20px;
