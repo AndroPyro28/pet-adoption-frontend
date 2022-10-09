@@ -35,7 +35,7 @@ function UserInformation() {
             }
         {
           maxPage! > 0 && <Pagination>
-            <button>Prev</button><span>{currentPage + 1}</span> / <span>{maxPage}</span>  <button>Next</button>
+            <button onClick={() => setCurrentPage(prev => prev > 1 ? prev - 1 : prev )}>Prev</button><span>{currentPage + 1}</span> / <span>{maxPage}</span>  <button onClick={() => setCurrentPage(prev => prev < maxPage! ? prev + 1 : prev )}>Next</button>
           </Pagination>
         }
         </UserInformationList>
