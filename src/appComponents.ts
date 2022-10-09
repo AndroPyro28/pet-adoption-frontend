@@ -27,5 +27,6 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const AppComponent = styled.main`
+overflow-x: hidden;
   font-family: "poppins", "roboto", sans-serif;
 `;
