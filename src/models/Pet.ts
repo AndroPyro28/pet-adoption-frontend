@@ -13,5 +13,6 @@ export interface Pet {
     traits: string,
     createdAt?: string | number,
     updatedAt?: string | number,
-    ownerId?: number
+    ownerId?: number,
+    animalId?: string
 }

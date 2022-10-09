@@ -5,7 +5,7 @@ import { userToken } from "../types/cookies-types/userToken";
 import { useLocation, Navigate } from "react-router-dom";
 import { User } from "../models/User";
 import { useSelector } from "react-redux";
-
+import {PublicRoutesContainer} from "./components"
 const PublicRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
     const { pathname } = useLocation();
     const state: any = useSelector(state => state);
@@ -24,12 +24,12 @@ const PublicRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
 
   const excludedRoutes = ["/signup", "/login", '/recovery/reset-password', '/recovery/code-verification', '/recovery'];
   return (
-    <>
+    <PublicRoutesContainer>
       {!excludedRoutes.includes(pathname) && (
         <PublicNavbar color={pathname === "/" ? "white" : "black"} />
       )}
       <Component />
-    </>
+    </PublicRoutesContainer>
   );
 };
 

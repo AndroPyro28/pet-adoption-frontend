@@ -25,6 +25,7 @@ import RecoveryContainer from "./pages/public/forgot-password/RecoveryContainer"
 import UpdatePasswordRoutes from "./auth-routes/UpdatePasswordRoutes";
 import UpdatePassword from "./pages/public/forgot-password/UpdatePassword";
 import ShelterInformation from "./pages/admin/shelter-information/ShelterInformation";
+import Feedback from "./pages/admin/feedbacks/Feedback";
 
 function App() {
   
@@ -60,7 +61,6 @@ function App() {
             </Route>
 
             {/* user routes */}
-
             <Route path="/user" element={<UserRoutes Component={Index} />} />
             <Route path="/user/gallery" element={<UserRoutes Component={Gallery} />} />
             <Route path="/user/about" element={<UserRoutes Component={About} />} /> 
@@ -68,11 +68,11 @@ function App() {
             <Route path="/user/tracker" element={<UserRoutes Component={Tracker} />} /> 
 
             {/* admin routes */}
-
             <Route path="admin/animal-record" element={<AdminRoutes Component={AnimalRecord} />} />
             <Route path="admin/shelter-information" element={<AdminRoutes Component={ShelterInformation} />} />
             <Route path="admin/adoption-record" element={<AdminRoutes Component={AdoptionRecord} />} />
             <Route path="admin/user-information" element={<AdminRoutes Component={UserInformation} />} />
+            <Route path="admin/feedback" element={<AdminRoutes Component={Feedback} />} />
             <Route path="admin/" element={<AdminRoutes Component={Dashboard} />} />
 
             <Route path="*" element={<h1>Page Not Found</h1>} />

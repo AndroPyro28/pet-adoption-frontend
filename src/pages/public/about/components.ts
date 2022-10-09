@@ -4,14 +4,16 @@ export const AboutPageContainer = styled.section`
   width: 100%;
   padding: 10px 0px;
   background-color: #fff;
-  height: 100vh;
   display: flex;
+  flex-direction: column;
   margin-top: ${({giveMarginToTop}: {giveMarginToTop:boolean}) => giveMarginToTop ? "100px" : "0px"};
   & img {
     height: 500px;
     width: auto;
     margin-left: 150px;
   }
+
+  
 `;
 
 export const Main = styled.div`
@@ -44,3 +46,19 @@ export const Main = styled.div`
     }
   }
 `;
+
+export const PinnedFeedbackList = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
+
+export const FeedbackSection = styled.section`
+padding: 50px 0px;
+margin: 100px 0px;
+background: #EAEAEA;
+& > .feedback__h1 {
+    text-align: center;
+    margin: 120px;
+    font-size: 2em;
+  }
+`

@@ -27,18 +27,19 @@ function AdminSidebar() {
       <NavLink to="/admin/shelter-information" style={navLinkStyles}>
         <i className="fa-solid fa-tents"></i> Shelter Information
       </NavLink>
-
       <NavLink to="/admin/animal-record" style={navLinkStyles}>
         <i className="fa-solid fa-folder"></i> Animal Record
       </NavLink>
       <NavLink to="/admin/adoption-record" style={navLinkStyles}>
         <i className="fa-solid fa-paw"></i> Adoption Record
       </NavLink>
+      <NavLink to="/admin/feedback" style={navLinkStyles}>
+        <i className="fa-solid fa-square-rss"></i> Feedback
+      </NavLink>
 
       <LogoutButton onClick={toggleModalLogout}>
         <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
       </LogoutButton>
-
       <ProfileButton>
         <i className="fa-solid fa-user-shield"></i> <span>{profile.fist_name} {profile.last_name} </span>
       </ProfileButton>

@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const logoutModalSlice = createSlice({
-    name: "Logout",
+const profileModalSlice = createSlice({
+    name: "profile",
     initialState: false,
 
     reducers: {
@@ -12,6 +12,6 @@ const logoutModalSlice = createSlice({
     }
 })
 
-export const {toggleModal} =  logoutModalSlice.actions;
+export const {toggleModal} =  profileModalSlice.actions;
 
-export default logoutModalSlice.reducer;
+export default profileModalSlice.reducer;

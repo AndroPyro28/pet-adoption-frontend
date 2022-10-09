@@ -31,6 +31,7 @@ export const ProfileButton = styled.div`
     font-size: 1em !important;
     font-weight: 600;
     flex: 1;
+    text-transform: capitalize;
     & > span {
       color: rgb(65, 65, 65);
       margin: 10px;

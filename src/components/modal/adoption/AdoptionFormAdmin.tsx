@@ -33,9 +33,9 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
   const { profile } = adopter!;
   const dateLocal = dateTimeRemoveZ(adoptionData.schedule)
   const [date, setDate] = useState<string>(dateLocal.split('T')[0])
-  const [time, setTime] = useState<string>(dateLocal.split('T')[1].substring(0, dateLocal.split('T')[1].indexOf(':00')))
+  const [time, setTime] = useState<string>(dateLocal.split('T')[1])
   const { handleUpdateAdoptionRequest } = Logic({ date, time, toast, adoptionData, setAdoptionDataRecord: setAdoptionData });
- 
+ console.log({date, time});
   return (
     <AdoptionBackdrop>
       <motion.div
@@ -46,13 +46,11 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
         className='form'>
         <ExitModal onClick={() => setAdoptionData({} as AdoptionRecord)}>
           <i className="fa-solid fa-square-minus minimize"></i>
-
         </ExitModal>
 
-
-        <IconContainer>
+        {/* <IconContainer>
         <i className="fa-regular fa-calendar-xmark deleteAdoption"></i>
-        </IconContainer>
+        </IconContainer> */}
         <Title>Adoption Form</Title>
 
         <PetDetails>
@@ -80,7 +78,7 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
             <DateScheduleInput>
               <InputDate type={'date'} value={date} min={dateToday} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDate(e.target.value)} />
               <span>at</span>
-              <InputDate type={'time'} value={time} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTime(e.target.value)} />
+              <InputDate type={'time'} value={time} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTime(e.target.value+':00')} />
             </DateScheduleInput>
 
             <ButtonContainer>

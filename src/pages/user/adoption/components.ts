@@ -8,9 +8,9 @@ export const AdoptionFrontPage = styled.div`
     background-size: cover;
     background-position: center;
     display: flex;
-    clip-path: polygon(0 3%, 100% 0, 100% 96%, 0% 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 96%);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 94%);
+    /* clip-path: polygon(0 3%, 100% 0, 100% 96%, 0% 100%); */
+    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 96%); */
+    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 94%); */
 `
 export const AdoptionContainer = styled.div`
     display: grid;
@@ -80,8 +80,8 @@ export const AdoptionProcedure = styled.div`
     background: aliceblue;
     margin: 100px 0px;
     align-items: center;
-    clip-path: polygon(0 5%, 100% 0, 100% 94%, 0% 100%);
-    clip-path: polygon(0 3%, 100% 0, 100% 96%, 0% 100%);
+    /* clip-path: polygon(0 5%, 100% 0, 100% 94%, 0% 100%); */
+    /* clip-path: polygon(0 3%, 100% 0, 100% 96%, 0% 100%); */
     padding-block: 200px;
     background: url('/images/content/bg2.png');
     background-size: cover;

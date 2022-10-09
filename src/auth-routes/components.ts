@@ -29,9 +29,8 @@ export const AdminComponentContainer = styled.div`
 export const UserLayout = styled.div`
   padding-top: ${({givePaddingToTop}: {givePaddingToTop: boolean}) => givePaddingToTop ? "220px" : "0px"};
   overflow-x: hidden;
-
 `;
 
-export const UserLayout2 = styled.section`
-
+export const PublicRoutesContainer = styled.section`
+  overflow-x: hidden;
 `

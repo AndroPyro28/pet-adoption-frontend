@@ -17,6 +17,7 @@ export interface User {
   email: string;
   id: number;
   role: 'USER' | 'ADMIN';
+  createdAt: Date;
   profile: {
     last_name: string;
     contact: string;

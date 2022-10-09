@@ -42,7 +42,6 @@ function AnimalRecord() {
 
       <RecordList>
         <RecordListHeaders>
-
         <TableHeaders
           arrayOfTitles={[
             "#",
@@ -50,7 +49,6 @@ function AnimalRecord() {
             "Breed",
             "Type",
             "Gender",
-            "Age",
             "Color",
             "Status",
           ]}

@@ -21,7 +21,6 @@ function UserInformation() {
 
   return (
     <UserInfomationContainer>
-
         <UpperContents>
             <h2>User information</h2>
             <i className="fa-solid fa-ellipsis dotdotdot"></i>
@@ -30,8 +29,6 @@ function UserInformation() {
         <UserInformationList>
 
           <Headers />
-
-         
             {
              isLoading ? <h1>loading...</h1> :  <DataList> {fetchusers} </DataList>
             }

@@ -6,6 +6,9 @@ import logoutModalSlice from "./logoutModalSlice";
 import AnimalRecordApis from "../services/animalRecordApis";
 import AdoptionRecordApis from "../services/adoptionRecordApis";
 import UpdatePasswordApis from "../services/updatePasswordApis";
+import profileModalSlice from "./profileModalSlice"
+import loaderSlice from "./loaderSlice";
+import FeedbackApis from "../services/feedbackApis";
 
     const store = configureStore({
         reducer: combineReducers({
@@ -14,8 +17,11 @@ import UpdatePasswordApis from "../services/updatePasswordApis";
             [AnimalRecordApis.reducerPath]: AnimalRecordApis.reducer,
             [AdoptionRecordApis.reducerPath]: AdoptionRecordApis.reducer,
             [UpdatePasswordApis.reducerPath]: UpdatePasswordApis.reducer,
+            [FeedbackApis.reducerPath]: FeedbackApis.reducer,
             user: userSlice,
             logoutModal: logoutModalSlice,
+            profileModal: profileModalSlice,
+            loader: loaderSlice
         }),
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             immutableCheck: false,
@@ -24,7 +30,8 @@ import UpdatePasswordApis from "../services/updatePasswordApis";
             AuthApis.middleware,
             AnimalRecordApis.middleware,
             AdoptionRecordApis.middleware,
-            UpdatePasswordApis.middleware
+            UpdatePasswordApis.middleware,
+            FeedbackApis.middleware
         )
     })
 

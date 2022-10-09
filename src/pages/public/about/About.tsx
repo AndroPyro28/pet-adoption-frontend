@@ -1,7 +1,15 @@
-import { Main, AboutPageContainer} from "./components"
+import { Main, AboutPageContainer, PinnedFeedbackList, FeedbackSection} from "./components"
 import {useLocation} from "react-router-dom";
+import { useGetFirstThreePinnedFeedbackQuery } from "../../../services/feedbackApis";
+import PinnedFeedback from "../../../components/about/PinnedFeedback";
 function About() {
   const {pathname} = useLocation();
+
+  const {data} = useGetFirstThreePinnedFeedbackQuery();
+
+  const fetchFeedback = data?.map((feedback) => {
+    return <PinnedFeedback feedback={feedback} />
+  })
   return (
     <AboutPageContainer giveMarginToTop={!pathname.includes('user')}>
       <Main>
@@ -24,6 +32,13 @@ function About() {
           </button>
         </div>
       </Main>
+
+    <FeedbackSection>
+    <h1 className="feedback__h1">Feedbacks</h1>
+      <PinnedFeedbackList>
+          {fetchFeedback}
+      </PinnedFeedbackList>
+    </FeedbackSection>
     </AboutPageContainer>
   );
 }

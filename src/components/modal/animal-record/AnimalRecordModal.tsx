@@ -21,10 +21,9 @@ function AnimalRecordModal({ toast, setOpenAnimalRecordModal }: modalProps) {
       healthNotes: '',
       imageUrl: null,
       condition: null,
-      traits: ''
+      traits: '',
     }
   )
-
   const { onSubmit, handleInputChange,
     handleSelectChange,
     handleTextAreaChange, } = Logic({ setRecordData, recordData, toast, setOpenAnimalRecordModal })
@@ -45,7 +44,6 @@ function AnimalRecordModal({ toast, setOpenAnimalRecordModal }: modalProps) {
               setRecordData(prev => ({ ...prev, imageUrl: fileReader.result }))
             }
           }
-
         };
       }
     } catch (error: any) {
@@ -62,6 +60,7 @@ function AnimalRecordModal({ toast, setOpenAnimalRecordModal }: modalProps) {
       initial="initial"
       animate="animate"
       >
+      
         <IconContainer onClick={() => setOpenAnimalRecordModal(false)}>
           <i className="fa-solid fa-arrow-left back"></i>
         </IconContainer>

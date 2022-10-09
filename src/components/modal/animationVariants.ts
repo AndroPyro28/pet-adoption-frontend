@@ -1,6 +1,7 @@
+
 export const animateModalVariant = {
     initial: {
-      y: -500
+      y: -500,
     },
     animate: {
       y: 0,
@@ -16,3 +17,16 @@ export const animateModalVariant = {
       }
     }
   };
+
+  export const popUpModalVariants = {
+    initial: {
+      width: 0,
+      height: 0,
+    },
+    animate: {
+      width: '60vw',
+      height: '60vh',
+      transition: {
+      },
+    }
+  }
