@@ -1,0 +1,28 @@
+[debug] [2022-10-09T18:46:56.376Z] ----------------------------------------------------------------------
+[debug] [2022-10-09T18:46:56.378Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Andro Eugenio\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-10-09T18:46:56.378Z] CLI Version:   11.10.0
+[debug] [2022-10-09T18:46:56.378Z] Platform:      win32
+[debug] [2022-10-09T18:46:56.378Z] Node Version:  v16.15.1
+[debug] [2022-10-09T18:46:56.379Z] Time:          Mon Oct 10 2022 02:46:56 GMT+0800 (China Standard Time)
+[debug] [2022-10-09T18:46:56.379Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-09T18:46:56.425Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-09T18:46:56.426Z] > authorizing via signed-in user (ladydianne.garcia.n@bulsu.edu.ph)
+[debug] [2022-10-09T18:46:56.426Z] [iam] checking project noahs-ark-dog-cat-shelter for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-10-09T18:46:56.428Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/noahs-ark-dog-cat-shelter:testIamPermissions [none]
+[debug] [2022-10-09T18:46:56.428Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/noahs-ark-dog-cat-shelter:testIamPermissions x-goog-quota-user=projects/noahs-ark-dog-cat-shelter
+[debug] [2022-10-09T18:46:56.428Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/noahs-ark-dog-cat-shelter:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-10-09T18:46:57.415Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/noahs-ark-dog-cat-shelter:testIamPermissions 200
+[debug] [2022-10-09T18:46:57.415Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/noahs-ark-dog-cat-shelter:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-10-09T18:46:57.416Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/noahs-ark-dog-cat-shelter [none]
+[debug] [2022-10-09T18:46:57.822Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/noahs-ark-dog-cat-shelter 200
+[debug] [2022-10-09T18:46:57.823Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/noahs-ark-dog-cat-shelter {"projectId":"noahs-ark-dog-cat-shelter","projectNumber":"973393654547","displayName":"noahs-ark-dog-cat-shelter","name":"projects/noahs-ark-dog-cat-shelter","resources":{"hostingSite":"noahs-ark-dog-cat-shelter"},"state":"ACTIVE","etag":"1_25558131-4f0e-4021-b1c1-7477bb916a6a"}
+[info] 
+[info] === Deploying to 'noahs-ark-dog-cat-shelter'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-10-09T18:46:57.826Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/noahs-ark-dog-cat-shelter [none]
+[debug] [2022-10-09T18:46:58.182Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/noahs-ark-dog-cat-shelter 200
+[debug] [2022-10-09T18:46:58.183Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/noahs-ark-dog-cat-shelter {"projectId":"noahs-ark-dog-cat-shelter","projectNumber":"973393654547","displayName":"noahs-ark-dog-cat-shelter","name":"projects/noahs-ark-dog-cat-shelter","resources":{"hostingSite":"noahs-ark-dog-cat-shelter"},"state":"ACTIVE","etag":"1_25558131-4f0e-4021-b1c1-7477bb916a6a"}
+[debug] [2022-10-09T18:46:58.185Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/973393654547/sites/noahs-ark-dog-cat-shelter/versions [none]
+[debug] [2022-10-09T18:46:58.185Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/973393654547/sites/noahs-ark-dog-cat-shelter/versions {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
