@@ -13,7 +13,7 @@ function Feedback() {
         if(data) {
             setFeedbacks(data)
         }
-    refetch()
+    // refetch()
     console.log(data);
     }, [data])
 
