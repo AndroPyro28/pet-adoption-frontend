@@ -16,10 +16,11 @@ function AnimalRecord() {
   const [maxPage, setMaxPage] = useState<number>()
   const [currentPage, setCurrentPage] = useState<number>(0)
 
-  const {data, isLoading, error} = useGetAllAnimalRecordQuery();
+  const {data, isLoading, error, refetch} = useGetAllAnimalRecordQuery();
 
   useEffect(() => {
     setMaxPage(Math.ceil(data?.length! / 6));
+    refetch()
   }, [data])
   
   const fetchAnimals = data?.length! > 0 ?

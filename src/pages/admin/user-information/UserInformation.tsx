@@ -9,12 +9,13 @@ function UserInformation() {
   const [maxPage, setMaxPage] = useState<number>()
   const [currentPage, setCurrentPage] = useState<number>(0)
 
-  const {data, isLoading, error} = useGetAllUsersQuery();
+  const {data, isLoading, error, refetch} = useGetAllUsersQuery();
 
   useEffect(() => {
     setMaxPage(Math.ceil(data?.length! / 5));
+    refetch()
   }, [data])
-
+  
   const fetchusers = data?.length! > 0 ? data
   ?.slice(5 * currentPage, 5 * currentPage + 5)
   ?.map((user) => <User key={user.id} data={user} /> ) :  

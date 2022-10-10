@@ -5,10 +5,14 @@ import AnimalList from "../../../components/dashboard/AnimalList"
 import {DashboardContainer, FirstCol, SecondCol} from "./components"
 import { useGetAllAdoptionRequestQuery } from "../../../services/adoptionRecordApis"
 import Calendar from "../../../components/dashboard/Calendar"
+import { useEffect } from "react"
 function Dashboard() {
 
-  const { data, isLoading, error } = useGetAllAdoptionRequestQuery();
+  const { data, isLoading, error, refetch } = useGetAllAdoptionRequestQuery();
 
+  useEffect(() => {
+    refetch()
+  }, [])
   return (<>
     <DashboardContainer>
       <FirstCol>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Pet from "../../../components/tracker/Pet";
 import { TrackerContainer, TrackerContent, SearchBar, Search, PetList, SearchBarContainer } from "./components"
 import { useGetAllAnimalRecordExcludeAdoptedQuery } from "../../../services/animalRecordApis"
@@ -9,7 +9,12 @@ function Tracker() {
   const [search, setSearch] = useState<string>('')
   const [adoptionData, setAdoptionData] = useState<PetInterface>({} as PetInterface);
 
-  const { data: animalRecordData, isLoading, error } = useGetAllAnimalRecordExcludeAdoptedQuery({ filter: false, search });
+  const { data: animalRecordData, isLoading, error, refetch } = useGetAllAnimalRecordExcludeAdoptedQuery({ filter: false, search });
+  
+  useEffect(() => {
+    refetch()
+  }, [])
+
   if(error) {
     console.error(error);
   }

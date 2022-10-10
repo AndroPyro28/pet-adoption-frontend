@@ -8,7 +8,7 @@ import {
 import Pet from "../../../components/adoption/Pet";
 import AdoptionModal from "../../../components/modal/adoption/AdoptionFormUser";
 import { useGetAllAnimalRecordExcludeAdoptedQuery } from "../../../services/animalRecordApis"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pet as PetInterface } from "../../../models/Pet"
 import { toast, ToastContainer } from "react-toastify";
 import Procedure from "../../../components/adoption/Procedure";
@@ -19,8 +19,11 @@ function Adoption() {
   const [search, setSearch] = useState<string>('')
   const [adoptionData, setAdoptionData] = useState<PetInterface>({} as PetInterface);
 
-  const { data: animalRecordData, isLoading, error } = useGetAllAnimalRecordExcludeAdoptedQuery({filter:true,search});
+  const { data: animalRecordData, isLoading, error, refetch} = useGetAllAnimalRecordExcludeAdoptedQuery({filter:true,search});
 
+  useEffect(() => {
+    refetch()
+  }, [])
   if (error) {
     console.log(error)
   }

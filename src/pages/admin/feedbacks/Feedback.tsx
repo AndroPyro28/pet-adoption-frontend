@@ -8,7 +8,6 @@ import { FeedbackContainerList, FeedbackListHeaders } from "./components"
 function Feedback() {
 
     const {isLoading, data, error, refetch} = useGetAllFeedbackQuery();
-    const [feedbacks, setFeedbacks] = useState<FeedbackReviews[]>([])
     
     useEffect(() => {
     refetch()

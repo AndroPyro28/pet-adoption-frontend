@@ -9,13 +9,14 @@ import { toast, ToastContainer } from "react-toastify";
 import { UpperContents, RecordListHeaders, RecordList, DataList, Pagination } from "../components"
 
 function AdoptionRecord() {
-  const { data, isLoading, error } = useGetAllAdoptionRequestQuery();
+  const { data, isLoading, error, refetch } = useGetAllAdoptionRequestQuery();
   const [adoptionData, setAdoptionData] = useState<AdoptionRecordInterface>({} as AdoptionRecordInterface);
   const [maxPage, setMaxPage] = useState<number>()
   const [currentPage, setCurrentPage] = useState<number>(0)
 
   useEffect(() => {
     setMaxPage(Math.ceil(data?.length! / 6));
+    refetch()
   }, [data])
 
   const fetchRecord = data?.length! > 0 ?
