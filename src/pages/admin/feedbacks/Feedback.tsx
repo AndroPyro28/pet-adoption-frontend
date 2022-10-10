@@ -7,7 +7,9 @@ import { DataList, RecordList, RecordListHeaders, UpperContents } from '../compo
 import { FeedbackContainerList, FeedbackListHeaders } from "./components"
 function Feedback() {
 
-    const {isLoading, data, error} = useGetAllFeedbackQuery();
+    const {isLoading, data, error} = useGetAllFeedbackQuery(void {
+        pollingInterval: 1000
+    });
     const [feedbacks, setFeedbacks] = useState<FeedbackReviews[]>([])
     
     useEffect(() => {
