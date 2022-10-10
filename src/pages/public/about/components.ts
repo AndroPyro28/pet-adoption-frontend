@@ -6,7 +6,7 @@ export const AboutPageContainer = styled.section`
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  margin-top: ${({giveMarginToTop}: {giveMarginToTop:boolean}) => giveMarginToTop ? "100px" : "0px"};
+  margin-top: ${({giveMarginToTop}: {giveMarginToTop:boolean}) => giveMarginToTop ? "150px" : "0px"};
   & img {
     height: 500px;
     width: auto;
