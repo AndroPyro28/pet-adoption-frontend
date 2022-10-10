@@ -14,6 +14,7 @@ function Feedback() {
             setFeedbacks(data)
         }
     refetch()
+    console.log(data);
     }, [data])
 
     const fetchFeedbacks = feedbacks?.length > 0 ? 
