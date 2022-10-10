@@ -11,7 +11,7 @@ export const authUser = createAsyncThunk('User/auth', async () => {
         })
         return res.data
     } catch (error) {
-        console.error('error', error)
+        console.error('error auth user', error)
         Cookies.remove('userToken');
     }
 })
