@@ -31,23 +31,23 @@ import { useEffect } from "react";
 function App() {
   
   const dispatch = useDispatch<any>();
-  // const {data, isLoading, error} = useAuthMeQuery();
-  //   if(!isLoading) {
-  //     if(error) {
-  //       dispatch(authenticationFailed({}));
-  //       Cookies.remove('userToken');
-  //     } else {
-  //         !data ? Cookies.remove('userToken') : dispatch(authenticationSuccess(data));
-  //     }
-  //   }
+  const {data, isLoading, error} = useAuthMeQuery();
+    if(!isLoading) {
+      if(error) {
+        dispatch(authenticationFailed({}));
+        Cookies.remove('userToken');
+      } else {
+          !data ? Cookies.remove('userToken') : dispatch(authenticationSuccess(data));
+      }
+    }
 
-    useEffect(() => {
-      dispatch(authUser()) 
-    }, [])
+    // useEffect(() => {
+    //   dispatch(authUser()) 
+    // }, [])
 
-  // if(isLoading) {
-  //   return <h1>Loading...</h1>
-  // }
+  if(isLoading) {
+    return <h1>Loading...</h1>
+  }
 
   
 
