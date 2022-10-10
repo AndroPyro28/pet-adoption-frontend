@@ -13,6 +13,7 @@ function Feedback() {
     refetch()
     }, [])
 
+    
     const fetchFeedbacks = data?.length! > 0 ? 
     data?.map((feedback) => <FeedbackData key={feedback.id} data={feedback} />):
     <h1>No feedbacks found!</h1>

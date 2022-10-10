@@ -19,6 +19,7 @@ function AdoptionRecord() {
     refetch()
   }, [data])
 
+
   const fetchRecord = data?.length! > 0 ?
     data?.slice(6 * currentPage, 6 * currentPage + 6)
     .map((record, index) => {

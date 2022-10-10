@@ -15,7 +15,7 @@ import AdoptionRecord from "./pages/admin/adopton-record/AdoptionRecord";
 import Adoption from "./pages/user/adoption/Adoption";
 import { useAuthMeQuery } from "./services/authApis";
 import {useDispatch, useSelector} from "react-redux";
-import { authenticationSuccess, authenticationFailed } from "./redux/userSlice";
+import { authenticationSuccess, authenticationFailed, authUser } from "./redux/userSlice";
 import Cookies from "js-cookie";
 import Home from "./pages/user/home/Home";
 import UserInformation from "./pages/admin/user-information/UserInformation";

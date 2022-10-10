@@ -3,8 +3,6 @@ import { useLocation } from 'react-router-dom';
 function Logic() {
     const {pathname} = useLocation()
 
-    
-
     const navLinkStylesFirst = ({isActive}: any) => { // this is temporary cause it bugged
       if(pathname != '/admin') {
         isActive=false
