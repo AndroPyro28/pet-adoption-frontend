@@ -12,7 +12,7 @@ function TData_AdoptionRecord({data, setAdoptionData}: TableDataProps) {
     const {schedule, adoptee, adopter, id } = data;
     const {fist_name, last_name} = adopter.profile;
     // const dateTimeLocal = dateTimeRemoveZ(rawDateTimeLocal);
-
+    console.log(schedule)
     const {date, time} = dateTimeLocalFormatter(schedule)
   return (
     <TableContainer>
