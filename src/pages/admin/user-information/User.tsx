@@ -8,7 +8,7 @@ function User({ data }: { data: UserInterface }) {
   .slice(0, profile.contact.length - 4) // will remove the last 4 digits
   .padEnd(profile.contact.length, '*')  // will replace '*' to the last 4 digits 
 
-  const removedZ = dateTimeRemoveZ(data.createdAt + ''); // we remove 000.Z
+  // const removedZ = dateTimeRemoveZ(data.createdAt + ''); // we remove 000.Z
   const {date, time} = dateTimeLocalFormatter(data.createdAt + '') // we split and format it to a time
   return (
     <UserContainer>
