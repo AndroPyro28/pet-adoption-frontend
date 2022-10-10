@@ -6,7 +6,6 @@ function About() {
   const {pathname} = useLocation();
 
   const {data} = useGetFirstThreePinnedFeedbackQuery();
-
   const fetchFeedback = data?.map((feedback) => {
     return <PinnedFeedback feedback={feedback} />
   })
