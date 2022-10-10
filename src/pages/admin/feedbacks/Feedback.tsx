@@ -9,13 +9,10 @@ function Feedback() {
 
     const {isLoading, data, error, refetch} = useGetAllFeedbackQuery();
     const [feedbacks, setFeedbacks] = useState<FeedbackReviews[]>([])
+    
     useEffect(() => {
-        if(data) {
-            setFeedbacks(data)
-        }
     refetch()
-    console.log(data);
-    }, [data])
+    }, [])
 
     const fetchFeedbacks = data?.length! > 0 ? 
     data?.map((feedback) => <FeedbackData key={feedback.id} data={feedback} />):
