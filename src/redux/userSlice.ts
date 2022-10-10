@@ -2,9 +2,9 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios'
 import Cookies from "js-cookie";
 
-export const authUser = createAsyncThunk('User/auth', async () => {
+export const authUser = createAsyncThunk('User/auth', async (data) => {
     try {
-        const res = await axios.get(`${process.env.REACT_APP_DEV_URL}/auth/me`, {
+        const res = await axios.get(`${process.env.REACT_APP_DEV_URL}auth/me`, {
             headers: {
                 Authorization: `Bearer ${Cookies.get('userToken')}`
             }

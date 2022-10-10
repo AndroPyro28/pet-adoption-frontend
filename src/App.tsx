@@ -26,6 +26,7 @@ import UpdatePasswordRoutes from "./auth-routes/UpdatePasswordRoutes";
 import UpdatePassword from "./pages/public/forgot-password/UpdatePassword";
 import ShelterInformation from "./pages/admin/shelter-information/ShelterInformation";
 import Feedback from "./pages/admin/feedbacks/Feedback";
+import { useEffect } from "react";
 
 function App() {
   
@@ -42,6 +43,10 @@ function App() {
   if(isLoading) {
     return <h1>Loading...</h1>
   }
+
+  useEffect(() => {
+    // dispatch(authUser())
+  }, [])
 
   return (
     <AppComponent>
