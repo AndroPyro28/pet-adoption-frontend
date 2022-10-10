@@ -11,8 +11,9 @@ interface Props {
 }
 function FeedbackData({data}: Props) {
   const [expand, setExpand] = useState<boolean>(false)
-  const removedZ = dateTimeRemoveZ(data.createdAt + '');
-  const {date, time} = dateTimeLocalFormatter(removedZ);
+  // const removedZ = dateTimeRemoveZ(data.createdAt + '');
+  // const {date, time} = dateTimeLocalFormatter(removedZ);
+   const {date, time} = dateTimeLocalFormatter(data.createdAt + '');
   const populateRate = []
   for(let i = 0; i < data.rate; i++) {
     populateRate.push(i);
