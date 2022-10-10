@@ -9,7 +9,7 @@ import UpdatePasswordApis from "../services/updatePasswordApis";
 import profileModalSlice from "./profileModalSlice"
 import loaderSlice from "./loaderSlice";
 import FeedbackApis from "../services/feedbackApis";
-
+import ThunkMiddleware from "redux-thunk";
     const store = configureStore({
         reducer: combineReducers({
             [PublicApis.reducerPath]: PublicApis.reducer,
@@ -31,7 +31,8 @@ import FeedbackApis from "../services/feedbackApis";
             AnimalRecordApis.middleware,
             AdoptionRecordApis.middleware,
             UpdatePasswordApis.middleware,
-            FeedbackApis.middleware
+            FeedbackApis.middleware,
+            ThunkMiddleware
         )
     })
 

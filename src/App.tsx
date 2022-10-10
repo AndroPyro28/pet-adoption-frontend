@@ -31,7 +31,7 @@ import { useEffect } from "react";
 function App() {
   
   const {data, isLoading, error} = useAuthMeQuery();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
     if(!isLoading) {
       if(error) {
         dispatch(authenticationFailed({}));
@@ -40,13 +40,14 @@ function App() {
           !data ? Cookies.remove('userToken') : dispatch(authenticationSuccess(data));
       }
     }
+    useEffect(() => {
+      dispatch(authUser()) 
+    }, [])
   if(isLoading) {
     return <h1>Loading...</h1>
   }
 
-  useEffect(() => {
-    // dispatch(authUser())
-  }, [])
+  
 
   return (
     <AppComponent>
