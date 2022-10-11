@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Cookies from "js-cookie";
 import {UpdatePassword} from "../models/ResetPassword"
 import { User } from "../models/User";
-import {passwordResetApi} from "./baseApi";
+import {passwordResetApi} from "./Apis";
 
 const UpdatePasswordApis = passwordResetApi.injectEndpoints({
     endpoints: (builder) => ({

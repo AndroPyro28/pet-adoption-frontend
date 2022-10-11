@@ -1,5 +1,5 @@
 import { User } from "../models/User";
-import { baseApi } from "./baseApi";
+import { baseApi } from "./Apis";
 
 const AuthApis = baseApi.injectEndpoints({
     endpoints: (builder) => ({

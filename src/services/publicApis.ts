@@ -1,6 +1,6 @@
 import { Recovery } from "../models/ResetPassword";
 import { SigninUser, SignupUser } from "../models/User";
-import {publicApi} from "./baseApi"
+import {publicApi} from "./Apis"
 const PublicApis = publicApi.injectEndpoints({
     endpoints: (builder) => ({
         signup: builder.mutation<void, SignupUser>({

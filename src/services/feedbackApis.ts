@@ -1,5 +1,5 @@
 import { Feedback, FeedbackReviews } from "../models/Feedback";
-import { baseApi } from "./baseApi";
+import { baseApi } from "./Apis";
 
 const FeedbackApis = baseApi.injectEndpoints({
     endpoints: (builder) => ({

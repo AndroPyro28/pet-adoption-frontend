@@ -5,7 +5,7 @@ import userSlice from "./userSlice";
 import logoutModalSlice from "./logoutModalSlice";
 import profileModalSlice from "./profileModalSlice"
 import loaderSlice from "./loaderSlice";
-import {baseApi, passwordResetApi, publicApi} from "../services/baseApi"
+import {baseApi, passwordResetApi, publicApi} from "../services/Apis"
 
     const store = configureStore({
         reducer: {
