@@ -1,17 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import Cookies from "js-cookie";
 import { Feedback, FeedbackReviews } from "../models/Feedback";
+import { baseApi } from "./baseApi";
 
-const FeedbackApis = createApi({
-    reducerPath: `feedback`,
-    baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_DEV_URL,
-        prepareHeaders: (headers) => {
-            headers.set('Authorization', `Bearer ${Cookies.get('userToken')!}`);
-            return headers;
-        }
-    }),
-    tagTypes:['Feedback'],
+const FeedbackApis = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         createFeedback: builder.mutation<void, Feedback>({
             query: (feedback) => ({
@@ -49,7 +39,8 @@ const FeedbackApis = createApi({
             }),
             providesTags: ['Feedback']
         }),
-    })
+    }),
+    overrideExisting: false
 })
 
 export default FeedbackApis;

@@ -1,17 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import Cookies from "js-cookie";
 import { Pet } from "../models/Pet";
+import { baseApi } from "./baseApi";
 
-const AnimalRecordApis = createApi({
-    reducerPath: `pets`,
-    baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_DEV_URL,
-        prepareHeaders: (headers) => {
-            headers.set('Authorization', `Bearer ${Cookies.get('userToken')!}`);
-            return headers;
-        }
-    }),
-    tagTypes:['Pet'],
+const AnimalRecordApis = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         createRecord: builder.mutation<void, Pet>({
             query: pet => ({
@@ -35,7 +25,9 @@ const AnimalRecordApis = createApi({
             }),
             providesTags:['Pet']
         }),
-    })
+    }),
+    overrideExisting: false
+
 })
 
 export default AnimalRecordApis;

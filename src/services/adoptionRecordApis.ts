@@ -1,17 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import Cookies from "js-cookie";
 import { AdoptionRequest, AdoptionRecord, AdoptionUpdate } from "../models/Adoption.ts";
+import { baseApi } from "./baseApi";
 
-const AdoptionRecordApis = createApi({
-    reducerPath: `adoption`,
-    baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_DEV_URL,
-        prepareHeaders: (headers) => {
-            headers.set('Authorization', `Bearer ${Cookies.get('userToken')!}`);
-            return headers;
-        }
-    }),
-    tagTypes:['adoption'],
+const AdoptionRecordApis = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         createAdoptionRequest: builder.mutation<void, AdoptionRequest>({
             query: data => ({
@@ -44,7 +34,8 @@ const AdoptionRecordApis = createApi({
             }),
             invalidatesTags:['adoption']
         }),
-    })
+    }),
+    overrideExisting: false
 })
 
 export default AdoptionRecordApis;

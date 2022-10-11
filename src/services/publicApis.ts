@@ -1,13 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Recovery } from "../models/ResetPassword";
 import { SigninUser, SignupUser } from "../models/User";
-
-const PublicApis = createApi({
-    reducerPath:`publicAuth`,
-    baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_DEV_URL,
-    }),
-    tagTypes:['SignupUser', 'SigninUser'],
+import {publicApi} from "./baseApi"
+const PublicApis = publicApi.injectEndpoints({
     endpoints: (builder) => ({
         signup: builder.mutation<void, SignupUser>({
             query: user => ({
@@ -39,7 +33,9 @@ const PublicApis = createApi({
                 body: recovery,
             }),
         }),
-    })
+    }),
+    overrideExisting: false
+
 })
 
 export default PublicApis;

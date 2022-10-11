@@ -1,24 +1,14 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import Cookies from "js-cookie";
 import { User } from "../models/User";
+import { baseApi } from "./baseApi";
 
-const AuthApis = createApi({
-    reducerPath:`privateAuth`,
-    baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_DEV_URL,
-        prepareHeaders: (headers) => {
-            headers.set('Authorization', `Bearer ${Cookies.get('userToken')!}`);
-            return headers;
-        }
-    }),
-    tagTypes:['User'],
+const AuthApis = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         authMe: builder.query<User, void>({
             query:() => ({
                 url:'/auth/me',
                 method:'GET',
             }),
-            providesTags: ["User"],
+            providesTags: ['User'],
         }),
         getAllUsers: builder.query<User[], void>({
             query:() => ({
@@ -27,7 +17,9 @@ const AuthApis = createApi({
             }),
             providesTags: ["User"],
         }),
-    })
+    }),
+    overrideExisting: false
+
 })
 
 export default AuthApis;
