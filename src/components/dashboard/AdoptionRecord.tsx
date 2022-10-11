@@ -12,8 +12,7 @@ function AdoptionRecord({records}: {records: AdoptionRecordInterface[] | undefin
     //     setMaxPage(Math.ceil(data?.length! / 6));
     //   }, [data])
       
-    const fetchData = records?.filter((record) => record.adoptee.status === 'ADOPTED')?.map(record => <AdoptionListBoxData data={record} />)
-    console.log(records)
+    const fetchData = records?.filter((record) => record.adoptee.status === 'ADOPTED' && record.status === 'APPROVED')?.map(record => <AdoptionListBoxData data={record} />)
     return (
         <FirstColContent>
             <h1>Adoption Record</h1>
