@@ -5,12 +5,6 @@ import AdoptionListBoxData from './AdoptionListBoxData'
 import { FirstColContent, ListBox } from "./components"
 
 function AdoptionRecord({records}: {records: AdoptionRecordInterface[] | undefined}) {
-    // const { data, isLoading, error } = useGetAllAdoptionRequestQuery();
-    // const [maxPage, setMaxPage] = useState<number>()
-    // const [currentPage, setCurrentPage] = useState<number>(0)
-    // useEffect(() => {
-    //     setMaxPage(Math.ceil(data?.length! / 6));
-    //   }, [data])
       
     const fetchData = records?.filter((record) => record.adoptee.status === 'ADOPTED' && record.status === 'APPROVED')?.map(record => <AdoptionListBoxData data={record} />)
     return (
