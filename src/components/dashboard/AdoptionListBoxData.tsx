@@ -8,9 +8,8 @@ export interface Props {
 }
 function AdoptionListBoxData({data}: Props) {
 
-    const {schedule, adoptee, adopter, id} = data;
-    const {fist_name, last_name} = adopter.profile;
-    const {name, imageUrl, status, breed} = adoptee
+    const {schedule, adoptee, status} = data;
+    const {name, imageUrl, breed} = adoptee
       const dateTimeLocal = dateTimeRemoveZ(schedule);
       const {date, time} = dateTimeLocalFormatter(dateTimeLocal)
       

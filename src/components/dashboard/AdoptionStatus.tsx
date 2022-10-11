@@ -7,7 +7,7 @@ import {AdoptionRecord} from '../../models/Adoption.ts';
 function AdoptionStatus({records}: {records: AdoptionRecord[] | undefined}) {
    
       
-    const fetchData = records?.filter((record) => record.adoptee.status === 'PENDING' && record.status === 'PENDING')?.map(record => <AdoptionListBoxData data={record} />)
+    const fetchData = records?.filter((record) => record.adoptee.status !== 'ADOPTED' && record.status !== 'APPROVED')?.map(record => <AdoptionListBoxData data={record} />)
     return (
         <FirstColContent>
             <h1>Adoption Status</h1>
