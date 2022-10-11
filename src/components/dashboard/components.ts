@@ -43,7 +43,7 @@ export const Data = styled.div`
   }
 
   &.REJECTED {
-    color: rgb(211, 1, 52);
+    color: maroon;
   }
   &.APPROVED {
     color: rgba(7, 207, 90, 0.822);
