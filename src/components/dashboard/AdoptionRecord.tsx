@@ -13,6 +13,7 @@ function AdoptionRecord({records}: {records: AdoptionRecordInterface[] | undefin
     //   }, [data])
       
     const fetchData = records?.filter((record) => record.adoptee.status === 'ADOPTED')?.map(record => <AdoptionListBoxData data={record} />)
+    console.log(records)
     return (
         <FirstColContent>
             <h1>Adoption Record</h1>
