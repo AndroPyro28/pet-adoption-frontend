@@ -41,6 +41,13 @@ export const Data = styled.div`
   &.PENDING {
     color: gray;
   }
+
+  &.REJECTED {
+    color: rgb(211, 1, 52);
+  }
+  &.APPROVED {
+    color: rgba(7, 207, 90, 0.822);
+  }
 `;
 
 export const CalendarContainer = styled.div`
