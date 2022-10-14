@@ -41,9 +41,6 @@ function App() {
       }
     }
 
-    // useEffect(() => {
-    //   dispatch(authUser()) 
-    // }, [])
 
   if(isLoading) {
     return <h1>Loading...</h1>

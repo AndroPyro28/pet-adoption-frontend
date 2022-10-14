@@ -12,7 +12,7 @@ export const UpperContents = styled.div`
     & > .dotdotdot {
         font-size: 1.5em;
     }
-    & > button {
+    & button {
         background: rgb(211,1,52);
         padding: 10px 25px;
         color: white;
@@ -22,6 +22,9 @@ export const UpperContents = styled.div`
         cursor: pointer;
         transition: all .3s ease-in-out;
         font-weight: 600;
+        &.exportBtn {
+            margin: 10px;
+        }
         &:hover {
             background: white;
             color:rgb(211,1,52) ;

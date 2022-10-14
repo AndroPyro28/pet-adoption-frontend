@@ -9,7 +9,8 @@ import AnimalRecordModal from "../../../components/modal/animal-record/AnimalRec
 import { toast, ToastContainer } from "react-toastify";
 import { useState, useEffect } from "react"
 import {useGetAllAnimalRecordQuery} from "../../../services/animalRecordApis"
-
+import { dateTimeLocalFormatter, dateTimeRemoveZ } from "../../../helper/DateTimeFormmater";
+import exportFromJSON from 'export-from-json'
 
 function AnimalRecord() {
   const [openAnimalRecordModal, setOpenAnimalRecordModal] = useState<Boolean>(false)
@@ -22,6 +23,27 @@ function AnimalRecord() {
     setMaxPage(Math.ceil(data?.length! / 6));
     refetch()
   }, [data])
+
+  const exportToExcel = () => {
+    const exportType = exportFromJSON.types.xls;
+    const fileName = 'Animal Record'
+    if(data) {
+      const formattedData = data.map((d) => {
+        const {name, breed, status, gender, animalId, type, age} = d;
+        return {
+          id: animalId,
+          name,
+          breed,
+          age,
+          gender,
+          type,
+          status,
+        }
+      })
+      exportFromJSON({data: formattedData, fileName , exportType})
+
+    }
+  }
   
   const fetchAnimals = data?.length! > 0 ?
     data?.slice(6 * currentPage, 6 * currentPage + 6)
@@ -37,8 +59,10 @@ function AnimalRecord() {
       <ToastContainer autoClose={1500} />
       <UpperContents>
         <h2>Animal Record</h2>
-
-        <button onClick={() => setOpenAnimalRecordModal(true)}>+ Add Record</button>
+        <div>
+          <button className="exportBtn" onClick={exportToExcel}>Export to excel</button>
+          <button onClick={() => setOpenAnimalRecordModal(true)}>+ Add Record</button>
+        </div>
       </UpperContents>
 
       <RecordList>

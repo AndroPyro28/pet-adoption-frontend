@@ -7,6 +7,8 @@ import { AdoptionRecord as AdoptionRecordInterface } from "../../../models/Adopt
 import AdoptionFormAdmin from "../../../components/modal/adoption/AdoptionFormAdmin"
 import { toast, ToastContainer } from "react-toastify";
 import { UpperContents, RecordListHeaders, RecordList, DataList, Pagination } from "../components"
+import exportFromJSON from 'export-from-json'
+import { dateTimeLocalFormatter, dateTimeRemoveZ } from "../../../helper/DateTimeFormmater";
 
 function AdoptionRecord() {
   const { data, isLoading, error, refetch } = useGetAllAdoptionRequestQuery();
@@ -19,7 +21,25 @@ function AdoptionRecord() {
     refetch()
   }, [data])
 
-
+  const exportToExcel = () => {
+    const exportType = exportFromJSON.types.xls;
+    const fileName = 'Adoption Record'
+    if(data) {
+    const formattedData = data.map((d) => {
+     const {fist_name, last_name} = d.adopter.profile
+     const {name} = d.adoptee
+     const dateTimeLocal = dateTimeRemoveZ(d.schedule);
+     const {date, time} = dateTimeLocalFormatter(dateTimeLocal)
+      return {
+        adopter: `${fist_name} ${last_name}`,
+        adoptee: name,
+        schedule: `${date} at ${time}`,
+        status: d.status
+      }
+    }) 
+      exportFromJSON({data: formattedData, fileName , exportType})
+    }
+  }
   const fetchRecord = data?.length! > 0 ?
     data?.slice(6 * currentPage, 6 * currentPage + 6)
     .map((record, index) => {
@@ -31,8 +51,8 @@ function AdoptionRecord() {
       <ToastContainer autoClose={1500} />
       <UpperContents>
         <h2>Adoption Record</h2>
-
-        <i className="fa-solid fa-ellipsis dotdotdot"></i>
+        <button onClick={exportToExcel}>Export to excel</button>
+        {/* <i className="fa-solid fa-ellipsis dotdotdot"></i> */}
       </UpperContents>
 
       <RecordList>

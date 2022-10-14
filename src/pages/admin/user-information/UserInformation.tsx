@@ -4,6 +4,8 @@ import User from './User';
 import Headers from './Headers';
 import {useGetAllUsersQuery} from "../../../services/authApis";
 import {useState, useEffect} from "react";
+import exportFromJSON from 'export-from-json'
+import { dateTimeLocalFormatter, dateTimeRemoveZ } from "../../../helper/DateTimeFormmater";
 
 function UserInformation() {
   const [maxPage, setMaxPage] = useState<number>()
@@ -15,6 +17,25 @@ function UserInformation() {
     setMaxPage(Math.ceil(data?.length! / 5));
     refetch()
   }, [data])
+
+  const exportToExcel = () => {
+    const exportType = exportFromJSON.types.xls;
+    const fileName = 'User Record'
+    if(data) {
+      const formattedData = data.map((d) => {
+        const {fist_name, last_name, contact, address,} = d.profile
+        const {date, time} = dateTimeLocalFormatter(d.createdAt + '')
+        return {
+          name: `${fist_name} ${last_name}`,
+          email: d.email,
+          contactNo: contact,
+          address,
+          register_date: `${date} at ${time}`
+        }
+      })
+      exportFromJSON({data: formattedData, fileName , exportType})
+    }
+  }
   
   const fetchusers = data?.length! > 0 ? data
   ?.slice(5 * currentPage, 5 * currentPage + 5)
@@ -25,7 +46,8 @@ function UserInformation() {
     <UserInfomationContainer>
         <UpperContents>
             <h2>User information</h2>
-            <i className="fa-solid fa-ellipsis dotdotdot"></i>
+            {/* <i className="fa-solid fa-ellipsis dotdotdot"></i> */}
+            <button onClick={exportToExcel}>Export to excel</button>
         </UpperContents>
 
         <UserInformationList>

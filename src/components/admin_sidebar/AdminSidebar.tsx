@@ -19,7 +19,7 @@ function AdminSidebar() {
     <AdminSidebarContainer>
       <Logo height={120} width={120} />
       <NavLink to="/admin" style={navLinkStylesFirst}>
-        <i className="fa-solid fa-house"></i> Home
+        <i className="fa-solid fa-house"></i> Dashboard
       </NavLink>
       <NavLink to={"/admin/user-information"} style={navLinkStyles}>
         <i className="fa-solid fa-user"></i> User Information
