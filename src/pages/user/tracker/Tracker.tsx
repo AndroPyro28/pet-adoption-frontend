@@ -39,12 +39,14 @@ function Tracker() {
             </Search>
           </SearchBar>
         </SearchBarContainer>
-        <PetList>
+       
+      </TrackerContent>
+      <h1>List of our pets</h1>
+       <PetList>
           {
             fetchdata
           }
         </PetList>
-      </TrackerContent>
     </TrackerContainer>
   )
 }

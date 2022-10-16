@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import PublicNavbar from "../components/public_navbar/PublicNavbar";
 import { RoutePropTypes } from "../types/auth-routes-types/PublicRoutes.Types";
 import { userToken } from "../types/cookies-types/userToken";
-import { useLocation, Navigate } from "react-router-dom";
+import { useLocation, Navigate, Outlet } from "react-router-dom";
 import { User } from "../models/User";
 import { useSelector } from "react-redux";
 import {PublicRoutesContainer} from "./components"
@@ -14,9 +14,10 @@ const PublicRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
 
     if (userToken != undefined || userToken != null || userToken) {
 
-      if(user.role === 'ADMIN') {
-        return <Navigate to={'/admin'} />
+      if(pathname.includes('login') || pathname.includes('signup')) {
+        return <Navigate to={'/'} />
       }
+
       if(user.role === 'USER') {
         return <Navigate to={'/user'} />
       }

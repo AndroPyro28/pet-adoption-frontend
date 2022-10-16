@@ -60,11 +60,10 @@ function AnimalRecord() {
       <UpperContents>
         <h2>Animal Record</h2>
         <div>
-          <button className="exportBtn" onClick={exportToExcel}>Export to excel</button>
-          <button onClick={() => setOpenAnimalRecordModal(true)}>+ Add Record</button>
+          <button className="exportBtn" onClick={exportToExcel}> <i className="fa-solid fa-file-export"></i> Export to excel</button>
+          <button onClick={() => setOpenAnimalRecordModal(true)}><i className="fa-solid fa-file-import"></i> Add Record</button>
         </div>
       </UpperContents>
-
       <RecordList>
         <RecordListHeaders>
         <TableHeaders

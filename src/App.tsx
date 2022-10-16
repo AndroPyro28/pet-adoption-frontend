@@ -1,5 +1,5 @@
 import {GlobalStyles, AppComponent} from "./appComponents";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, createBrowserRouter, RouterProvider } from "react-router-dom";
 import PublicRoutes from "./auth-routes/PublicRoutes";
 import Index from "./pages/public/index/Index";
 import Gallery from "./pages/public/gallery/Gallery";
@@ -26,7 +26,100 @@ import UpdatePasswordRoutes from "./auth-routes/UpdatePasswordRoutes";
 import UpdatePassword from "./pages/public/forgot-password/UpdatePassword";
 import ShelterInformation from "./pages/admin/shelter-information/ShelterInformation";
 import Feedback from "./pages/admin/feedbacks/Feedback";
-import { useEffect } from "react";
+import 'react-quill/dist/quill.snow.css';
+const router = createBrowserRouter([
+  {
+    path:"*",
+    element:<h1>page not found</h1>
+  },
+  {
+    path: '/',
+    element: <PublicRoutes Component={Index} />,
+  },
+  {
+    path: 'gallery',
+    element: <PublicRoutes Component={Gallery} />,
+  },
+  {
+    path: 'about',
+    element: <PublicRoutes Component={About} />,
+  },
+  {
+    path: 'signup',
+    element: <PublicRoutes Component={Signup} />,
+  },
+  {
+    path: 'login',
+    element: <PublicRoutes Component={Login} />,
+  },
+  {
+    path:'recovery',
+    children: [
+      {
+        path:'',
+        element: <PublicRoutes Component={CodeVerification} />
+      },
+      {
+        path:'reset-password',
+        element: <UpdatePasswordRoutes Component={UpdatePassword} />
+      },
+    ]
+  },
+  {
+    path: 'user',
+    children: [
+      {
+        path: '',
+        element: <UserRoutes Component={Index} />,
+      },
+      {
+        path:'gallery',
+        element:<UserRoutes Component={Gallery} />
+      },
+      {
+        path:'about',
+        element:<UserRoutes Component={About} />
+      },
+      {
+        path:'adoption',
+        element:<UserRoutes Component={Adoption} />
+      },
+      {
+        path:'tracker',
+        element:<UserRoutes Component={Tracker} />
+      },
+    ]
+  },
+  {
+    path:'admin',
+    children: [
+      {
+        path:'',
+        element: <AdminRoutes Component={Dashboard} />
+      },
+      {
+        path:'user-information',
+        element: <AdminRoutes Component={UserInformation} />
+      },
+      {
+        path:'animal-record',
+        element: <AdminRoutes Component={AnimalRecord} />
+      },
+      {
+        path:'shelter-information',
+        element: <AdminRoutes Component={ShelterInformation} />
+      },
+      {
+        path:'adoption-record',
+        element: <AdminRoutes Component={AdoptionRecord} />
+      },
+      {
+        path:'feedback',
+        element: <AdminRoutes Component={Feedback} />
+      },
+    ]
+  }
+])
 
 function App() {
   
@@ -46,42 +139,10 @@ function App() {
     return <h1>Loading...</h1>
   }
 
-  
-
   return (
     <AppComponent>
       <GlobalStyles />
-        <Routes>
-            <Route path="/" element={<PublicRoutes Component={Index} />} />
-            <Route path="gallery" element={<PublicRoutes Component={Gallery} />} />
-            <Route path="about" element={<PublicRoutes Component={About} />} /> 
-            <Route path="signup" element={<PublicRoutes Component={Signup} />} /> 
-            <Route path="login" element={<PublicRoutes Component={Login} />} /> 
-
-            <Route path="recovery" element={<PublicRoutes Component={RecoveryContainer} />}>
-              <Route index element={<CodeVerification />} /> 
-              <Route path="code-verification" element={<CodeVerification />} /> 
-              <Route path="reset-password" element={<UpdatePasswordRoutes Component={UpdatePassword} />} /> 
-            </Route>
-
-            {/* user routes */}
-            <Route path="/user" element={<UserRoutes Component={Index} />} />
-            <Route path="/user/gallery" element={<UserRoutes Component={Gallery} />} />
-            <Route path="/user/about" element={<UserRoutes Component={About} />} /> 
-            <Route path="/user/adoption" element={<UserRoutes Component={Adoption} />} /> 
-            <Route path="/user/tracker" element={<UserRoutes Component={Tracker} />} /> 
-
-            {/* admin routes */}
-            <Route path="admin/animal-record" element={<AdminRoutes Component={AnimalRecord} />} />
-            <Route path="admin/shelter-information" element={<AdminRoutes Component={ShelterInformation} />} />
-            <Route path="admin/adoption-record" element={<AdminRoutes Component={AdoptionRecord} />} />
-            <Route path="admin/user-information" element={<AdminRoutes Component={UserInformation} />} />
-            <Route path="admin/feedback" element={<AdminRoutes Component={Feedback} />} />
-            <Route path="admin/" element={<AdminRoutes Component={Dashboard} />} />
-
-            <Route path="*" element={<h1>Page Not Found</h1>} />
-        </Routes> 
-        
+      <RouterProvider router={router} />
     </AppComponent>
   );
 }

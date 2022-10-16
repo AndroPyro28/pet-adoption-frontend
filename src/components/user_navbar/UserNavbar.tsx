@@ -10,9 +10,11 @@ import {toggleModal} from "../../redux/profileModalSlice"
 function UserNavbar({ color }: { color: string }) {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  // const currentRoute = pathname.split('/user/')[1];
-  // const excludedRoutes = ['/user', '/user/']
   const [openFeedback, setOpenFeedback] = useState(false);
+
+  const isAtive = (path: string) => {
+    return path === pathname ? 'active' : '';
+  }
 
   const {openFeedbackModal} = Logic({setOpenFeedback})
 
@@ -21,19 +23,19 @@ function UserNavbar({ color }: { color: string }) {
       <UserNavbarTop color={color}>
         <img src="/images/logo/logo.png" className="logo" />
         <ul>
-          <li>
+          <li className={isAtive('/user')}>
             <NavLink to="/user"> Home </NavLink>
           </li>
-          <li>
+          <li className={isAtive('/user/tracker')}>
             <NavLink to="/user/tracker"> Tracker </NavLink>
           </li>
-          <li>
+          <li className={isAtive('/user/adoption')}>
             <NavLink to="/user/adoption"> Adoption </NavLink>
           </li>
-          <li>
+          <li className={isAtive('/user/gallery')}>
             <NavLink to="/user/gallery"> Gallery </NavLink>
           </li>
-          <li>
+          <li className={isAtive('/user/about')}>
             <NavLink to="/user/about"> About </NavLink>
           </li>
           <li onClick={() => dispatch(toggleModal(true))}>

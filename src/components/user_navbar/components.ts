@@ -25,6 +25,12 @@ export const UserNavbarTop = styled.nav`
     margin: 0 20px;
     position: relative;
     align-self: center;
+
+    &.active {
+      &::after {
+        width: 100%;
+      }
+    }
   }
   & a {
     text-decoration: none;

@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { Content, IndexPageContainer, Banner, About, Main, Donation, Gcash, Bank, Detail, Paypal} from "./components";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Index = (): JSX.Element => {
+  const {user}:any = useSelector(state => state);
+  console.log(user);
   const {pathname} = useLocation();
   return (
     <IndexPageContainer>
@@ -19,7 +22,7 @@ const Index = (): JSX.Element => {
           </h2>
 
           {
-            !pathname.includes('/user') && <div>
+            !pathname.includes('/user') && user.role !== "ADMIN"  && <div>
             <NavLink to={'login'}>
               <button className="btn" type="button">
                 <span></span> LOG IN
@@ -40,8 +43,7 @@ const Index = (): JSX.Element => {
         <Main>
           <img src="/images/img/background2.jpg" />
           <div className="about-text">
-            <h1>About </h1>
-            <h1>Our Animal Sheter</h1>
+            <h1> About Our Animal Sheter</h1>
             <br />
             <p>
               An animal shelter is a staffed facility where homeless animals and
@@ -53,9 +55,9 @@ const Index = (): JSX.Element => {
               cruel humans, or face otherpotential dangers.
             </p>
             <br />
-            <button className="readbtn" type="button">
+            {/* <button className="readbtn" type="button">
               READ MORE
-            </button>
+            </button> */}
           </div>
         </Main>
       </About>

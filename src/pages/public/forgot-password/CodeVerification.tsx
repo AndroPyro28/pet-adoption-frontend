@@ -7,13 +7,13 @@ import { useOutletContext } from "react-router-dom";
 import {RecoveryContainer, InputField, InputFieldContainer, ErrorMessage} from "./components"
 import {Recovery} from "../../../models/ResetPassword"
 
-interface OutletContextProps {
-  account: string,
-  setAccount: React.Dispatch<SetStateAction<string>>
-}
+// interface OutletContextProps {
+//   account: string,
+//   setAccount: React.Dispatch<SetStateAction<string>>
+// }
 
 function CodeVerification() {
-  const { account, setAccount }  = useOutletContext<OutletContextProps>()
+  // const { account, setAccount }  = useOutletContext<OutletContextProps>()
   const [recovery, setRecovery] = useState({} as Recovery)
   const [warning1, setWarning1] = useState({} as {warning: string, show: boolean})
   const [warning2, setWarning2] = useState({} as {warning: string, show: boolean})

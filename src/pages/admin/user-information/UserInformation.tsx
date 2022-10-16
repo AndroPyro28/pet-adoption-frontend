@@ -47,7 +47,7 @@ function UserInformation() {
         <UpperContents>
             <h2>User information</h2>
             {/* <i className="fa-solid fa-ellipsis dotdotdot"></i> */}
-            <button onClick={exportToExcel}>Export to excel</button>
+            <button onClick={exportToExcel}> <i className="fa-solid fa-file-export"></i> Export to excel</button>
         </UpperContents>
 
         <UserInformationList>

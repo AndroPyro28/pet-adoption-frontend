@@ -4,12 +4,19 @@ export const TrackerContainer = styled.div`
     display: flex;
     flex-direction: column;
 
+    & > h1 {
+        text-align: center;
+        margin: 130px 0px 50px 0px;
+        font-weight: 100;
+        text-transform: uppercase;
+    }
+
 `
 
 export const TrackerContent = styled.div`
     display: flex;
-    justify-content: space-evenly;
-    height: 900px;
+    justify-content: flex-start;
+    height: 600px;
     background: url('/images/content/tracker.png');
     background-size: cover;
     & > div {
@@ -21,8 +28,9 @@ export const TrackerContent = styled.div`
 `
 export const SearchBarContainer = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
+    margin-inline:150px ;
 `
 export const SearchBar = styled.div`
     display: flex;
@@ -82,10 +90,10 @@ export const Search = styled.div`
 `
 export const PetList = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: auto;
     grid-gap: 20px;
-    margin-top: 120px;
+    margin-top: 30px;
     overflow-y:auto ;
     padding: 20px;
     @media screen and (max-width:700px){

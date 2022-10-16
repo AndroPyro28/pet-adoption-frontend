@@ -51,7 +51,7 @@ function AdoptionRecord() {
       <ToastContainer autoClose={1500} />
       <UpperContents>
         <h2>Adoption Record</h2>
-        <button onClick={exportToExcel}>Export to excel</button>
+        <button onClick={exportToExcel}> <i className="fa-solid fa-file-export"></i> Export to excel</button>
         {/* <i className="fa-solid fa-ellipsis dotdotdot"></i> */}
       </UpperContents>
 

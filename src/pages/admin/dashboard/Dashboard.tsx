@@ -1,7 +1,7 @@
-import AdoptionRecord from "../../../components/dashboard/AdoptionRecord"
-import AdoptionStatus from "../../../components/dashboard/AdoptionStatus"
+import AdoptionsChart from "../../../components/dashboard/AdoptionsChart"
+import PetsChart from "../../../components/dashboard/PetsChart"
 // import AdoptionStatus from "../../../components/dashboard/AdoptionStatus"
-import AnimalList from "../../../components/dashboard/AnimalList"
+import UsersChart from "../../../components/dashboard/UsersChart"
 import {DashboardContainer, FirstCol, SecondCol} from "./components"
 import { useGetAllAdoptionRequestQuery } from "../../../services/adoptionRecordApis"
 import Calendar from "../../../components/dashboard/Calendar"
@@ -16,9 +16,9 @@ function Dashboard() {
   return (<>
     <DashboardContainer>
       <FirstCol>
-        <AnimalList />
-        <AdoptionRecord records={data}/>
-        <AdoptionStatus records={data}/>
+        <UsersChart />
+        <AdoptionsChart records={data}/>
+        <PetsChart records={data}/>
       </FirstCol>
       <SecondCol>
         <Calendar records={data}/>

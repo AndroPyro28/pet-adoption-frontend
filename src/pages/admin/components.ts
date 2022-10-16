@@ -39,8 +39,8 @@ export const RecordList = styled.div`
     max-height: 70vh;
     padding: 20px;
     flex-direction: column;
-
-    
+    overflow-y: auto;
+    overflow-x:hidden ;
 `
 
 export const RecordListHeaders = styled.div`

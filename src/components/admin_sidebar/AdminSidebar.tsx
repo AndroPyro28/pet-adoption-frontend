@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../logo/Logo";
 import {
   AdminSidebarContainer,
@@ -36,6 +36,9 @@ function AdminSidebar() {
       <NavLink to="/admin/feedback" style={navLinkStyles}>
         <i className="fa-solid fa-square-rss"></i> Feedback
       </NavLink>
+      <Link to="/">
+      <i className="fa-brands fa-pagelines"></i> Manage pages
+      </Link>
 
       <LogoutButton onClick={toggleModalLogout}>
         <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
