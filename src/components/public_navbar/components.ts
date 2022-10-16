@@ -50,7 +50,6 @@ export const PublicNavbarContainer = styled.nav`
   }
   & li:hover::after {
     width: 100%;
-   
   }
  
   & > .admin__back__btn {
