@@ -7,7 +7,9 @@ import { useEffect } from "react";
 import ContentBlog from "../../../components/blog/ContentBlog";
 function About() {
   const {pathname} = useLocation();
-  const {data: blog, refetch} = useGetAllBlogQuery(pathname === '/' ? "HOME" : pathname.replace('/', '').toUpperCase())
+  let path = pathname.replaceAll('user', '').replaceAll('/', '')
+  const {data: blog, refetch} = useGetAllBlogQuery(path === '' ? "HOME" : path.toUpperCase())
+  console.log(path);
   useEffect(() => { 
     refetch()
   }, [])

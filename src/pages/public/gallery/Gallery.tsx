@@ -6,7 +6,9 @@ import { GalleryPageContainer, Dozens, Pics } from "./components";
 import Modal from "./Modal";
 function Gallery() {
   const {pathname} = useLocation();
-  const {data, refetch} = useGetAllBlogQuery(pathname === '/' ? "HOME" : pathname.replace('/', '').toUpperCase())
+  let path = pathname.replaceAll('user', '').replaceAll('/', '')
+  const { data, refetch } = useGetAllBlogQuery(path === '' ? "HOME" : path.toUpperCase())
+  console.log(path);
   useEffect(() => { 
     refetch()
   }, [])
