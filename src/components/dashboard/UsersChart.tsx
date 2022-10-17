@@ -1,6 +1,4 @@
-import { useGetAllAnimalRecordQuery } from '../../services/animalRecordApis';
-import { FirstColContent, ListBox } from "./components"
-import AnimalListBoxData from './AnimalListBoxData';
+import { FirstColContent } from "./components"
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -16,9 +14,9 @@ import {
   LineController,
   BarController,
   ChartOptions,
-  DatasetController,
   ChartData
 } from "chart.js";
+import { useGetUsersDataQuery } from '../../services/authApis';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -76,7 +74,18 @@ ChartJS.register(
     "November",
     "December",
   ];
-const sampleData: ChartData<"line", number[], string> = {
+
+
+  
+function UsersChart() {
+  const {data} = useGetUsersDataQuery();
+  const usersStats = new Array(12);
+  
+  data?.forEach((user) => {
+    usersStats[user.month] = user.total
+  })
+
+  const sampleData: ChartData<"line", number[], string> = {
     labels,
     datasets: [
       {
@@ -84,14 +93,11 @@ const sampleData: ChartData<"line", number[], string> = {
         borderColor: "gray",
         backgroundColor:"white",
         fill:false,
-        data: [112, 123, 532, 122, 222, 333, 666, 123, 321],
+        data: usersStats,
       },
     ],
   };
-
-  
-function UsersChart() {
-    
+ 
     return (<FirstColContent>
       <h1>Total user registration over the months</h1>
         <Line

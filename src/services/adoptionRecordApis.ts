@@ -1,3 +1,4 @@
+import { Stats } from "../models/Stats";
 import { AdoptionRequest, AdoptionRecord, AdoptionUpdate } from "../models/Adoption.ts";
 import { baseApi } from "./Apis";
 
@@ -34,10 +35,17 @@ const AdoptionRecordApis = baseApi.injectEndpoints({
             }),
             invalidatesTags:['adoption']
         }),
+        getAllAdoptionStats: builder.query<Stats[], void>({
+            query: _ => ({
+                url:`/adoption/stats`,
+                method:'GET',
+            }),
+            providesTags:['adoption']
+        }),
     }),
     overrideExisting: false
 })
 
 export default AdoptionRecordApis;
 
-export const { useCreateAdoptionRequestMutation, useGetAllAdoptionRequestQuery, useUpdateAdoptionRequestMutation } = AdoptionRecordApis;
+export const { useCreateAdoptionRequestMutation, useGetAllAdoptionRequestQuery, useUpdateAdoptionRequestMutation, useGetAllAdoptionStatsQuery } = AdoptionRecordApis;

@@ -1,8 +1,21 @@
 
-export interface Blog {
-    id?: number | string;
+export interface CreateBlog {
     title: string;
     content: string;
     path:string;
-    photos: any[];
+    photos: string[];
+} 
+
+export interface Blog {
+    path: string;
+    id: number;
+    title: string;
+    content: string;
+    createdAt: Date;
+    updatedAt: Date;
+    photos: {
+        id: number;
+        imageUrl: string;
+    }[];
+    
 } 

@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import ContentBlog from "../../../components/blog/ContentBlog";
+import { useGetAllBlogQuery } from "../../../services/publicBlog";
 import { GalleryPageContainer, Dozens, Pics } from "./components";
 import Modal from "./Modal";
 function Gallery() {
+  const {pathname} = useLocation();
+  const {data, refetch} = useGetAllBlogQuery(pathname === '/' ? "HOME" : pathname.replace('/', '').toUpperCase())
+  useEffect(() => { 
+    refetch()
+  }, [])
 
+  const fetchContent = data?.map((blog) => {
+    return <ContentBlog data={blog} />
+  })
     const [pics] = useState([
         '/images/img/pusa4.jpg',
         '/images/img/pusa5.jpg',
@@ -15,7 +25,6 @@ function Gallery() {
     ])
 
     const [displayPicture, setDisplayPicture] = useState("");
-    const {pathname} = useLocation();
 
   return (
     <GalleryPageContainer giveMarginToTop={!pathname.includes('user')}>
@@ -24,37 +33,7 @@ function Gallery() {
            displayPicture && <Modal displayPicture={displayPicture} setDisplayPicture={setDisplayPicture} />
         }
 
-      <Dozens>
-        <h1>
-          Dozens of Pets You Can Adopt
-          <br />
-        </h1>
-        <h5>
-          Savin thousands of homeless animals on the streets of the city every
-          year, we sincerely hope that <br />
-          each on of them will one day be adopted by a loving & caring new
-          family of humnas!
-        </h5>
-      </Dozens>
-
-      <Pics>
-
-          {
-              pics.map((pic, index) => {
-                  return <img
-                  className="myImages"
-                  id="myImg"
-                  src={pic}
-                  alt="Muningningningningning"
-                  width="auto"
-                  height="250"
-                  key={index}
-                onClick={() => setDisplayPicture(pic)}
-                />
-              } )
-          }
-    
-      </Pics>
+      {fetchContent}
     </GalleryPageContainer>
   );
 }

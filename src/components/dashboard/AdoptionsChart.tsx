@@ -19,6 +19,7 @@ import {
     DatasetController,
     ChartData
 } from "chart.js";
+import { useGetAllAdoptionStatsQuery } from '../../services/adoptionRecordApis';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -76,20 +77,27 @@ const labels = [
     "November",
     "December",
 ];
-const sampleData: ChartData<"line", number[], string> = {
-    labels,
-    datasets: [
-        {
-            label: "Total adoption record over the months",
-            borderColor: "gray",
-            backgroundColor: "white",
-            fill: false,
-            data: [112, 123, 532, 122, 222, 333, 666, 123, 321],
-        },
-    ],
-};
 
-function AdoptionsChart({ records }: { records: AdoptionRecordInterface[] | undefined }) {
+
+function AdoptionsChart() {
+    const { data } = useGetAllAdoptionStatsQuery();
+    const adoptionsStats = new Array(12);
+    data?.forEach((adoption) => {
+        adoptionsStats[adoption.month] = adoption.total
+    })
+
+    const sampleData: ChartData<"line", number[], string> = {
+        labels,
+        datasets: [
+            {
+                label: "Total adoption record over the months",
+                borderColor: "gray",
+                backgroundColor: "white",
+                fill: false,
+                data: adoptionsStats,
+            },
+        ],
+    };
 
     return (
         <FirstColContent>

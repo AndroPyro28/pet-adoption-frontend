@@ -27,7 +27,7 @@ function PublicNavbar({ color } : { color: string }) {
           <NavLink to="/gallery" > Gallery </NavLink>
         </li>
         {
-           user.role === 'ADMIN' && writeModalToggle && <Write onClick={() => setWriteModalToggle(true)}>Write</Write>
+           user.role === 'ADMIN' && <Write onClick={() => setWriteModalToggle(true)}>Write</Write>
         }
         
       </ul>

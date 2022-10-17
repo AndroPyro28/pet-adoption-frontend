@@ -11,7 +11,7 @@ export const baseApi = createApi({
     },
   }),
   endpoints: () => ({}),
-  tagTypes: ["adoption", "Pet", "User", "Feedback", "SignupUser", "SigninUser"],
+  tagTypes: ["adoption", "Pet", "User", "Feedback", "SignupUser", "SigninUser", "PrivateBlog"],
 });
 
 export const passwordResetApi = createApi({
@@ -33,5 +33,5 @@ export const passwordResetApi = createApi({
       baseUrl: process.env.REACT_APP_DEV_URL,
     }),
     endpoints: () => ({}),
-    tagTypes: ["SignupUser", "SigninUser"],
+    tagTypes: ["SignupUser", "SigninUser", "PublicBlog"],
   });

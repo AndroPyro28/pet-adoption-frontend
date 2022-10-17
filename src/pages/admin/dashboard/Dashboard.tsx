@@ -17,8 +17,8 @@ function Dashboard() {
     <DashboardContainer>
       <FirstCol>
         <UsersChart />
-        <AdoptionsChart records={data}/>
-        <PetsChart records={data}/>
+        <AdoptionsChart />
+        <PetsChart />
       </FirstCol>
       <SecondCol>
         <Calendar records={data}/>

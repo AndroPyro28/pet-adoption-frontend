@@ -1,4 +1,5 @@
 import { Pet } from "../models/Pet";
+import { Stats } from "../models/Stats";
 import { baseApi } from "./Apis";
 
 const AnimalRecordApis = baseApi.injectEndpoints({
@@ -25,6 +26,13 @@ const AnimalRecordApis = baseApi.injectEndpoints({
             }),
             providesTags:['Pet']
         }),
+        getAllPetsStatus: builder.query<Stats[], void>({
+            query: _ => ({
+                url:`/pets/stats`,
+                method:'GET',
+            }),
+            providesTags:['Pet']
+        }),
     }),
     overrideExisting: false
 
@@ -32,4 +40,4 @@ const AnimalRecordApis = baseApi.injectEndpoints({
 
 export default AnimalRecordApis;
 
-export const { useCreateRecordMutation, useGetAllAnimalRecordQuery, useGetAllAnimalRecordExcludeAdoptedQuery } = AnimalRecordApis;
+export const { useCreateRecordMutation, useGetAllAnimalRecordQuery, useGetAllAnimalRecordExcludeAdoptedQuery, useGetAllPetsStatusQuery } = AnimalRecordApis;

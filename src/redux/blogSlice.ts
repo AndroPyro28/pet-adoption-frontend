@@ -1,5 +1,4 @@
 import {createSlice, current} from "@reduxjs/toolkit";
-import { Blog } from "../models/Blog";
 const initialState =  {
     id: '',
     title: '',
@@ -12,7 +11,7 @@ const initialState =  {
 
 const blogSlice = createSlice({
     name: "blog",
-    initialState: <Blog> initialState,
+    initialState,
 
     reducers: {
         getForUpdateBlog: (state, action) => {

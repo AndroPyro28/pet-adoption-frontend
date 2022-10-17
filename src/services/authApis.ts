@@ -1,3 +1,4 @@
+import { Stats } from "../models/Stats";
 import { User } from "../models/User";
 import { baseApi } from "./Apis";
 
@@ -17,6 +18,13 @@ const AuthApis = baseApi.injectEndpoints({
             }),
             providesTags: ["User"],
         }),
+        getUsersData: builder.query<Stats[], void>({
+            query:() => ({
+                url:'/auth/users/stats',
+                method:'GET',
+            }),
+            providesTags: ["User"],
+        }),
     }),
     overrideExisting: false
 
@@ -24,4 +32,4 @@ const AuthApis = baseApi.injectEndpoints({
 
 export default AuthApis;
 
-export const { useAuthMeQuery, useGetAllUsersQuery } = AuthApis;
+export const { useAuthMeQuery, useGetAllUsersQuery, useGetUsersDataQuery } = AuthApis;

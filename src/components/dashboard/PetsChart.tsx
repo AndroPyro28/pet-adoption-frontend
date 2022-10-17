@@ -23,6 +23,7 @@ import {
     DatasetController,
     ChartData
 } from "chart.js";
+import { useGetAllPetsStatusQuery } from '../../services/animalRecordApis';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -80,23 +81,27 @@ const labels = [
     "November",
     "December",
 ];
-const sampleData: ChartData<"line", number[], string> = {
-    labels,
-    datasets: [
-      {
-        label: "Total pets registration over the months",
-        borderColor: "gray",
-        backgroundColor:"white",
-        fill:false,
-        data: [112, 123, 532, 122, 222, 333, 666, 123, 321],
-      },
-    ],
-  };
 
-function PetsChart({records}: {records: AdoptionRecord[] | undefined}) {
-   
-      
-    const fetchData = records?.filter((record) => record.adoptee.status !== 'ADOPTED' && record.status !== 'APPROVED')?.map(record => <AdoptionListBoxData data={record} />)
+function PetsChart() {
+    const {data} = useGetAllPetsStatusQuery()
+    console.log(data);
+    const animalRecordStats = new Array(12);
+    data?.forEach((animalRecord) => {
+        animalRecordStats[animalRecord.month] = animalRecord.total
+    })
+
+    const sampleData: ChartData<"line", number[], string> = {
+        labels,
+        datasets: [
+          {
+            label: "Total pets registration over the months",
+            borderColor: "gray",
+            backgroundColor:"white",
+            fill:false,
+            data: animalRecordStats,
+          },
+        ],
+      };
     return (
         <FirstColContent>
             <h1>Total pets over the month</h1>
