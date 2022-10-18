@@ -11,6 +11,7 @@ export const GlobalStyles = createGlobalStyle`
         font-family: "roboto", "poppins", sans-serif !important;
         text-decoration: none;
         /* overflow-x: hidden; // remove this later */
+        
     }
     body {
         margin: 0;
