@@ -8,15 +8,15 @@ type TableDataProps = {
   };
 
 function TData_AdoptionRecord({data, setAdoptionData}: TableDataProps) {
-    const {schedule, adoptee, adopter, id } = data;
-    const dateTimeLocal = dateTimeRemoveZ(schedule); // use this when date is from input client side
+    // const {schedule, adoptee, adopter, id } = data;
+    const dateTimeLocal = dateTimeRemoveZ(data?.schedule); // use this when date is from input client side
     // console.log(schedule)
     const {date, time} = dateTimeLocalFormatter(dateTimeLocal)
   return (
     <TableContainer>
-    <TableData> {id}</TableData>
-      <TableData> {adopter?.profile?.fist_name} {adopter?.profile?.last_name} </TableData>
-      <TableData> {adoptee?.name}</TableData>
+    <TableData> {data?.id}</TableData>
+      <TableData> {data?.adopter?.profile?.fist_name} {data?.adopter?.profile?.last_name} </TableData>
+      <TableData> {data?.adoptee?.name}</TableData>
       <TableData> {date} at {time}</TableData>
       <TableData> <button onClick={() => setAdoptionData(data) }>View Details</button> </TableData>
     </TableContainer>
