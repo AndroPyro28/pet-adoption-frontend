@@ -25,6 +25,13 @@ const AuthApis = baseApi.injectEndpoints({
             }),
             providesTags: ["User"],
         }),
+        getAllUsersWithSearch: builder.query<User[], string>({
+            query:(search="") => ({
+                url:`/auth/users?search=${search}`,
+                method:'GET',
+            }),
+            providesTags:['User']
+        }),
     }),
     overrideExisting: false
 
@@ -32,4 +39,4 @@ const AuthApis = baseApi.injectEndpoints({
 
 export default AuthApis;
 
-export const { useAuthMeQuery, useGetAllUsersQuery, useGetUsersDataQuery } = AuthApis;
+export const { useAuthMeQuery, useGetAllUsersQuery, useGetUsersDataQuery, useGetAllUsersWithSearchQuery } = AuthApis;

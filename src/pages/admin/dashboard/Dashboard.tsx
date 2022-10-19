@@ -8,7 +8,7 @@ import Calendar from "../../../components/dashboard/Calendar"
 import { useEffect } from "react"
 function Dashboard() {
 
-  const { data, isLoading, error, refetch } = useGetAllAdoptionRequestQuery();
+  const { data, isLoading, error, refetch } = useGetAllAdoptionRequestQuery('');
 
   useEffect(() => {
     refetch()

@@ -6,6 +6,7 @@ import logoutModalSlice from "./logoutModalSlice";
 import profileModalSlice from "./profileModalSlice"
 import loaderSlice from "./loaderSlice";
 import {baseApi, passwordResetApi, publicApi} from "../services/Apis"
+import dataSlice from "./dataSlice";
 
     const store = configureStore({
         reducer: {
@@ -15,7 +16,8 @@ import {baseApi, passwordResetApi, publicApi} from "../services/Apis"
             user: userSlice,
             logoutModal: logoutModalSlice,
             profileModal: profileModalSlice,
-            loader: loaderSlice
+            loader: loaderSlice,
+            dataRecord: dataSlice
         },
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             immutableCheck: false,

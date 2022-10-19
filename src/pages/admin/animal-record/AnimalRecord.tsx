@@ -8,20 +8,18 @@ import {UpperContents, RecordListHeaders, RecordList, DataList, Pagination} from
 import AnimalRecordModal from "../../../components/modal/animal-record/AnimalRecordModal";
 import { toast, ToastContainer } from "react-toastify";
 import { useState, useEffect } from "react"
-import {useGetAllAnimalRecordQuery} from "../../../services/animalRecordApis"
-import { dateTimeLocalFormatter, dateTimeRemoveZ } from "../../../helper/DateTimeFormmater";
 import exportFromJSON from 'export-from-json'
+import { useSelector } from "react-redux";
 
 function AnimalRecord() {
   const [openAnimalRecordModal, setOpenAnimalRecordModal] = useState<Boolean>(false)
   const [maxPage, setMaxPage] = useState<number>()
   const [currentPage, setCurrentPage] = useState<number>(0)
-
-  const {data, isLoading, error, refetch} = useGetAllAnimalRecordQuery();
+  const {dataRecord}:any = useSelector((state) => state)
+  const data: Pet[] = dataRecord
 
   useEffect(() => {
     setMaxPage(Math.ceil(data?.length! / 6));
-    refetch()
   }, [data])
 
   const exportToExcel = () => {
@@ -79,9 +77,7 @@ function AnimalRecord() {
         />
         </RecordListHeaders>
 
-        {
-          isLoading ? <h1>loading please wait...</h1> : <DataList> {fetchAnimals}  </DataList>
-        }
+         <DataList> {fetchAnimals}  </DataList>
 
         {
           maxPage! > 0 && <Pagination>

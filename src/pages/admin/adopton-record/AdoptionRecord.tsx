@@ -9,16 +9,17 @@ import { toast, ToastContainer } from "react-toastify";
 import { UpperContents, RecordListHeaders, RecordList, DataList, Pagination } from "../components"
 import exportFromJSON from 'export-from-json'
 import { dateTimeLocalFormatter, dateTimeRemoveZ } from "../../../helper/DateTimeFormmater";
+import { useSelector } from "react-redux";
 
 function AdoptionRecord() {
-  const { data, isLoading, error, refetch } = useGetAllAdoptionRequestQuery();
+
+  const {dataRecord}:any = useSelector((state) => state)
+  const data: AdoptionRecordInterface[] = dataRecord
   const [adoptionData, setAdoptionData] = useState<AdoptionRecordInterface>({} as AdoptionRecordInterface);
   const [maxPage, setMaxPage] = useState<number>()
   const [currentPage, setCurrentPage] = useState<number>(0)
-
   useEffect(() => {
     setMaxPage(Math.ceil(data?.length! / 6));
-    refetch()
   }, [data])
 
   const exportToExcel = () => {
@@ -69,7 +70,7 @@ function AdoptionRecord() {
           adoptionData?.id && <AdoptionFormAdmin toast={toast} setAdoptionData={setAdoptionData} adoptionData={adoptionData} />
         }
         {
-          isLoading ? <h1>loading please wait...</h1> : <DataList> {fetchRecord} </DataList>
+           <DataList> {fetchRecord} </DataList>
         }
         {
           maxPage! > 0 && <Pagination>

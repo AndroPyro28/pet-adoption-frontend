@@ -12,9 +12,9 @@ const AdoptionRecordApis = baseApi.injectEndpoints({
             }),
             invalidatesTags:['adoption']
         }),
-        getAllAdoptionRequest: builder.query<AdoptionRecord[], void>({
-            query:() => ({
-                url:'/adoption',
+        getAllAdoptionRequest: builder.query<AdoptionRecord[], string>({
+            query:(query="ALL") => ({
+                url:`/adoption?search=${query}`,
                 method:'GET',
             }),
             providesTags:['adoption']
