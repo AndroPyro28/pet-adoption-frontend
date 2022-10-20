@@ -91,7 +91,7 @@ function AdoptionsChart() {
         datasets: [
             {
                 label: "Total adoption record over the months",
-                borderColor: "gray",
+                borderColor: "rgb(211,1,52)",
                 backgroundColor: "white",
                 fill: false,
                 data: adoptionsStats,

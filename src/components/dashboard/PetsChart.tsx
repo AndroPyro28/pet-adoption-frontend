@@ -95,10 +95,11 @@ function PetsChart() {
         datasets: [
           {
             label: "Total pets registration over the months",
-            borderColor: "gray",
+            borderColor: "rgb(211,1,52)",
+
             backgroundColor:"white",
-            fill:false,
             data: animalRecordStats,
+            fill: "red",
           },
         ],
       };

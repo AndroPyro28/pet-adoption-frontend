@@ -90,9 +90,9 @@ function UsersChart() {
     datasets: [
       {
         label: "Total user registration over the months",
-        borderColor: "gray",
+        borderColor: "rgb(211,1,52)",
         backgroundColor:"white",
-        fill:false,
+        fill:true,
         data: usersStats,
       },
     ],
