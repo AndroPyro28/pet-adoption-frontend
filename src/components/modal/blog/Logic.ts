@@ -53,6 +53,7 @@ function Logic({ title, content, photos, path, setWriteModalToggle, setPhotos }:
         })
       };
   };
+  
   const [updateBlogMutation] = useUpdateBlogMutation();
   const updateBlog = async (id: number) => {
     try {

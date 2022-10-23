@@ -56,5 +56,4 @@ function About() {
     </AboutPageContainer>
   );
 }
-
 export default About;
