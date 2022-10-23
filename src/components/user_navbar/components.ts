@@ -19,7 +19,7 @@ export const UserNavbarTop = styled.nav`
     width: 130px;
     cursor: pointer;
   }
-  & > li {
+  & li {
     list-style: none;
     display: inline-block;
     margin: 0 20px;
@@ -39,7 +39,7 @@ export const UserNavbarTop = styled.nav`
     text-shadow: 1px 3px 5px gray;
     /* text-shadow: 1px 3px 5px gray; */
   }
-  & > li::after {
+  & li::after {
     content: "";
     height: 3px;
     width: 0;
@@ -49,7 +49,7 @@ export const UserNavbarTop = styled.nav`
     bottom: -5px;
     transition: 0.5s;
   }
-  & > li:hover::after {
+  & li:hover::after {
     width: 100%;
   }
 `;
