@@ -33,5 +33,5 @@ export const passwordResetApi = createApi({
       baseUrl: process.env.REACT_APP_DEV_URL,
     }),
     endpoints: () => ({}),
-    tagTypes: ["SignupUser", "SigninUser", "PublicBlog"],
+    tagTypes: ["SignupUser", "SigninUser", "PublicBlog", "PrivateBlog"],
   });

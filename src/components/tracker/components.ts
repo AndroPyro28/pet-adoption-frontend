@@ -27,6 +27,11 @@ export const PetContainer = styled.div`
             content: ":";
         }
     }
+
+    @media screen and (max-width: 700px) {
+    /* width: 200px; */
+    margin:0;
+    }
 `
 
 export const PetImage = styled.img`
@@ -45,7 +50,6 @@ export const Breed = styled.h4`
   margin: 5px 15px;
   font-size: 0.9em;
   font-weight: 700;
-
   text-transform: capitalize;
 `;
 

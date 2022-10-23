@@ -158,10 +158,10 @@ function Signup() {
 
             <Buttons>
               {
-                currentField > 0 && <button onClick={handlePrev}>Prev </button>
+                currentField > 0 && <input type={'button'} onClick={handlePrev} value="Prev" />
               }
               {
-                currentField < 3 && <button onClick={handleNext}>Next </button>
+                currentField < 3 && <input type={'button'} onClick={handleNext} value="Next" />
               }
               {
                 currentField >= 3 && <button className="createBtn" onClick={handleNext}>Create account</button>

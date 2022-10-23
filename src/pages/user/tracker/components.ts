@@ -6,10 +6,16 @@ export const TrackerContainer = styled.div`
 
     & > h1 {
         text-align: center;
-        margin: 130px 0px 50px 0px;
+        margin: 130px 0px 80px 0px;
         font-weight: 100;
         text-transform: uppercase;
+        @media screen and (max-width:550px) {
+        margin-bottom:150px ;
+            
+        }
     }
+
+    
 
 `
 
@@ -31,6 +37,9 @@ export const SearchBarContainer = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     margin-inline:150px ;
+    @media screen and (max-width: 800px ) {
+        margin-inline: auto;
+    }
 `
 export const SearchBar = styled.div`
     display: flex;
@@ -53,6 +62,17 @@ export const SearchBar = styled.div`
         font-weight: 500;
         font-size: 3em;
         margin: 5px;
+    }
+
+    @media screen and (max-width: 400px ) {
+
+    & > .truly__the__most {
+        font-size: 3em;
+    }
+    
+    & > .heartfelt__animal, .shelter {
+        font-size: 2em;
+    }
     }
     
 `
@@ -87,6 +107,12 @@ export const Search = styled.div`
         padding: 10px 20px;
         cursor: pointer;
     }
+
+    @media screen and (max-width:500px) {
+        & > input {
+            width: 100%;
+        }
+    }
 `
 export const PetList = styled.div`
     display: grid;
@@ -96,8 +122,20 @@ export const PetList = styled.div`
     margin-top: 30px;
     overflow-y:auto ;
     padding: 20px;
+    place-items: center;
+
+    @media screen and (max-width:1024px){
+    grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width:950px){
+    grid-template-columns: repeat(2, 1fr);
+    }
     @media screen and (max-width:700px){
         flex-direction: column;
         margin-top: -90px;
+    }
+
+    @media screen and (max-width:550px) {
+    grid-template-columns: repeat(1, 1fr);
     }
 `

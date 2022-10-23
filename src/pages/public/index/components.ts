@@ -69,6 +69,32 @@ export const Content = styled.div`
     z-index: -1;
     transition: 0.5s;
   }
+
+  @media screen and (max-width: 650px) {
+    & {
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      & > h1 {
+        font-size: 2em;
+      }
+      & > h2 {
+        font-size: 3em;
+      }
+    }
+
+    @media screen and (max-width: 450px) {
+      & > h1 {
+        font-size: 1.5em;
+      }
+      & > h2 {
+        font-size: 2em;
+      }
+    }
+  }
 `;
 
 export const About = styled.div`

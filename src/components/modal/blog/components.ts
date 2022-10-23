@@ -48,7 +48,7 @@ export const BlogModalBackdrop = styled.div`
 export const UploadContainer = styled.div`
   display: flex;
   width: 100%;
-  height: 90%;
+  height: 83%;
   gap: 20px;
 `;
 
@@ -76,12 +76,12 @@ export const TextContentUploader = styled.div`
 export const ImageContentUploader = styled.div`
   width: 100%;
   flex: 0.8;
-  height: 98%;
+  /* height: 98%; */
+  height: auto;;
   border: solid 1px lightgray;
   & > .photoUploaderBtn {
     width: fit-content;
     text-align: center;
-    /* background: #EAEAEA; */
     margin: 0px auto;
     font-style: italic;
     text-decoration: underline;
@@ -95,6 +95,15 @@ export const ImageContentUploader = styled.div`
   & > input[type="file"] {
     display: none;
   }
+
+   & > select {
+    padding: 5px 10px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 1px;
+    border-bottom: solid 1px #EAEAEA;
+   }
 
   & > button {
     margin: 10px 0px;

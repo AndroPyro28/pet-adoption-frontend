@@ -7,6 +7,8 @@ import profileModalSlice from "./profileModalSlice"
 import loaderSlice from "./loaderSlice";
 import {baseApi, passwordResetApi, publicApi} from "../services/Apis"
 import dataSlice from "./dataSlice";
+import blogSlice from "./blogSlice";
+import refetchSlice from "./refetchSlice";
 
     const store = configureStore({
         reducer: {
@@ -17,10 +19,12 @@ import dataSlice from "./dataSlice";
             logoutModal: logoutModalSlice,
             profileModal: profileModalSlice,
             loader: loaderSlice,
-            dataRecord: dataSlice
+            dataRecord: dataSlice,
+            blog: blogSlice,
+            refetchData: refetchSlice
         },
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-            immutableCheck: false,
+            serializableCheck: false,
         }).concat(
             baseApi.middleware,
             passwordResetApi.middleware,

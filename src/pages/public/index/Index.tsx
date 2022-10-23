@@ -1,26 +1,48 @@
 import { NavLink } from "react-router-dom";
 import { Content, IndexPageContainer, Banner, About, Main, Donation, Gcash, Bank, Detail, Paypal } from "./components";
 import { useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useGetAllBlogQuery } from "../../../services/publicBlog";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetAllBlogQuery as PublicQuery } from "../../../services/publicBlog";
+import { useGetAllBlogQuery as PrivateQuery } from "../../../services/privateBlog";
 import ContentBlog from "../../../components/blog/ContentBlog";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Modal from "../gallery/Modal";
+import { getRefetchFunction } from "../../../redux/refetchSlice";
+
 const Index = (): JSX.Element => {
   const { user }: any = useSelector(state => state);
   const { pathname } = useLocation();
+  const dispatch = useDispatch()
   let path = pathname.replaceAll('user', '').replaceAll('/', '')
-  const { data, refetch } = useGetAllBlogQuery(path === '' ? "HOME" : path.toUpperCase())
-  console.log(path);
-
+  const { data: dataPublic, refetch: refetchPublic } = PublicQuery(path === '' ? "HOME" : path.toUpperCase())
+  const { data: dataPrivate, refetch: refetchPrivate } = PrivateQuery(path === '' ? "HOME" : path.toUpperCase())
+  
+  
   useEffect(() => {
-    refetch()
+    if(user.role === 'ADMIN') {
+      refetchPrivate()
+      dispatch(getRefetchFunction(refetchPrivate))
+    } else {
+      refetchPublic()
+    }
+  
   }, [])
+  
+  console.log(dataPrivate);
+  
+  const [displayPicture, setDisplayPicture] = useState("");
 
-  const fetchBlogs = data?.map((blog) => {
-    return <ContentBlog data={blog} />
+  const fetchBlogs = user.role === 'ADMIN' ? dataPrivate?.map((blog) => {
+    return <ContentBlog data={blog} setDisplayPicture={setDisplayPicture} displayPicture={displayPicture}/>
+  }) : dataPublic?.map((blog) => {
+    return <ContentBlog data={blog} setDisplayPicture={setDisplayPicture} displayPicture={displayPicture}/>
   })
+
   return (
     <IndexPageContainer>
+      {
+           displayPicture && <Modal displayPicture={displayPicture} setDisplayPicture={setDisplayPicture} />
+        }
       <Banner>
         <Content>
           <h1>

@@ -14,12 +14,19 @@ export const AdoptionFrontPage = styled.div`
 `
 export const AdoptionContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: auto;
     grid-gap: 20px;
     padding: 50px 20px;
     place-items: center;
     margin: 100px 0px;
+
+    @media screen and (max-width: 750px) {
+    grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: 550px) {
+    grid-template-columns: repeat(1, 1fr);
+    }
 `
 export const SearchBar = styled.div`
     display: flex;
@@ -39,6 +46,10 @@ export const SearchBar = styled.div`
         font-weight: 700;
         font-size: 4em;
         margin:10px 5px;
+    }
+
+    @media screen and (max-width: 550px) {
+    margin-inline: auto;
     }
 `
 
@@ -61,6 +72,9 @@ export const Search = styled.div`
         outline: none;
         color: gray;
         font-size: 1em;
+        @media screen and (max-width: 550px) {
+         width: 95%;
+    }
     }
 
     & > button {

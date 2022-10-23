@@ -5,8 +5,6 @@ const initialState =  {
     content: '',
     path: '',
     photos: [],
-    isUpdate: false,
-    isUpload: false
 }
 
 const blogSlice = createSlice({
@@ -15,19 +13,14 @@ const blogSlice = createSlice({
 
     reducers: {
         getForUpdateBlog: (state, action) => {
-            // state = JSON.parse(JSON.stringify(current(state)));
-             return { 
-                ...action.payload,
-                isUpdate: true,
-                isUpload: false
-            }
+             return action.payload
         },
         remove: (state, action) => {
-            return 
+            return initialState
         }
     }
 })
 
-export const {getForUpdateBlog} =  blogSlice.actions;
+export const {getForUpdateBlog, remove} =  blogSlice.actions;
 
 export default blogSlice.reducer;

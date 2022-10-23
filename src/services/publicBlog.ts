@@ -8,7 +8,7 @@ const PublicBlog = publicApi.injectEndpoints({
           url:`/blogs?path=${path}`,
           method:'GET',
       }),
-      providesTags: ['PublicBlog'],
+      providesTags: ['PublicBlog', 'PrivateBlog'],
     })
   }),
   overrideExisting: false,

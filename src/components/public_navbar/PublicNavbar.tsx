@@ -3,16 +3,15 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import WriteBlog from "../modal/blog/WriteBlog";
+import Updateblog from "../modal/blog/UpdateBlog";
 
 function PublicNavbar({ color } : { color: string }) {
-  const {user}:any = useSelector(state => state);
+  const {user, blog}:any = useSelector(state => state);
   const {pathname} = useLocation();
   const [writeModalToggle, setWriteModalToggle] = useState(false);
-
   const isAtive = (path: string) => {
     return path === pathname ? 'active' : '';
   }
-  
   return (
     <PublicNavbarContainer color={color}>
       <img src="/images/logo/logo.png" className="logo" />
@@ -30,6 +29,7 @@ function PublicNavbar({ color } : { color: string }) {
            user.role === 'ADMIN' && <Write onClick={() => setWriteModalToggle(true)}>Write</Write>
         }
         
+        
       </ul>
       {
         user.role === "ADMIN" && 
@@ -39,6 +39,9 @@ function PublicNavbar({ color } : { color: string }) {
       }
       {
         user.role === 'ADMIN' && writeModalToggle && <WriteBlog setWriteModalToggle={setWriteModalToggle} />
+      }
+      {
+        blog.id && user.role === 'ADMIN' && <Updateblog />
       }
     </PublicNavbarContainer>
   );

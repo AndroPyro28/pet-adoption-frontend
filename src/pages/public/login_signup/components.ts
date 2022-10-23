@@ -103,7 +103,7 @@ export const Buttons = styled.div`
     justify-content: space-around;
     width: 100%;
     margin-top: 20px;
-    & > button {
+    & > input, button {
         padding: 10px 40px;
         border-radius: 20px;
         border: solid 2px white;
@@ -116,7 +116,6 @@ export const Buttons = styled.div`
             color: rgb(210,0,51);
             background: white;
         }
-
         &.createBtn, &.loginBtn {
             border: none;
             background: linear-gradient(50deg,  rgb(246,221,117), rgb(232,215,138));
