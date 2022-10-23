@@ -8,6 +8,7 @@ const PublicBlog = publicApi.injectEndpoints({
           url:`/blogs?path=${path}`,
           method:'GET',
       }),
+      transformResponse: (response: Blog[]) => response.sort((a, b) =>  b.id! - a.id!),
       providesTags: ['PublicBlog', 'PrivateBlog'],
     })
   }),

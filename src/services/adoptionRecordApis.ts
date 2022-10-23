@@ -17,6 +17,7 @@ const AdoptionRecordApis = baseApi.injectEndpoints({
                 url:`/adoption?search=${query}`,
                 method:'GET',
             }),
+            transformResponse: (response: AdoptionRecord[]) => response.sort((a, b) =>  b.id! - a.id!),
             providesTags:['adoption']
         }),
         updateAdoptionRequest: builder.mutation<void, {data:AdoptionUpdate, id: number}>({

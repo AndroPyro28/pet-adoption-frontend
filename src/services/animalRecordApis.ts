@@ -17,6 +17,7 @@ const AnimalRecordApis = baseApi.injectEndpoints({
                 url:'/pets',
                 method:'GET',
             }),
+            transformResponse: (response: Pet[]) => response.sort((a, b) =>  b.id! - a.id!),
             providesTags:['Pet']
         }),
         getAllAnimalRecordExcludeAdopted: builder.query<Pet[], {filter: boolean, search: string}>({
@@ -24,6 +25,7 @@ const AnimalRecordApis = baseApi.injectEndpoints({
                 url:`/pets?filter=${filter}&&search=${search}`,
                 method:'GET',
             }),
+            transformResponse: (response: Pet[]) => response.sort((a, b) =>  b.id! - a.id!),
             providesTags:['Pet']
         }),
         getAllPetsStatus: builder.query<Stats[], void>({

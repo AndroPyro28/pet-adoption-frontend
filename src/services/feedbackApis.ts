@@ -16,6 +16,7 @@ const FeedbackApis = baseApi.injectEndpoints({
                 url:`/feedback`,
                 method:'GET',
             }),
+            transformResponse: (response: FeedbackReviews[]) => response.sort((a, b) =>  b.id! - a.id!),
             providesTags: ['Feedback']
         }),
         togglePinFeedback: builder.mutation<void, number>({
@@ -37,6 +38,7 @@ const FeedbackApis = baseApi.injectEndpoints({
                 url:`/feedback/pinned`,
                 method:'GET',
             }),
+            transformResponse: (response: FeedbackReviews[]) => response.sort((a, b) =>  b.id! - a.id!),
             providesTags: ['Feedback']
         }),
     }),

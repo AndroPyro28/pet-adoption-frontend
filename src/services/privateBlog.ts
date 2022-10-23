@@ -24,6 +24,7 @@ const PrivateBlog = baseApi.injectEndpoints({
                 url:`/blogs?path=${path}`,
                 method:'GET',
             }),
+            transformResponse: (response: Blog[]) => response.sort((a, b) =>  b.id! - a.id!),
             providesTags: ['PrivateBlog'],
           }),
         deleteBlog: builder.mutation<void, number>({
