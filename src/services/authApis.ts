@@ -31,6 +31,7 @@ const AuthApis = baseApi.injectEndpoints({
                 url:`/auth/users?search=${search}`,
                 method:'GET',
             }),
+            transformResponse: (response: User[]) => response.sort((a, b) =>  b.id! - a.id!),
             providesTags:['User']
         }),
     }),
