@@ -14,7 +14,7 @@ function TData_AdoptionRecord({data, setAdoptionData}: TableDataProps) {
     const {date, time} = dateTimeLocalFormatter(dateTimeLocal)
   return (
     <TableContainer>
-    <TableData> {data?.id}</TableData>
+    <TableData> {data?.adoptionId || data?.id}</TableData>
       <TableData> {data?.adopter?.profile?.fist_name} {data?.adopter?.profile?.last_name} </TableData>
       <TableData> {data?.adoptee?.name}</TableData>
       <TableData> {date} at {time}</TableData>

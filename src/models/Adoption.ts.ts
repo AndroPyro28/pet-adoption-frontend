@@ -12,6 +12,7 @@ export interface AdoptionRequest {
 export interface AdoptionRecord {
     id: number;
     schedule: string;
+    adoptionId: string;
     status: 'PENDING' | 'APPROVED' | 'REJECTED';
     adopter: User,
     adoptee: Pet
