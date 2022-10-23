@@ -94,7 +94,7 @@ const Index = (): JSX.Element => {
           </div>
         </Main>
       </About> */}
-      <Donation>
+      {/* <Donation>
         <Gcash>
           <ol>
             <h3>To donate via Gcash:</h3>
@@ -121,7 +121,7 @@ const Index = (): JSX.Element => {
           <h4>Paypal/NoahsArkSampleOnly</h4>
         </Paypal>
 
-      </Donation>
+      </Donation> */}
     </IndexPageContainer>
   );
 };
