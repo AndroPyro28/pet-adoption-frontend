@@ -9,6 +9,7 @@ type TableDataProps = {
 
 function TData_AdoptionRecord({data, setAdoptionData}: TableDataProps) {
     // const {schedule, adoptee, adopter, id } = data;
+    console.log(data);
     const dateTimeLocal = dateTimeRemoveZ(data?.schedule); // use this when date is from input client side
     // console.log(schedule)
     const {date, time} = dateTimeLocalFormatter(dateTimeLocal)
