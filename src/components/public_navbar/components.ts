@@ -16,11 +16,11 @@ export const PublicNavbarContainer = styled.nav`
     cursor: pointer;
   }
 
-  & ul {
+  & > ul {
     display: flex;
     align-items: center;
   }
-  & li {
+  & > li {
     list-style: none;
     display: inline-block;
     margin: 0 20px;
