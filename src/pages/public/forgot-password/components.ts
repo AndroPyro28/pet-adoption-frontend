@@ -10,6 +10,28 @@ export const RecoveryContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media screen and (max-width: 900px) {
+        width: 35vw;
+    }
+    @media screen and (max-width: 750px) {
+        width: 40vw;
+    }
+    @media screen and (max-width: 650px) {
+        width: 45vw;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 55vw;
+        padding: 20px 50px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 65vw;
+    }
+    
+    @media screen and (max-width: 400px) {
+        width: 70vw;
+    }
     & > img {
         width: 70px;
         margin: 20px auto;
@@ -53,6 +75,11 @@ export const InputField = styled.div`
         background: #F6DD78;
         border-top-right-radius:10px;
         border-bottom-right-radius:10px;
+
+        @media screen and (max-width: 750px) {
+            width: 80px;
+            padding: 10px 5px;
+        }
     }
 `
 

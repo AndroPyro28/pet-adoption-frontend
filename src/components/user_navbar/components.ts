@@ -7,7 +7,7 @@ export const UserNavbarContainer = styled.div`
   z-index: 1;
 `
 export const UserNavbarTop = styled.nav`
-  width: 85%;
+  width: 100%;
   margin: auto;
   padding: 0px 0;
   display: flex;
@@ -19,13 +19,44 @@ export const UserNavbarTop = styled.nav`
     width: 130px;
     cursor: pointer;
   }
+
+  & > .navIconContainer {
+    cursor: pointer;
+    color: rgb(210,0,51);
+
+    &::after {
+      width:0% !important;
+    }
+
+    & > .user {
+      font-size: 2em;
+      align-self: center;
+    }
+
+    &.hamburgerContainer {
+        display: none;
+    }
+    & > .hamburger {
+      font-size: 1.5em;
+    }
+    
+    @media screen and (max-width:800px) {
+        display: block !important;
+    }
+  }
+
+  & > ul {
+    @media screen and (max-width:800px) {
+    display: none;
+    }
+  }
   & li {
     list-style: none;
     display: inline-block;
     margin: 0 20px;
     position: relative;
     align-self: center;
-
+    
     &.active {
       &::after {
         width: 100%;
@@ -76,12 +107,7 @@ export const LittleNavigation = styled.div`
     font: inherit;
   }
 `
-export const User = styled.i`
-  font-size: 2em;
-  color: rgb(210,0,51);
-  cursor: pointer;
-  align-self: center;
-`
+
 
 export const FeedbackButton = styled.div`
   @keyframes animateFeedBackBtn {
@@ -110,4 +136,9 @@ export const FeedbackButton = styled.div`
 
   transform: scale(1.1);
   }
+`
+
+export const NavIcon = styled.div`
+  display: none;
+  
 `

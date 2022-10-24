@@ -4,14 +4,33 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import WriteBlog from "../modal/blog/WriteBlog";
 import Updateblog from "../modal/blog/UpdateBlog";
+import HamburgerBar from "../hamburger-navbar/HamburgerBar";
 
 function PublicNavbar({ color } : { color: string }) {
   const {user, blog}:any = useSelector(state => state);
   const {pathname} = useLocation();
   const [writeModalToggle, setWriteModalToggle] = useState(false);
+
   const isAtive = (path: string) => {
     return path === pathname ? 'active' : '';
   }
+
+  const hamburgerContent = [
+    {
+      content: 'Home',
+      path: '/'
+    },
+    {
+      content: 'Gallery',
+      path: '/gallery'
+    },
+    {
+      content: 'About',
+      path: '/about'
+    },
+  ]
+
+  const [openHamburgerNav, setOpenHamburgerNav] = useState(false)
   return (
     <PublicNavbarContainer color={color}>
       <img src="/images/logo/logo.png" className="logo" />
@@ -31,6 +50,9 @@ function PublicNavbar({ color } : { color: string }) {
         
         
       </ul>
+        <li className="navIconContainer hamburgerContainer" onClick={() => setOpenHamburgerNav(true)}>
+          <i className="fa-solid fa-bars hamburger"></i>
+        </li>
       {
         user.role === "ADMIN" && 
         <Link className="admin__back__btn" to="/admin">
@@ -43,6 +65,9 @@ function PublicNavbar({ color } : { color: string }) {
       {
         blog.id && user.role === 'ADMIN' && <Updateblog />
       }
+        {
+          openHamburgerNav && <HamburgerBar paths={hamburgerContent} handleClose={setOpenHamburgerNav}/>
+        }
     </PublicNavbarContainer>
   );
 }

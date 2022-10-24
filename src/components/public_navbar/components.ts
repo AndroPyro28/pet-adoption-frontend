@@ -11,6 +11,33 @@ export const PublicNavbarContainer = styled.nav`
   top: 0;
   backdrop-filter: blur(3px);
   z-index: 5;
+  /* background: rgba(0, 0, 0, 0.01); */
+
+  & > .navIconContainer {
+    cursor: pointer;
+    color: rgb(210,0,51);
+
+    &::after {
+      width:0% !important;
+    }
+
+    & > .user {
+      font-size: 2em;
+      align-self: center;
+    }
+
+    &.hamburgerContainer {
+        display: none;
+    }
+    & > .hamburger {
+      font-size: 1.5em;
+    }
+    
+    @media screen and (max-width:800px) {
+        display: block !important;
+    }
+  }
+  
   & > .logo {
     width: 130px;
     cursor: pointer;
@@ -19,6 +46,9 @@ export const PublicNavbarContainer = styled.nav`
   & ul {
     display: flex;
     align-items: center;
+    @media screen and (max-width:800px) {
+        display: none !important;
+    }
   }
   & li {
     list-style: none;

@@ -13,6 +13,8 @@ export const GlobalStyles = createGlobalStyle`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    overflow-x: hidden !important;
+
     }
 
     .backBtn {
@@ -32,6 +34,7 @@ export const GlobalStyles = createGlobalStyle`
         text-align: center;
         justify-content: space-evenly;
         align-items: center;
+
         & > a {
             color: white;
             align-self: flex-start;
@@ -91,6 +94,23 @@ export const Container = styled.div`
     border-radius: 10px;
     padding: 20px;
     position: relative;
+    @media screen and (max-width: 980px) {
+        width: 45vw;
+    }
+    @media screen and (max-width: 750px) {
+        width: 55vw;
+        padding: 10px;
+
+    }
+    @media screen and (max-width: 550px) {
+        width: 65vw;
+    }
+    @media screen and (max-width: 450px) {
+        width: 75vw;
+    }
+    @media screen and (max-width: 400px) {
+        width: 95vw;
+    }
    
 `
 

@@ -1,4 +1,4 @@
-import { UserNavbarTop, UserNavbarContainer, User, FeedbackButton } from "./components";
+import { UserNavbarTop, UserNavbarContainer, FeedbackButton, NavIcon } from "./components";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -7,6 +7,7 @@ import { IconContainer } from "../modal/animal-record/components";
 import Feedback from "../modal/feedback/Feedback";
 import {useDispatch} from "react-redux";
 import {toggleModal} from "../../redux/profileModalSlice"
+import HamburgerBar from "../hamburger-navbar/HamburgerBar";
 function UserNavbar({ color }: { color: string }) {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
@@ -16,8 +17,31 @@ function UserNavbar({ color }: { color: string }) {
     return path === pathname ? 'active' : '';
   }
 
+  const [openHamburgerNav, setOpenHamburgerNav] = useState(false);
   const {openFeedbackModal} = Logic({setOpenFeedback})
-
+  
+  const hamburgerContent = [
+    {
+      content: 'Home',
+      path: '/user'
+    },
+    {
+      content: 'Tracker',
+      path: '/user/tracker'
+    },
+    {
+      content: 'Adoption',
+      path: '/user/adoption'
+    },
+    {
+      content: 'Gallery',
+      path: '/user/gallery'
+    },
+    {
+      content: 'About',
+      path: '/user/about'
+    },
+  ]
   return (
     <UserNavbarContainer>
       <UserNavbarTop color={color}>
@@ -38,16 +62,25 @@ function UserNavbar({ color }: { color: string }) {
           <li className={isAtive('/user/about')}>
             <NavLink to="/user/about"> About </NavLink>
           </li>
-          <li onClick={() => dispatch(toggleModal(true))}>
-            <User className="fa-solid fa-circle-user"   />
-          </li>
         </ul>
+        
+        <li className="navIconContainer hamburgerContainer" onClick={() => setOpenHamburgerNav(true)}>
+          <i className="fa-solid fa-bars hamburger"></i>
+        </li>
+        
+        <li onClick={() => dispatch(toggleModal(true))} className="navIconContainer userContainer">
+            <i className="fa-solid fa-circle-user user"   />
+        </li>
+
       </UserNavbarTop>
       <IconContainer onClick={openFeedbackModal}>
         <FeedbackButton className="fa-solid fa-envelope-open-text feedbackBtn" ></FeedbackButton>
         </IconContainer>
         {
          openFeedback && <Feedback setOpenFeedback={setOpenFeedback}/>
+        }
+        {
+          openHamburgerNav && <HamburgerBar paths={hamburgerContent} handleClose={setOpenHamburgerNav}/>
         }
     </UserNavbarContainer>
   );
