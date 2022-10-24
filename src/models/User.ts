@@ -11,6 +11,15 @@ export interface SignupUser {
 export interface SigninUser {
   email: string;
   password: string;
+  role: string;
+}
+
+export interface UpdateUser {
+  fist_name: string;
+  last_name: string;
+  contact: string;
+  address: string;
+  imageUrl: never;
 }
 
 export interface User {

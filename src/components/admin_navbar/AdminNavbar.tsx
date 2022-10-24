@@ -5,7 +5,8 @@ import { getAllData } from "../../redux/dataSlice";
 import { useGetAllAdoptionRequestQuery } from "../../services/adoptionRecordApis";
 import { useGetAllAnimalRecordExcludeAdoptedQuery } from "../../services/animalRecordApis";
 import { useGetAllUsersWithSearchQuery } from "../../services/authApis";
-import { AdminNavbarContainer, Content, ProfileButton, SeachBox } from "./components"
+import HamburgerBar from "../hamburger-navbar/HamburgerBar";
+import { AdminNavbarContainer, Content, LogoutButton, ProfileButton, SeachBox } from "./components"
 function AdminNavbar() {
   const { user }: any = useSelector(state => state);
   const [search, setSearch] = useState({
@@ -29,40 +30,45 @@ function AdminNavbar() {
   if(pathname.includes('adoption')) {
     dispatch(getAllData(adoptions))
   }
+  const [openHamburgerNav, setOpenHamburgerNav] = useState(false)
+
   const { profile } = user;
-  // useEffect(() => {
-
-  //   if (pathname.includes('adoption-record')) {
-  //     const data = search.length > 0 ? adoptions?.filter((adoption) =>
-  //       adoption?.adopter.email.includes(search) ||
-  //       search.includes(`${adoption?.adopter.profile.fist_name} ${adoption?.adopter.profile.last_name}`)
-  //     ) : adoptions
-  //     console.log(data);
-  //     dispatch(getAllData(data!))
-  //   }
-    
-  //   if (pathname.includes('user-record')) {
-  //     const data = search.length > 0 ? users?.filter((user) => user.email.includes(search)) : users
-  //     console.log(data);
-  //     dispatch(getAllData(data!))
-  //   }
-  //   if (pathname.includes('animal-record')) {
-  //     const data = search.length > 0 ? animals?.filter((animal) =>
-  //       animal.type.includes(search) ||
-  //       animal.breed.includes(search) ||
-  //       animal.name.includes(search)
-  //     ) : animals
-  //     console.log(data);
-  //     dispatch(getAllData(data!))
-  //   }
-   
-  // }, [search, pathname, users, animals, adoptions])
-
+  
+  const hamburgerContent = [
+    {
+      content: 'Dashboard',
+      path: '/admin'
+    },
+    {
+      content: 'User-information',
+      path: '/admin/user-information'
+    },
+    {
+      content: 'Shelter-information',
+      path: '/admin/shelter-information'
+    },
+    {
+      content: 'Animal-record',
+      path: '/admin/animal-record'
+    },
+    {
+      content: 'Adoption-record',
+      path: '/admin/adoption-record'
+    },
+    {
+      content: 'Feedbacks',
+      path: '/admin/feedback'
+    },
+    {
+      content: 'Manage Pages',
+      path: '/'
+    },
+  ]
+  
   return (
     <AdminNavbarContainer>
-      <Content>
-        <i className="fa-solid fa-arrow-left left"></i>
-        <i className="fa-solid fa-arrow-right right"></i>
+      <Content onClick={() => setOpenHamburgerNav(true)}>
+        <i className="fa-solid fa-bars hamburgerNavbar"></i>
       </Content>
 
       <Content>
@@ -89,7 +95,13 @@ function AdminNavbar() {
         <ProfileButton>
           <span>{profile.fist_name} {profile.last_name}</span> <i className="fa-solid fa-user-shield"></i>
         </ProfileButton>
+        <LogoutButton>
+          Logout
+        </LogoutButton>
       </Content>
+        {
+          openHamburgerNav && <HamburgerBar paths={hamburgerContent} handleClose={setOpenHamburgerNav}/>
+        }
     </AdminNavbarContainer>
   )
 }

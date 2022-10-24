@@ -100,6 +100,7 @@ function Logic({ setCurrentField, toast }: logicProps) {
   const initialValuesLogin = {
     email: "",
     password: "",
+    role: 'USER'
   };
 
   const validationSchemaLogin = yup.object().shape({

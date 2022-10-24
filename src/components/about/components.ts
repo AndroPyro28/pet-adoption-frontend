@@ -38,6 +38,9 @@ export const PinnedFeedbackBody = styled.div`
     margin: 10px 20px;
     font-size: 0.9em;
     color: dimgray;
+    @media screen and (max-width: 550px) {
+      margin: 10px ;
+    }
   }
   
 `

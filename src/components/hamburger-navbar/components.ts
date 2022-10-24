@@ -9,6 +9,7 @@ export const HamburgerBarBackdrop = styled.div`
     left: 0;
     backdrop-filter: blur(2px);
     display: none;
+    z-index: 50;
     @media screen and (max-width: 800px) {
         display: block;
     }
@@ -31,7 +32,7 @@ export const HamburgerBarContainer  = styled.div`
     & > a {
         flex: 1;
         color: rgb(210,0,51) !important;
-        font-size: 1.5em;
+        font-size: 1.2em;
         display: flex;
         justify-content: center;
         text-align: center;

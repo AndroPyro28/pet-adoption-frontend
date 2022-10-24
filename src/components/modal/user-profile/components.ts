@@ -94,4 +94,13 @@ export const Info = styled.div`
         margin: 2.5px;
         font-size: 1em;
     }
+
+    & > input {
+        padding: 5px 10px;
+        font-size: 1em;
+        border-radius: 5px;
+        border: solid 1px gray;
+        width: 80%;
+        outline: none;
+    }
 `

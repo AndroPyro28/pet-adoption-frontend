@@ -50,8 +50,15 @@ export const Main = styled.div`
 `;
 
 export const PinnedFeedbackList = styled.div`
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  @media screen and (max-width: 750px) {
+  grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 550px) {
+  grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 export const FeedbackSection = styled.section`

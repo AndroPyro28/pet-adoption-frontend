@@ -25,6 +25,7 @@ export const RecoveryContainer = styled.div`
         width: 55vw;
         padding: 20px 50px;
     }
+    
     @media screen and (max-width: 500px) {
         width: 65vw;
     }

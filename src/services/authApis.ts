@@ -1,5 +1,5 @@
 import { Stats } from "../models/Stats";
-import { User } from "../models/User";
+import { UpdateUser, User } from "../models/User";
 import { baseApi } from "./Apis";
 
 const AuthApis = baseApi.injectEndpoints({
@@ -34,6 +34,14 @@ const AuthApis = baseApi.injectEndpoints({
             transformResponse: (response: User[]) => response.sort((a, b) =>  b.id! - a.id!),
             providesTags:['User']
         }),
+        updateUser: builder.mutation<void, UpdateUser>({
+            query:(body) => ({
+                url:`/auth/me/update`,
+                method:'PATCH',
+                body
+            }),
+            invalidatesTags:['User']
+        }),
     }),
     overrideExisting: false
 
@@ -41,4 +49,4 @@ const AuthApis = baseApi.injectEndpoints({
 
 export default AuthApis;
 
-export const { useAuthMeQuery, useGetAllUsersQuery, useGetUsersDataQuery, useGetAllUsersWithSearchQuery } = AuthApis;
+export const { useAuthMeQuery, useGetAllUsersQuery, useGetUsersDataQuery, useGetAllUsersWithSearchQuery, useUpdateUserMutation } = AuthApis;
