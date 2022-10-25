@@ -37,7 +37,7 @@ export const HamburgerBarContainer  = styled.div`
         justify-content: center;
         text-align: center;
         align-items: center;
-        
+        text-decoration: none;
         &.active {
             background: rgb(210,0,51);
             color: white !important;
