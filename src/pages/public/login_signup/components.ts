@@ -111,7 +111,6 @@ export const Container = styled.div`
     @media screen and (max-width: 400px) {
         width: 95vw;
     }
-   
 `
 
 export const Logo = styled.img`

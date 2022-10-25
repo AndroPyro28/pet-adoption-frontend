@@ -111,10 +111,10 @@ function Logic({ setCurrentField, toast }: logicProps) {
     password: yup.string().required("This field is required"),
   });
 
+
   const onSubmitLogin = async (values: SigninUser): Promise<void> => {
     try {
       const res: any = await signin(values);
-
       if ("data" in res) {
         const { access_token } = res.data;
         Cookies.set("userToken", access_token, {
@@ -127,7 +127,7 @@ function Logic({ setCurrentField, toast }: logicProps) {
       if ("error" in res) {
         console.log(res);
         const { message } = res.error.data;
-        toast(typeof message == "object" ? message[0] : message, {
+        toast('Invalid credentials', {
           type: "error",
         });
       }
