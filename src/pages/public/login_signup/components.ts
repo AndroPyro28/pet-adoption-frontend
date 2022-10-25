@@ -59,6 +59,7 @@ export const GlobalStyles = createGlobalStyle`
             /* margin: 10px; */
             display: flex;
             flex-direction: column;
+            
             & > div {
                 display: flex;
                 background: white;
