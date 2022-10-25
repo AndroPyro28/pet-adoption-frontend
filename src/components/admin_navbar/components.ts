@@ -85,6 +85,7 @@ export const LogoutButton = styled.span`
     box-shadow: 1px 3px 5px gray;
     color: gray;
     display: none;
+    cursor: pointer;
     @media screen and (max-width:800px) {
         display: block;
     }

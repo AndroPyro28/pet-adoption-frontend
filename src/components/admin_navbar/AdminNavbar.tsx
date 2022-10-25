@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import { SetStateAction, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { useLocation } from "react-router-dom";
@@ -64,7 +65,10 @@ function AdminNavbar() {
       path: '/'
     },
   ]
-  
+  const handleLogout = () => {
+    Cookies.remove('userToken');
+    window.location.reload();
+  }
   return (
     <AdminNavbarContainer>
       <Content onClick={() => setOpenHamburgerNav(true)}>
@@ -95,7 +99,7 @@ function AdminNavbar() {
         <ProfileButton>
           <span>{profile.fist_name} {profile.last_name}</span> <i className="fa-solid fa-user-shield"></i>
         </ProfileButton>
-        <LogoutButton>
+        <LogoutButton onClick={handleLogout}>
           Logout
         </LogoutButton>
       </Content>
