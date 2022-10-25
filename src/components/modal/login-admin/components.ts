@@ -21,7 +21,7 @@ export const AdminLoginModalBackdrop = styled.div`
   top: 0;
   left: 0;
   backdrop-filter: blur(2px);
-  transition: all .5s ease-in-out;
+  transition: all .6s ease-in-out;
   opacity: ${({showAdminLogin}: {showAdminLogin: boolean}) => showAdminLogin ? '1' : '0' };
   pointer-events: ${({showAdminLogin}: {showAdminLogin: boolean}) => showAdminLogin ? 'all' : 'none' };
   & > .form-admin {

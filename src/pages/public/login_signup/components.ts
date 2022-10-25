@@ -40,6 +40,7 @@ export const GlobalStyles = createGlobalStyle`
             align-self: flex-start;
             margin: 0px 60px;
             font-size: 0.9em;
+            text-decoration: none;
         }
         & > h1 {
             font-size: 2em;
