@@ -16,7 +16,7 @@ export const BlogModalBackdrop = styled.div`
   & > .BlogContainer {
     /* height: 70vh; */
     border-radius: 10px;
-    /* width: 80vw; */
+    /* width: 120vw; */
     background: white;
     position: absolute;
     top: 0;
@@ -29,6 +29,17 @@ export const BlogModalBackdrop = styled.div`
     padding: 40px 30px;
     gap: 10px;
 
+    @media screen and (max-width:900px) {
+    width: 80vw !important;
+    height:70vh !important;
+    }
+    @media screen and (max-width:700px) {
+    width: 90vw !important;
+    height:80vh !important;
+    }
+    @media screen and (max-width:500px) {
+      padding: 20px 10px;
+    }
     & > h1 {
       text-align: center;
     }
@@ -47,9 +58,12 @@ export const BlogModalBackdrop = styled.div`
 `;
 export const UploadContainer = styled.div`
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   height: 83%;
   gap: 20px;
+  @media screen and (max-width:500px) {
+    flex-direction: column;
+    }
 `;
 
 export const TextContentUploader = styled.div`
@@ -70,6 +84,9 @@ export const TextContentUploader = styled.div`
     border: solid 1px lightgray;
     outline: none;
     overflow: hidden;
+    @media screen and (max-width:700px) {
+      max-width: 90%;
+    }
   }
 `;
 

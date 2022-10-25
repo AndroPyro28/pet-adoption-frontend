@@ -15,7 +15,8 @@ export const GlobalStyles = createGlobalStyle`
             display: flex;
             flex-direction: column;
             padding: 50px;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             & > button {
                 padding: 10px 20px;
                 width: fit-content;
@@ -77,6 +78,11 @@ export const InfoRow = styled.div`
     width: 80%;
     align-self: center;
     margin: 20px;
+    gap: 20px;
+
+    @media screen and (max-width:850px) {
+        flex-direction: column;
+    }
 `
 
 export const Info = styled.div`
