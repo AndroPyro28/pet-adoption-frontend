@@ -33,4 +33,16 @@ export const UserLayout = styled.div`
 
 export const PublicRoutesContainer = styled.section`
   overflow-x: hidden;
+
+  & .chatbot {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 15px;
+    background: rgb(210,0,51);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5em;
+  }
+
 `

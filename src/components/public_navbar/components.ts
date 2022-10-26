@@ -12,7 +12,14 @@ export const PublicNavbarContainer = styled.nav`
   backdrop-filter: blur(3px);
   z-index: 5;
   /* background: rgba(0, 0, 0, 0.01); */
+  & .chatbot {
+    color: #d20033;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
 
+  
   & > .navIconContainer {
     cursor: pointer;
     color: rgb(210,0,51);

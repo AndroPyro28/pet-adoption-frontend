@@ -5,6 +5,7 @@ import { useState } from "react";
 import WriteBlog from "../modal/blog/WriteBlog";
 import Updateblog from "../modal/blog/UpdateBlog";
 import HamburgerBar from "../hamburger-navbar/HamburgerBar";
+import { IconContainer } from "../modal/animal-record/components";
 
 function PublicNavbar({ color }: { color: string }) {
   const { user, blog }: any = useSelector(state => state);
@@ -71,6 +72,7 @@ function PublicNavbar({ color }: { color: string }) {
       {
         openHamburgerNav && <HamburgerBar paths={hamburgerContent} handleClose={setOpenHamburgerNav} />
       }
+      
     </PublicNavbarContainer>
   );
 }
