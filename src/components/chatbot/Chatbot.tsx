@@ -1,47 +1,52 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { domParser } from '../../helper/DomParser'
-import { ChatBotBody, ChatbotContainer, ChatBotFooter, ChatBotHead, Choice, Message } from './components'
+import { ChatBotBody, ChatbotContainer, ChatBotFooter, ChatBotHead, Choice, Message, TypingAnimation } from './components'
 
 function Chatbot({setToggleChatbot}: {setToggleChatbot: React.Dispatch<React.SetStateAction<boolean>>}) {
   const [messageList, setMessageList] = useState<any[]>([
     'Hello, How can i help you?'
   ] as any[])
-  const [choiceList, setChoiceList] = useState([
-    'I want to adopt pet',
-    'How to adopt pet?'
+
+  const [choiceList] = useState([
+    'Adopt a pet',
+    'How to adopt',
+    'Operational schedule (9 to 5)',
+    'Location'
   ])
+const [toggleTyping, setToggleTyping] = useState(false)
 const messageListRef = useRef<HTMLDivElement>(null)
   const handleClick = (choice: string) => {
-    setMessageList(prev => {
-
-      if (choice.includes('I want to adopt pet')) {
-        return [...prev, choice, <p>Please go to our facebook page by clicking this <a href='https://www.facebook.com/Noahsarkdogandcatshelter'>fb link</a>  </p>]
-      } else if (choice.includes('How to adopt pet?')) {
-        return [...prev, choice, <p>
-          How to adopt?
-          <br />
-          <br />
-          <br />
-          1. Signup and fill the important details.
-          <br />
-          <br />
-          2. Access the website by logging in.
-          <br />
-          <br />
-
-          3. Choose the pet that you love and make an appointment schedule.
-
-        </p>]
-
-      }
-      return prev
-    })
-  }
+    setMessageList(prev => [...prev, choice])
+    setToggleTyping(true)
+    setTimeout(() => {
+      setMessageList(prev => {
+        if (choice == choiceList[0]) {
+        setToggleTyping(false)
+          return [...prev, 'Create an account and select an animal/s you want to adopt in the adoption tab. The organization will notify you on the success of the procedure. ']
+        }
+        else if (choice == choiceList[1]) {
+        setToggleTyping(false)
+          return [...prev, 'Click apply in the adoption tab and wait for the confirmation of the application. ']
+        }
+        else if(choice == choiceList[2]) {
+        setToggleTyping(false)
+          return [...prev, 'The operational schedule of the the animal shelter is from 9:00 am to 5:00 pm Monday to Saturday. Schedule may change without prior notice in case of emergency. ']
+        }
+        else if (choice == choiceList[3]) {
+        setToggleTyping(false)
+          return [...prev, 'The animal shelter is located at Mabalacat, Pampanga.']
+        } else {
+          setToggleTyping(false)
+          return prev;
+        }
+      })
+    }, 2000)
+    }
   useEffect(() => {
     if(messageListRef.current) {
       messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
     }
-  }, [messageList])
+  }, [messageList, toggleTyping])
+
   return (
     <ChatbotContainer>
       <ChatBotHead onClick={() => setToggleChatbot(false)}>
@@ -52,6 +57,10 @@ const messageListRef = useRef<HTMLDivElement>(null)
         {
           messageList.map(chat => <Message> {chat} </Message>)
         }
+        {
+          toggleTyping && <TypingAnimation><i className="fa-solid fa-ellipsis typing"></i></TypingAnimation>
+        }
+        
       </ChatBotBody>
 
       <ChatBotFooter>
