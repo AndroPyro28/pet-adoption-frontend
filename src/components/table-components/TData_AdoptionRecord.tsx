@@ -15,11 +15,11 @@ function TData_AdoptionRecord({data, setAdoptionData}: TableDataProps) {
     const {date, time} = dateTimeLocalFormatter(dateTimeLocal)
   return (
     <TableContainer>
-    <TableData> {data?.adoptionId || data?.id}</TableData>
-      <TableData> {data?.adopter?.profile?.fist_name} {data?.adopter?.profile?.last_name} </TableData>
-      <TableData> {data?.adoptee?.name}</TableData>
-      <TableData> {date} at {time}</TableData>
-      <TableData> <button onClick={() => setAdoptionData(data) }>View Details</button> </TableData>
+    <TableData className='Id'> {data?.adoptionId || data?.id}</TableData>
+      <TableData className='Adopter'> {data?.adopter?.profile?.fist_name} {data?.adopter?.profile?.last_name} </TableData>
+      <TableData className='Adoptee'> {data?.adoptee?.name}</TableData>
+      <TableData className='Schedule'> {date} at {time}</TableData>
+      <TableData className="Action"> <button onClick={() => setAdoptionData(data) }>View Details</button> </TableData>
     </TableContainer>
   )
 }

@@ -41,6 +41,27 @@ export const RecordList = styled.div`
     flex-direction: column;
     overflow-y: auto;
     overflow-x:hidden ;
+
+    @media screen and (max-width:800px) {
+        & .Color, .Id, .Created {
+            display: none;
+        }
+    }
+    @media screen and (max-width:650px) {
+        & .Gender, .Adoptee {
+            display: none;
+        }
+    }
+    @media screen and (max-width:550px) {
+        & .Type, .Schedule{
+            display: none;
+        }
+    }
+    @media screen and (max-width:450px) {
+        & .Breed {
+            display: none;
+        }
+    }
 `
 
 export const RecordListHeaders = styled.div`

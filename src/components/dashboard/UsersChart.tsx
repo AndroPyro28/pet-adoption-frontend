@@ -57,7 +57,7 @@ ChartJS.register(
     //     min: 0,
     //   },
     // },
-    // maintainAspectRatio: false,
+    maintainAspectRatio: false,
   };
 
   const labels = [
@@ -103,7 +103,6 @@ function UsersChart() {
         <Line
           data={sampleData}
           options={chartOption!}
-          
           style={{ position: "relative", }}
         />
     </FirstColContent>

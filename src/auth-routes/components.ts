@@ -24,6 +24,9 @@ export const AdminComponentContainer = styled.div`
   flex-direction: column;
   padding-left: 40px;
   padding-right: 40px;
+  @media screen and (max-width:800px) {
+    padding-inline:20px;
+  }
 `;
 
 export const UserLayout = styled.div`

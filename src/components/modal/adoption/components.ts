@@ -25,6 +25,18 @@ export const AdoptionBackdrop = styled.div`
     justify-content: center;
     overflow: hidden;
 
+    @media screen and (max-width: 900px) {
+      width: 55vw;
+    }
+    @media screen and (max-width: 500px) {
+      width: 65vw;
+    }
+    @media screen and (max-width: 400px) {
+      width: 80vw;
+      padding: 10px 20px;
+
+    }
+
     & .deleteAdoption {
       position: absolute;
       top: 20px;

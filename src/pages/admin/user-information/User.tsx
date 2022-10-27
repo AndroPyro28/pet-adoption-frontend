@@ -12,6 +12,7 @@ function User({ data }: { data: UserInterface }) {
   const {date, time} = dateTimeLocalFormatter(data?.createdAt + '') // we split and format it to a time
   return (
     <UserContainer>
+      <Row className='id'>{data.userId || data.id}</Row>
       <Row className='name'>{profile?.fist_name} {profile?.last_name} </Row>
       <Row className='email'>{data?.email}</Row>
       <Row className='address'> {profile?.address} </Row>

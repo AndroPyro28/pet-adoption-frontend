@@ -60,7 +60,7 @@ function AdoptionRecord() {
         <RecordListHeaders>
           <TableHeaders arrayOfTitles={
             [
-              '#', 'Adopter', 'Adoptee', 'Schedule', ''
+              'Id', 'Adopter', 'Adoptee', 'Schedule', 'Action'
             ]
           } />
         </RecordListHeaders>

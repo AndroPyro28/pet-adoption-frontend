@@ -21,7 +21,7 @@ const messageListRef = useRef<HTMLDivElement>(null)
       setMessageList(prev => {
         if (choice == choiceList[0]) {
         setToggleTyping(false)
-          return [...prev, 'Create an account and select an animal/s you want to adopt in the adoption tab. The organization will notify you on the success of the procedure. ']
+          return [...prev, <>Create an account and select an animal/s you want to adopt in the adoption tab. The organization will notify you on the success of the procedure. for more info please visit our facebook page by clicking this <a href="https://www.facebook.com/Noahsarkdogandcatshelter">link</a></>]
         }
         else if (choice == choiceList[1]) {
         setToggleTyping(false)

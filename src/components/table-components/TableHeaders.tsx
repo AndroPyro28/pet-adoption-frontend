@@ -5,7 +5,7 @@ type TableHeadProps = {
 
 function TableHeaders({ arrayOfTitles }: TableHeadProps): JSX.Element {
   const TableHeaders = arrayOfTitles.map((title, index) => (
-    <TableHead key={index}>{title}</TableHead>
+    <TableHead key={index} className={title}>{title}</TableHead>
   ));
 
   return <TableContainer>{TableHeaders}</TableContainer>;

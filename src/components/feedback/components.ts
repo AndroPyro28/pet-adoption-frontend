@@ -19,7 +19,7 @@ export const Data = styled.div`
     display: flex;
     justify-content: center;
     font-size: 0.9em;
-    &.action {
+    &.Action {
         justify-content: space-evenly;
         font-size: 1.5em;
         cursor: pointer;

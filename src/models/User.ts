@@ -25,6 +25,7 @@ export interface UpdateUser {
 export interface User {
   email: string;
   id: number;
+  userId: string;
   role: 'USER' | 'ADMIN';
   createdAt: Date;
   profile: {

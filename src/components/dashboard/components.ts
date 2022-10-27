@@ -7,8 +7,8 @@ export const FirstColContent = styled.div`
   box-shadow: 1px 3px 5px gray;
   padding: 10px;
   text-align: center;
+  max-height: 300px;
   
-
   & > h1 {
     font-size: 1.3em;
     margin: 20px;

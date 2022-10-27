@@ -30,7 +30,7 @@ function Feedback() {
                             "Rate",
                             "Comments",
                             "Name",
-                            "Created At",
+                            "Created",
                             "Action",
                         ]}
                     />

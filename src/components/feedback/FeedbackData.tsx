@@ -22,21 +22,21 @@ function FeedbackData({data}: Props) {
   const {togglePin, handleDeleteFeedback} = Logic({ data})
   return (
     <FeedbackDataContainer expand={expand} >
-        <Data onClick={() => setExpand(prev => !prev)}> 
+        <Data onClick={() => setExpand(prev => !prev)} className="Rate"> 
           {
             populateRate.map((rate) => <i className="fa-solid fa-star star" key={rate}></i> )
           }
         </Data>
-        <Data onClick={() => setExpand(prev => !prev)}>
+        <Data onClick={() => setExpand(prev => !prev)} className="Comments">
           {data.message}
         </Data>
-        <Data onClick={() => setExpand(prev => !prev)}>
+        <Data onClick={() => setExpand(prev => !prev)} className="Name">
           {data.user.profile.fist_name} {data.user.profile.last_name}
         </Data>
-        <Data onClick={() => setExpand(prev => !prev)}>
+        <Data onClick={() => setExpand(prev => !prev)} className="Created">
           {date} at {time}
         </Data>
-        <Data className="action">
+        <Data className="Action">
 
           <PinContainer onClick={togglePin} pin={data.pin}>
             <i className={`fa-solid fa-thumbtack`}></i> 

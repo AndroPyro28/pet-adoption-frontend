@@ -12,7 +12,6 @@ function ShelterInformation() {
 
                 <ShelterTeam>
                     <h2>Our Animal Shelter Team</h2>
-
                     <ShelterImageContainer>
                         <img src='/images/shelters/1.jpg' />
                         <img src='/images/shelters/2.jpg' />
