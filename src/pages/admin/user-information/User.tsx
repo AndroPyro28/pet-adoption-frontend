@@ -15,7 +15,7 @@ function User({ data }: { data: UserInterface }) {
       <Row className='id'>{data.userId || data.id}</Row>
       <Row className='name'>{profile?.fist_name} {profile?.last_name} </Row>
       <Row className='email'>{data?.email}</Row>
-      <Row className='address'> {profile?.address} </Row>
+      {/* <Row className='address'> {profile?.address} </Row> */}
       <Row className='contact'> {newContact} </Row>
       <Row className='date-time'>{date} at {time}</Row>
     </UserContainer>

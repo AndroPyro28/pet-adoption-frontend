@@ -4,11 +4,12 @@ export const ContentContainer = styled.div`
   display: flex;
   height: auto;
   max-height: 600px;
-  width: 100%;
+  width:95%;
   justify-content: center;
   margin-block: 50px;
   position: relative;
   overflow-y: auto;
+  align-self: center;
   &:nth-child(even) {
     flex-direction: row;
   }
