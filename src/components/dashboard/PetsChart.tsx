@@ -64,7 +64,7 @@ const chartOption: ChartOptions = {
     //     min: 0,
     //   },
     // },
-    // maintainAspectRatio: false,
+    maintainAspectRatio: false,
 };
 
 const labels = [

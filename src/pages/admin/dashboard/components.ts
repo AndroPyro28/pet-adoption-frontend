@@ -40,6 +40,7 @@ export const SecondCol = styled.div`
     flex: 1;
     padding: 10px;
     overflow: auto;
+    
     & > div {
         & > h1 {
             margin: 5px;
