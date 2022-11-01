@@ -67,7 +67,7 @@ export const PublicNavbarContainer = styled.nav`
     text-decoration: none;
     color: ${({color}) => color} !important;
     text-transform: uppercase;
-    /* text-shadow: 1px 3px 5px gray; */
+    text-shadow: 1px 3px 5px gray;
   }
   & li.active {
     &::after {
