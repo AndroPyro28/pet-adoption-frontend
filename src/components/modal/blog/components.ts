@@ -73,6 +73,10 @@ export const TextContentUploader = styled.div`
   gap: 10px;
   flex: 2;
   height: 100%;
+
+  & li, & li::before, & li::after {
+    display: block !important;
+  } 
   & > .content {
     height: 100%;
     overflow: hidden;
