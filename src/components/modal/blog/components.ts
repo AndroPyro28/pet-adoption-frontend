@@ -73,13 +73,15 @@ export const TextContentUploader = styled.div`
   gap: 10px;
   flex: 2;
   height: 100%;
-
-  & li, & li::before, & li::after {
-    display: block !important;
-  } 
+  overflow: auto;
   & > .content {
     height: 100%;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+      & li, & li::before, & li::after {
+      display: block !important;
+    } 
   }
   & > .title {
     padding: 10px 15px;
