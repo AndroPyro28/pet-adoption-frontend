@@ -100,7 +100,7 @@ export const TypingAnimation = styled.div`
         animation: animateTyping 1000ms infinite ease-in-out alternate-reverse;
     }
 `
-export const Choice = styled.div`
+export const Choice = styled.button`
     width: 90%;
     text-align: center;
     font-size: 0.9em;
@@ -112,7 +112,7 @@ export const Choice = styled.div`
     justify-content: center;
     cursor: pointer;
     transition: all .3s ease-in-out;
-    padding: 5px;
+    padding: 10px 5px;
     &:hover {
         background: rgb(210,1,52);
         color: white;

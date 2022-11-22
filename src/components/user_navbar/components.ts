@@ -20,6 +20,17 @@ export const UserNavbarTop = styled.nav`
     cursor: pointer;
   }
 
+  & > .userContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & > span {
+      @media screen and (max-width: 900px) {
+        display: none;
+      }
+    }
+  }
   & > .navIconContainer {
     cursor: pointer;
     color: rgb(210,0,51);

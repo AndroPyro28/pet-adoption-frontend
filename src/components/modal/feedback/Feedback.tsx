@@ -47,7 +47,6 @@ function Feedback({setOpenFeedback}: props) {
                 </StarContainer>
               ))
           }
-
         </RateContainer>
 
         <p className="suggestion">Do you have any thoughts you'd like to share?</p>

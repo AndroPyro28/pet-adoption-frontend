@@ -5,9 +5,10 @@ import { useState } from "react";
 import Logic from "./Logic";
 import { IconContainer } from "../modal/animal-record/components";
 import Feedback from "../modal/feedback/Feedback";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {toggleModal} from "../../redux/profileModalSlice"
 import HamburgerBar from "../hamburger-navbar/HamburgerBar";
+
 function UserNavbar({ color }: { color: string }) {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
@@ -16,6 +17,9 @@ function UserNavbar({ color }: { color: string }) {
   const isAtive = (path: string) => {
     return path === pathname ? 'active' : '';
   }
+
+
+  const {user}: any = useSelector(state => state)
 
   const [openHamburgerNav, setOpenHamburgerNav] = useState(false);
   const {openFeedbackModal} = Logic({setOpenFeedback})
@@ -69,7 +73,7 @@ function UserNavbar({ color }: { color: string }) {
         </li>
         
         <li onClick={() => dispatch(toggleModal(true))} className="navIconContainer userContainer">
-            <i className="fa-solid fa-circle-user user"   />
+            <span>HI {user.profile.fist_name}</span><i className="fa-solid fa-circle-user user"   />
         </li>
 
       </UserNavbarTop>

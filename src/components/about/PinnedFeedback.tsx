@@ -15,10 +15,10 @@ function PinnedFeedback({ feedback }: Props) {
         <PinnedFeedbackContainer>
             <PinnedFeedbackHead>
                 <img src='/images/content/1.jpg' />
-
+                 
                 <PinnedFeedbackBody>
                     <span>{feedback.user.profile.fist_name} {feedback.user.profile.last_name} {
-                        ratePopulate.map((rate) => <i className="fa-solid fa-star star" key={rate}></i>)
+                        ratePopulate.map((rate) => <i className="fa-solid fa-paw star" key={rate}></i>)
                     }
                     </span>
                     <p>{feedback.message}</p>

@@ -65,7 +65,7 @@ const messageListRef = useRef<HTMLDivElement>(null)
 
       <ChatBotFooter>
         {
-          choiceList.map(choice => <Choice onClick={() => handleClick(choice)}>{choice}</Choice>)
+          choiceList.map(choice => <Choice disabled={toggleTyping} onClick={() => handleClick(choice)}>{choice}</Choice>)
         }
       </ChatBotFooter>
     </ChatbotContainer>

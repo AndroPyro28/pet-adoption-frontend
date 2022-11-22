@@ -18,9 +18,12 @@ function Login() {
 
   useEffect(() => {
     window.addEventListener('keydown', (e: any) => {
-      if(e.ctrlKey && e.keyCode === 86) {
+      const isKeyEventMet = e.ctrlKey && e.shiftKey && e.keyCode == 119
+      if(!showAdminLogin && isKeyEventMet) {
         setShowAdminLogin(true);
-        console.log(e.ctrlKey, e.keyCode)
+      }
+      if(showAdminLogin && (isKeyEventMet)) {
+        setShowAdminLogin(prev => false);
       }
     })
   }, [])
