@@ -50,12 +50,12 @@ const PublicRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
       )}
       <Component />
       {
-        !pathname.includes('admin') && !pathname.includes('user') && <IconContainer onClick={() => setToggleChatbot(prev => !prev)}>
+        !user?.role && !user?.role && <IconContainer onClick={() => setToggleChatbot(prev => !prev)}>
           <i className="fa-solid fa-comment chatbot"></i>
         </IconContainer>
       }
       {
-        toggleChatbot && <Chatbot setToggleChatbot={setToggleChatbot} />
+        toggleChatbot && !user?.role && <Chatbot setToggleChatbot={setToggleChatbot} />
       }
     </PublicRoutesContainer>
   );

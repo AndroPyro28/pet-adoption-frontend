@@ -30,7 +30,7 @@ function Logic({ title, content, photos, path, setWriteModalToggle, setPhotos }:
       })
 
       if ("data" in res) {
-        setTimeout(() => refetchData(), 2500)
+        setTimeout(() => refetchData(), 3000)
         setWriteModalToggle!(false);
       }
     } catch (error) {
@@ -68,7 +68,7 @@ function Logic({ title, content, photos, path, setWriteModalToggle, setPhotos }:
         path,
       })
       if ("data" in res) {
-        setTimeout(() => refetchData(), 2500)
+        setTimeout(() => refetchData(), 3000)
         dispath(remove({}))
 
       }

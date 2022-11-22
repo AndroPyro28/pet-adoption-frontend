@@ -34,24 +34,14 @@ function About() {
     return <ContentBlog data={blog} setDisplayPicture={setDisplayPicture} displayPicture={displayPicture}/>
   })
 
-  const { data } = useGetFirstThreePinnedFeedbackQuery();
-  const fetchFeedback = data?.map((feedback) => {
-    return <PinnedFeedback feedback={feedback} />
-  })
+  
   return (
     <AboutPageContainer giveMarginToTop={!pathname.includes('user')}>
       {
         displayPicture && <Modal displayPicture={displayPicture} setDisplayPicture={setDisplayPicture} />
       }
       {fetchContent}
-      {
-        fetchFeedback?.length! > 0 && <FeedbackSection>
-          <h1 className="feedback__h1">Feedbacks</h1>
-          <PinnedFeedbackList>
-            {fetchFeedback}
-          </PinnedFeedbackList>
-        </FeedbackSection>
-      }
+      
 
     </AboutPageContainer>
   );

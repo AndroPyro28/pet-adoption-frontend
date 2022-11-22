@@ -45,6 +45,10 @@ function UserNavbar({ color }: { color: string }) {
       content: 'About',
       path: '/user/about'
     },
+    {
+      content: 'Feedbacks',
+      path: '/user/feedback'
+    },
   ]
   return (
     <UserNavbarContainer>
@@ -65,6 +69,9 @@ function UserNavbar({ color }: { color: string }) {
           </li>
           <li className={isAtive('/user/about')}>
             <NavLink to="/user/about"> About </NavLink>
+          </li>
+          <li className={isAtive('/user/feedback')}>
+            <NavLink to="/user/feedback"> Feedback </NavLink>
           </li>
         </ul>
         

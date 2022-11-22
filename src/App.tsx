@@ -27,6 +27,7 @@ import UpdatePassword from "./pages/public/forgot-password/UpdatePassword";
 import ShelterInformation from "./pages/admin/shelter-information/ShelterInformation";
 import Feedback from "./pages/admin/feedbacks/Feedback";
 import 'react-quill/dist/quill.snow.css';
+import FeedbackPublic from "./pages/public/feedback/FeedbackPublic";
 const router = createBrowserRouter([
   {
     path:"*",
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: 'login',
     element: <PublicRoutes Component={Login} />,
+  },
+  {
+    path: 'feedback',
+    element: <PublicRoutes Component={FeedbackPublic} />,
   },
   {
     path:'recovery',
@@ -87,6 +92,10 @@ const router = createBrowserRouter([
       {
         path:'tracker',
         element:<UserRoutes Component={Tracker} />
+      },
+      {
+        path: 'feedback',
+        element: <UserRoutes Component={FeedbackPublic} />,
       },
     ]
   },
