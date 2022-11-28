@@ -109,13 +109,13 @@ export const ContentTextContainer = styled.div`
   overflow-x: hidden; */
   /* max-width: 700px; */
   & > h1 {
-    font-size: 4em;
+    font-size: 3em;
     margin: 10px;
   }
 
   & > p {
     text-align: justify;
-    font-size: 1.4em;
+    font-size: 1.2em;
     margin: 10px;
   }
 
