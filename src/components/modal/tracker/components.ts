@@ -4,8 +4,8 @@ export const GlobalStyles = createGlobalStyle`
     .tracker__form {
         display: flex;
     justify-content: space-between;
-    background: rgba(0, 0, 0, 0.4);
     padding: 20px;
+    background: white;
     border: solid 1px white;
     width: 40vw;
     height: 40vh;
@@ -57,13 +57,15 @@ export const PetInfo = styled.div`
 
 export const Title = styled.span`
     color: white;
-   text-shadow: 1px 3px 5px black;
+    color: black;
+
+   /* text-shadow: 1px 3px 5px black; */
    text-transform: uppercase;
 `
 
 export const Data = styled.span`
-    color: white;
-   text-shadow: 1px 3px 5px black;
+    color: black;
+   /* text-shadow: 1px 3px 5px black; */
    text-overflow: ellipsis;
    overflow: hidden;
    white-space: nowrap;
