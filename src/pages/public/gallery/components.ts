@@ -7,7 +7,6 @@ export const GalleryPageContainer = styled.section`
   width: 100%;
   height: 100%;
   margin-top: 80px;
-
   /* margin-top: 250px; */
 `;
 export const Dozens = styled.div`

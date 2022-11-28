@@ -103,7 +103,7 @@ export const ContentTextContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   padding-inline: 20px;
   /* max-width: 700px; */
   & > h1 {
