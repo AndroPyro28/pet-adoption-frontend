@@ -34,7 +34,7 @@ function Gallery() {
   })
 
   return (
-    <GalleryPageContainer giveMarginToTop={!pathname.includes('user')}>
+    <GalleryPageContainer>
         
         {
            displayPicture && <Modal displayPicture={displayPicture} setDisplayPicture={setDisplayPicture} />

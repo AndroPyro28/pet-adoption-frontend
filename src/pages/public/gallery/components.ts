@@ -6,7 +6,7 @@ export const GalleryPageContainer = styled.section`
   justify-content: center;
   width: 100%;
   height: 100%;
-  margin-top: ${({giveMarginToTop}: {giveMarginToTop:boolean}) => giveMarginToTop ? "100px" : "0px"};
+  margin-top: 80px;
 
   /* margin-top: 250px; */
 `;
