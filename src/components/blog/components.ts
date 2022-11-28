@@ -105,8 +105,8 @@ export const ContentTextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   padding-inline: 20px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  /* overflow-y: auto;
+  overflow-x: hidden; */
   /* max-width: 700px; */
   & > h1 {
     font-size: 4em;
