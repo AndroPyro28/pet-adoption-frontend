@@ -16,7 +16,7 @@ function TableDatas({ data }: TableDataProps) {
       {/* <TableData> {data.age}</TableData> */}
       <TableData className="Color"> {data.description}</TableData>
       <TableData className="Status">
-        <span className={data.status}>{data.status} </span>
+        <span className={data.status}>{data.status === 'READY' ? 'AVAILABLE' : data.status} </span>
       </TableData>
     </TableContainer>
   );
