@@ -58,6 +58,14 @@ const router = createBrowserRouter([
     element: <PublicRoutes Component={FeedbackPublic} />,
   },
   {
+    path: 'adoption',
+    element: <PublicRoutes Component={Adoption} />,
+  },
+  {
+    path: 'tracker',
+    element: <PublicRoutes Component={Tracker} />,
+  },
+  {
     path:'recovery',
     children: [
       {

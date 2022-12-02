@@ -44,7 +44,8 @@ function AdminSidebar() {
         <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
       </LogoutButton>
       <ProfileButton>
-        <i className="fa-solid fa-user-shield"></i> <span>{profile.fist_name} {profile.last_name} </span>
+        {/* <i className="fa-solid fa-user-shield"></i> <span>{profile.fist_name} {profile.last_name} </span> */}
+        <i className="fa-solid fa-user-shield"></i> <span> Admin </span>
       </ProfileButton>
     </AdminSidebarContainer>
   );

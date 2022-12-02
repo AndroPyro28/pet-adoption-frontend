@@ -97,7 +97,8 @@ function AdminNavbar() {
         </SeachBox>
 
         <ProfileButton>
-          <span>{profile.fist_name} {profile.last_name}</span> <i className="fa-solid fa-user-shield"></i>
+          {/* <span>{profile.fist_name} {profile.last_name}</span> <i className="fa-solid fa-user-shield"></i> */}
+           <span> Admin </span> <i className="fa-solid fa-user-shield"></i> 
         </ProfileButton>
         <LogoutButton onClick={handleLogout}>
           Logout

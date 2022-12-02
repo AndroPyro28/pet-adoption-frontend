@@ -79,20 +79,15 @@ function UserProfile() {
                 <InfoRow>
                     <Info>
                         <label>First name</label>
-                        {
-                            allowChanges ? <input type="text" name="fist_name" value={updateValue.fist_name} onChange={handleChange} /> : <span>
+                         <span>
                                 {updateValue?.fist_name}
                             </span>
-                        }
                     </Info>
                     <Info>
                         <label>last name</label>
-
-                        {
-                            allowChanges ? <input type="text" name="last_name" value={updateValue.last_name} onChange={handleChange} /> : <span>
+                            <span>
                                 {updateValue?.last_name}
                             </span>
-                        }
                     </Info>
                 </InfoRow>
 
@@ -108,12 +103,9 @@ function UserProfile() {
                     </Info>
                     <Info>
                         <label>Address</label>
-                        
-                        {
-                            allowChanges ? <input type="text" name="address" value={updateValue.address} onChange={handleChange} /> : <span>
+                         <span>
                             {updateValue?.address}
                         </span>
-                        }
                     </Info>
                 </InfoRow>
 

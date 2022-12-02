@@ -33,6 +33,16 @@ function PublicNavbar({ color }: { color: string }) {
       content: 'Feedbacks',
       path: '/feedback'
     },
+
+    {
+      content: 'Adoption',
+      path: '/adoption'
+    },
+
+    {
+      content: 'tracker',
+      path: '/tracker'
+    },
   ]
 
   const [openHamburgerNav, setOpenHamburgerNav] = useState(false)
@@ -51,6 +61,14 @@ function PublicNavbar({ color }: { color: string }) {
         </li>
         <li className={isAtive('/feedback')}>
           <NavLink to="/feedback" > Feedback </NavLink>
+        </li>
+
+        <li className={isAtive('/tracker')}>
+          <NavLink to="/tracker" > tracker </NavLink>
+        </li>
+
+        <li className={isAtive('/adoption')}>
+          <NavLink to="/adoption" > adoption </NavLink>
         </li>
       </ul>
       <li className="navIconContainer hamburgerContainer" onClick={() => setOpenHamburgerNav(true)}>
