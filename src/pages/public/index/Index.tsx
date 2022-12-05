@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Content, IndexPageContainer, Banner, About, Main, Donation, Gcash, Bank, Detail, Paypal } from "./components";
+import { Content, IndexPageContainer, Banner, About, Main, Donation, Gcash, Bank, Detail, Paypal, FAQSLIST, FAQS } from "./components";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetAllBlogQuery as PublicQuery } from "../../../services/publicBlog";
@@ -8,7 +8,7 @@ import ContentBlog from "../../../components/blog/ContentBlog";
 import { useEffect, useState } from "react";
 import Modal from "../gallery/Modal";
 import { getRefetchFunction } from "../../../redux/refetchSlice";
-
+import FAQ from "./FAQ";
 const Index = (): JSX.Element => {
   const { user }: any = useSelector(state => state);
   const { pathname } = useLocation();
@@ -16,33 +16,50 @@ const Index = (): JSX.Element => {
   let path = pathname.replaceAll('user', '').replaceAll('/', '')
   const { data: dataPublic, refetch: refetchPublic } = PublicQuery(path === '' ? "HOME" : path.toUpperCase())
   const { data: dataPrivate, refetch: refetchPrivate } = PrivateQuery(path === '' ? "HOME" : path.toUpperCase())
-  
-  
+
+
   useEffect(() => {
-    if(user.role === 'ADMIN') {
+    if (user.role === 'ADMIN') {
       refetchPrivate()
       dispatch(getRefetchFunction(refetchPrivate))
     } else {
       refetchPublic()
     }
-  
+
   }, [])
-  
-  console.log(dataPrivate);
-  
+
   const [displayPicture, setDisplayPicture] = useState("");
 
   const fetchBlogs = user.role === 'ADMIN' ? dataPrivate?.map((blog) => {
-    return <ContentBlog data={blog} setDisplayPicture={setDisplayPicture} displayPicture={displayPicture}/>
+    return <ContentBlog data={blog} setDisplayPicture={setDisplayPicture} displayPicture={displayPicture} />
   }) : dataPublic?.map((blog) => {
-    return <ContentBlog data={blog} setDisplayPicture={setDisplayPicture} displayPicture={displayPicture}/>
+    return <ContentBlog data={blog} setDisplayPicture={setDisplayPicture} displayPicture={displayPicture} />
   })
+
+  const [faqsList] = useState([
+    {
+      question: 'Adopt a pet',
+      answer: 'Create an account and select an animal/s you want to adopt in the adoption tab. The organization will notify you on the success of the procedure.'
+    },
+    {
+      question: 'How to adopt?',
+      answer: 'Click apply in the adoption tab and wait for the confirmation of the application.'
+    },
+    {
+      question: 'Operational schedule?',
+      answer: 'The operational schedule of the the animal shelter is from 9:00 am to 5:00 pm Monday to Saturday. Schedule may change without prior notice in case of emergency.'
+    },
+    {
+      question: 'Location?',
+      answer: 'The animal shelter is located at Mabalacat, Pampanga.'
+    }
+  ])
 
   return (
     <IndexPageContainer>
       {
-           displayPicture && <Modal displayPicture={displayPicture} setDisplayPicture={setDisplayPicture} />
-        }
+        displayPicture && <Modal displayPicture={displayPicture} setDisplayPicture={setDisplayPicture} />
+      }
       <Banner>
         <Content>
           <h1>
@@ -122,6 +139,17 @@ const Index = (): JSX.Element => {
         </Paypal>
 
       </Donation> */}
+
+      <FAQS>
+        <h1>Frequently Asked Question(s)</h1>
+
+        <FAQSLIST>
+          {
+            faqsList?.map((faqs, index) => <FAQ data={faqs} key={index} />)
+          }
+
+        </FAQSLIST>
+      </FAQS>
     </IndexPageContainer>
   );
 };

@@ -10,7 +10,7 @@ const AdoptionRecordApis = baseApi.injectEndpoints({
                 method:'POST',
                 body:data
             }),
-            invalidatesTags:['adoption']
+            invalidatesTags:['adoption',  'Pet']
         }),
         getAllAdoptionRequest: builder.query<AdoptionRecord[], string>({
             query:(query="ALL") => ({
@@ -26,7 +26,7 @@ const AdoptionRecordApis = baseApi.injectEndpoints({
                 method:'PATCH',
                 body: data
             }),
-            invalidatesTags:['adoption']
+            invalidatesTags:['adoption', 'Pet']
         }),
 
         deleteAdoptionRequest: builder.mutation<void, number>({

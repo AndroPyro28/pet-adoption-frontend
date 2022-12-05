@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const AboutPageContainer = styled.section`
   width: 100%;
-  padding: 10px 0px;
+  padding: 0px 0px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  margin-top: ${({giveMarginToTop}: {giveMarginToTop:boolean}) => giveMarginToTop ? "100px" : "0px"};
-  margin-top: 100px ;
+  /* margin-top: ${({giveMarginToTop}: {giveMarginToTop:boolean}) => giveMarginToTop ? "100px" : "0px"}; */
+  /* margin-top: 100px ; */
 
   & img {
     height: 500px;
@@ -69,5 +69,84 @@ background: #EAEAEA;
     text-align: center;
     margin: 120px;
     font-size: 2em;
+  }
+`
+
+export const MissionVision = styled.div`
+  background: url('/images/content/cristian-castillo-73pyV0JJOmE-unsplash.jpg');
+  height: 600px;
+  background-size: cover;
+  background-position: bottom;
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+`
+
+export const RightContent= styled.div`
+display: flex;
+flex: 1;
+justify-content: center;
+flex-direction: column;
+gap: 50px;
+`
+export const Vision = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+
+  & > h1 {
+    font-size: 1.5em;
+    text-shadow: 1px 3px 5px black;
+    font-weight:400;
+  }
+
+  & > p {
+    text-shadow: 1px 3px 5px black;
+    font-size: 0.9em;
+    width:90%;
+    text-align:center;
+  }
+`
+export const Mission = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+
+  & > h1 {
+    font-size: 1.5em;
+    text-shadow: 1px 3px 5px black;
+    font-weight:400;
+  }
+
+  & > p {
+    text-shadow: 1px 3px 5px black;
+    font-size: 0.9em;
+    width:90%;
+    text-align:center;
+  }
+`
+
+export const LeftContent= styled.div`
+display: flex;
+flex: 1;
+justify-content: flex-end;
+align-items: flex-start;
+height: 100%;
+  & > h1 {
+    margin: 200px 20px;
+    width: 70%;
+    font-size: 2em;
+    font-style: italic;
+    text-shadow: 1px 3px 5px black;
+  }
+
+  & > p {
+    
   }
 `

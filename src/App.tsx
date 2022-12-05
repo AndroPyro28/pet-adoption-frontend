@@ -1,5 +1,5 @@
 import {GlobalStyles, AppComponent} from "./appComponents";
-import { Routes, Route, createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Routes, Route, createBrowserRouter, RouterProvider, } from "react-router-dom";
 import PublicRoutes from "./auth-routes/PublicRoutes";
 import Index from "./pages/public/index/Index";
 import Gallery from "./pages/public/gallery/Gallery";
@@ -28,6 +28,8 @@ import ShelterInformation from "./pages/admin/shelter-information/ShelterInforma
 import Feedback from "./pages/admin/feedbacks/Feedback";
 import 'react-quill/dist/quill.snow.css';
 import FeedbackPublic from "./pages/public/feedback/FeedbackPublic";
+import { useEffect } from "react";
+import {useLocation, usePageLeave} from 'react-use';
 const router = createBrowserRouter([
   {
     path:"*",
@@ -139,6 +141,13 @@ const router = createBrowserRouter([
 ])
 
 function App() {
+
+
+  // useEffect(() => {
+  //   window.onbeforeunload = () => {
+  //     return 'Are you sure you want to leave?';
+  //   }
+  // }, [])
   
   const dispatch = useDispatch<any>();
   const {data, isLoading, error} = useAuthMeQuery();

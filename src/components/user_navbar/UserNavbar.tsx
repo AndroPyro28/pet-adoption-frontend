@@ -85,7 +85,7 @@ function UserNavbar({ color }: { color: string }) {
 
       </UserNavbarTop>
       <IconContainer onClick={openFeedbackModal}>
-        <FeedbackButton className="fa-solid fa-envelope-open-text feedbackBtn" ></FeedbackButton>
+        <FeedbackButton className="fa-solid fa-star feedbackBtn" ></FeedbackButton>
         </IconContainer>
         {
          openFeedback && <Feedback setOpenFeedback={setOpenFeedback}/>

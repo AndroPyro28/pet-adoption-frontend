@@ -22,10 +22,10 @@ function Tracker() {
   // will make a pet cards later
   return (
     <TrackerContainer>
+
     {
       adoptionData.id && <TrackerModal data={adoptionData} setAdoptionData={setAdoptionData}/>
     }
-   
       <TrackerContent>
         <SearchBarContainer>
           <SearchBar>

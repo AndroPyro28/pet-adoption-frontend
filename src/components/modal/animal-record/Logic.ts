@@ -19,11 +19,13 @@ const dispatch = useDispatch()
         return toast('All fields are required!', {type:'warning'})
       }
       dispatch(toggleLoading(true))
+      
       const result = await createRecord(recordData);
       setOpenAnimalRecordModal(false)
       return toast('Pet Created!', {type:'success'})
     } catch (error) {
-      console.error(error)
+      console.error('error', error);
+
     } finally {
       dispatch(toggleLoading(false))
     }

@@ -11,6 +11,7 @@ function PinnedFeedback({ feedback }: Props) {
     for (let i = 0; i < feedback.rate; i++) {
         ratePopulate.push(i);
     }
+    
     return (
         <PinnedFeedbackContainer>
             <PinnedFeedbackHead>

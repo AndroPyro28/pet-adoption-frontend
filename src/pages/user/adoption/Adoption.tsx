@@ -28,7 +28,7 @@ function Adoption() {
     console.log(error)
   }
 
-  const fetchdata = animalRecordData?.map((data, index) => <Pet data={data} key={index} setAdoptionData={setAdoptionData} />)
+  const fetchdata = animalRecordData?.filter(pet => pet.status === 'READY')?.map((data, index) => <Pet data={data} key={index} setAdoptionData={setAdoptionData} />)
 
   return (<>
     <ToastContainer autoClose={2500} />
@@ -48,10 +48,14 @@ function Adoption() {
       
     </AdoptionFrontPage>
 
+    <h1 style={{margin:'50px auto', width:'fit-content', fontSize:'1.5em', textTransform:'uppercase'}}>List of our available pets</h1>
+
     <AdoptionContainer>
       {
         isLoading ? <h1>loading please wait...</h1> : fetchdata 
       }
+
+
     </AdoptionContainer>
 
     <AdoptionProcedure>

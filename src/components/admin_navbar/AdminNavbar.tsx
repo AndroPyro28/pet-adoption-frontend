@@ -11,30 +11,31 @@ import { AdminNavbarContainer, Content, LogoutButton, ProfileButton, SeachBox } 
 function AdminNavbar() {
   const { user }: any = useSelector(state => state);
   const [search, setSearch] = useState({
-    animal:'',
-    adoption:'',
-    user:''
+    animal: '',
+    adoption: '',
+    user: ''
   })
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
-  const { data: users, refetch: refetchUsers, isLoading: loadingUsers } = useGetAllUsersWithSearchQuery(search.user)
-  if(pathname.includes('user')) {
-     dispatch(getAllData(users))
+  const { data: users, refetch: refetchUsers, isLoading: loadingUsers } = useGetAllUsersWithSearchQuery(search?.user)
+  if (pathname.includes('user')) {
+    dispatch(getAllData(users))
   }
 
-  const { data: animals, refetch: refetchAnimals, isLoading: loadingAnimals } = useGetAllAnimalRecordExcludeAdoptedQuery({ filter: false, search:search.animal })
-  if(pathname.includes('animal')) {
-  dispatch(getAllData(animals))
+  const { data: animals, refetch: refetchAnimals, isLoading: loadingAnimals } = useGetAllAnimalRecordExcludeAdoptedQuery({ filter: false, search: search?.animal })
+  if (pathname.includes('animal')) {
+    dispatch(getAllData(animals))
   }
-  const { data: adoptions, refetch: refetchAdoptions, isLoading: loadingAdoptions } = useGetAllAdoptionRequestQuery(search.adoption);
-  if(pathname.includes('adoption')) {
+  const { data: adoptions, refetch: refetchAdoptions, isLoading: loadingAdoptions } = useGetAllAdoptionRequestQuery(search?.adoption);
+  if (pathname.includes('adoption')) {
     dispatch(getAllData(adoptions))
+
   }
   const [openHamburgerNav, setOpenHamburgerNav] = useState(false)
 
   const { profile } = user;
-  
+
   const hamburgerContent = [
     {
       content: 'Dashboard',
@@ -80,15 +81,15 @@ function AdminNavbar() {
           <i className="fa-solid fa-magnifying-glass"></i>
           <input type={'text'} placeholder="Search..." onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setSearch(prev => {
-              const {value} = e.target;
-              if(pathname.includes('user')) {
-                return {...prev, user: value}
+              const { value } = e.target;
+              if (pathname.includes('user')) {
+                return { ...prev, user: value }
               }
-              if(pathname.includes('animal')) {
-                return {...prev, animal: value}
+              if (pathname.includes('animal')) {
+                return { ...prev, animal: value }
               }
-              if(pathname.includes('adoption')) {
-                return {...prev, adoption: value}
+              if (pathname.includes('adoption')) {
+                return { ...prev, adoption: value }
               }
               return prev;
             })
@@ -98,15 +99,15 @@ function AdminNavbar() {
 
         <ProfileButton>
           {/* <span>{profile.fist_name} {profile.last_name}</span> <i className="fa-solid fa-user-shield"></i> */}
-           <span> Admin </span> <i className="fa-solid fa-user-shield"></i> 
+          <span> Admin </span> <i className="fa-solid fa-user-shield"></i>
         </ProfileButton>
         <LogoutButton onClick={handleLogout}>
           Logout
         </LogoutButton>
       </Content>
-        {
-          openHamburgerNav && <HamburgerBar paths={hamburgerContent} handleClose={setOpenHamburgerNav}/>
-        }
+      {
+        openHamburgerNav && <HamburgerBar paths={hamburgerContent} handleClose={setOpenHamburgerNav} />
+      }
     </AdminNavbarContainer>
   )
 }

@@ -38,12 +38,12 @@ function Logic({ setCurrentField, toast }: logicProps) {
     first_name: yup
       .string()
       .required("This field is required")
-      .min(3) 
+      .min(3, 'Firstname must be atleast 3 characted') 
       .matches(/^[A-Za-z\s]*$/, "Must container letters only"),
     last_name: yup
       .string()
       .required("This field is required")
-      .min(3)
+      .min(3, 'Lastname must be atleast 3 characted')
       .matches(/^[A-Za-z\s]*$/, "Must container letters only"),
     email: yup
       .string()
@@ -57,6 +57,7 @@ function Logic({ setCurrentField, toast }: logicProps) {
     password: yup.string().required("This field is required").min(6),
     password_confirmation: yup
       .string()
+      .required("This field is required")
       .when("password", (password, field) =>
         password
           ? field

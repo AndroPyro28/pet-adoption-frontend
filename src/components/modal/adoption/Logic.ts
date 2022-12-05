@@ -40,6 +40,11 @@ function Logic({
       if (!date || !time) {
         return toast("Please choose a schedule!", { type: "warning" });
       }
+
+      if(time < '09:00' || time > '17:00' ) {
+        return toast("Please choose a time between 09:00 am - 05:00 pm", { type: "warning" });
+      }
+      
       const { id: petId } = petData!;
       const { id: userId } = user!;
       dispatch(toggleLoading(true));
@@ -62,7 +67,7 @@ function Logic({
   };
 
   const handleUpdateAdoptionRequest = async (
-    status: "REJECTED" | "APPROVED"
+    status: "REJECTED" | "APPROVED" | "APPROVED_INTERVIEW"
   ) => {
     try {
       const { id } = adoptionData!;
@@ -77,7 +82,13 @@ function Logic({
       if (status == "REJECTED") {
         data = { status };
       }
+
+      if(status === "APPROVED_INTERVIEW") {
+        data = { status };
+      }
+
       dispatch(toggleLoading(true));
+      
       const res = await updateAdoptionRequest({ id, data } as {
         id: number;
         data: AdoptionUpdate;

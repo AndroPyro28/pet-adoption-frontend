@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Pet } from '../../../models/Pet'
 import {
   AdoptionBackdrop,
@@ -32,6 +32,7 @@ function AdoptionModal({ data: petData, setAdoptionData, toast }: PetAdoptionPro
   const dateToday = getDateTodayWithArgs({date: 0})
   const {submitAdoptionForm} = Logic({petData, user, date, time, setAdoptionDataPet: setAdoptionData, toast })
 
+  
   return (
     <AdoptionBackdrop>
       <motion.div

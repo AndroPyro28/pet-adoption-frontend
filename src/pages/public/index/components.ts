@@ -214,3 +214,41 @@ export const Paypal = styled.div`
       text-decoration: underline;
     }
 `
+
+export const FAQS = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  & > h1 {
+    margin: 50px;
+    font-size: 1.5em;
+  }
+`
+
+export const FAQSLIST = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 80%;
+  gap: 10px;
+`
+
+export const FAQ = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  border: solid 1px rgb(210,0,51) ;
+  border-left: solid 8px rgb(210,0,51);
+  cursor: pointer;
+  & > .q {
+    font-size: 1.5em;
+    padding: 10px;
+  }
+  & > .a {
+    font-size: 1.3em;
+    margin: 20px;
+    color: gray;
+  }
+`

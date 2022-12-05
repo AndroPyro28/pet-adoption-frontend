@@ -7,7 +7,8 @@ export const TrackerContainer = styled.div`
     & > h1 {
         text-align: center;
         margin: 130px 0px 80px 0px;
-        font-weight: 100;
+        font-weight: 400;
+        font-size: 2em;
         text-transform: uppercase;
         @media screen and (max-width:550px) {
         margin-bottom:150px ;

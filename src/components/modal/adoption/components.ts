@@ -107,7 +107,7 @@ export const Detail = styled.div`
   align-items: center;
   color: ${({status}: 
   {status?: string}) => status === "PENDING" ?
-   "gray" : status === "APPROVED" ? 
+   "gray" : status === "APPROVED" || status === "APPROVED_INTERVIEW" ? 
    "green" :  status === "REJECTED" ? 
    "rgb(210, 0, 51)" : "black"};
   
