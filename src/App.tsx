@@ -30,115 +30,6 @@ import 'react-quill/dist/quill.snow.css';
 import FeedbackPublic from "./pages/public/feedback/FeedbackPublic";
 import { useEffect } from "react";
 import {useLocation, usePageLeave} from 'react-use';
-const router = createBrowserRouter([
-  {
-    path:"*",
-    element:<h1>page not found</h1>
-  },
-  {
-    path: '/',
-    element: <PublicRoutes Component={Index} />,
-  },
-  {
-    path: 'gallery',
-    element: <PublicRoutes Component={Gallery} />,
-  },
-  {
-    path: 'about',
-    element: <PublicRoutes Component={About} />,
-  },
-  {
-    path: 'signup',
-    element: <PublicRoutes Component={Signup} />,
-  },
-  {
-    path: 'login',
-    element: <PublicRoutes Component={Login} />,
-  },
-  {
-    path: 'feedback',
-    element: <PublicRoutes Component={FeedbackPublic} />,
-  },
-  {
-    path: 'adoption',
-    element: <PublicRoutes Component={Adoption} />,
-  },
-  {
-    path: 'tracker',
-    element: <PublicRoutes Component={Tracker} />,
-  },
-  {
-    path:'recovery',
-    children: [
-      {
-        path:'',
-        element: <PublicRoutes Component={CodeVerification} />
-      },
-      {
-        path:'reset-password',
-        element: <UpdatePasswordRoutes Component={UpdatePassword} />
-      },
-    ]
-  },
-  {
-    path: 'user',
-    children: [
-      {
-        path: '',
-        element: <UserRoutes Component={Index} />,
-      },
-      {
-        path:'gallery',
-        element:<UserRoutes Component={Gallery} />
-      },
-      {
-        path:'about',
-        element:<UserRoutes Component={About} />
-      },
-      {
-        path:'adoption',
-        element:<UserRoutes Component={Adoption} />
-      },
-      {
-        path:'tracker',
-        element:<UserRoutes Component={Tracker} />
-      },
-      {
-        path: 'feedback',
-        element: <UserRoutes Component={FeedbackPublic} />,
-      },
-    ]
-  },
-  {
-    path:'admin',
-    children: [
-      {
-        path:'',
-        element: <AdminRoutes Component={Dashboard} />
-      },
-      {
-        path:'user-information',
-        element: <AdminRoutes Component={UserInformation} />
-      },
-      {
-        path:'animal-record',
-        element: <AdminRoutes Component={AnimalRecord} />
-      },
-      {
-        path:'shelter-information',
-        element: <AdminRoutes Component={ShelterInformation} />
-      },
-      {
-        path:'adoption-record',
-        element: <AdminRoutes Component={AdoptionRecord} />
-      },
-      {
-        path:'feedback',
-        element: <AdminRoutes Component={Feedback} />
-      },
-    ]
-  }
-])
 
 function App() {
 
@@ -148,6 +39,117 @@ function App() {
   //     return 'Are you sure you want to leave?';
   //   }
   // }, [])
+  const router = createBrowserRouter([
+    {
+      path:"*",
+      element:<h1>page not found</h1>
+    },
+    {
+      path: '/',
+      element: <PublicRoutes Component={Index} />,
+    },
+    {
+      path: 'gallery',
+      element: <PublicRoutes Component={Gallery} />,
+    },
+    {
+      path: 'about',
+      element: <PublicRoutes Component={About} />,
+    },
+    {
+      path: 'signup',
+      element: <PublicRoutes Component={Signup} />,
+    },
+    {
+      path: 'login',
+      element: <PublicRoutes Component={Login} />,
+    },
+    {
+      path: 'feedback',
+      element: <PublicRoutes Component={FeedbackPublic} />,
+    },
+    {
+      path: 'adoption',
+      element: <PublicRoutes Component={Adoption} />,
+    },
+    {
+      path: 'tracker',
+      element: <PublicRoutes Component={Tracker} />,
+    },
+    {
+      path:'recovery',
+      children: [
+        {
+          path:'',
+          element: <PublicRoutes Component={CodeVerification} />
+        },
+        {
+          path:'reset-password',
+          element: <UpdatePasswordRoutes Component={UpdatePassword} />
+        },
+      ]
+    },
+    {
+      path: 'user',
+      children: [
+        {
+          path: '',
+          element: <UserRoutes Component={Index} />,
+        },
+        {
+          path:'gallery',
+          element:<UserRoutes Component={Gallery} />
+        },
+        {
+          path:'about',
+          element:<UserRoutes Component={About} />
+        },
+        {
+          path:'adoption',
+          element:<UserRoutes Component={Adoption} />
+        },
+        {
+          path:'tracker',
+          element:<UserRoutes Component={Tracker} />
+        },
+        {
+          path: 'feedback',
+          element: <UserRoutes Component={FeedbackPublic} />,
+        },
+      ]
+    },
+    {
+      path:'admin',
+      children: [
+        {
+          path:'',
+          element: <AdminRoutes Component={Dashboard} />
+        },
+        {
+          path:'user-information',
+          element: <AdminRoutes Component={UserInformation} />
+        },
+        {
+          path:'animal-record',
+          element: <AdminRoutes Component={AnimalRecord} />
+        },
+        {
+          path:'shelter-information',
+          element: <AdminRoutes Component={ShelterInformation} />
+        },
+        {
+          path:'adoption-record',
+          element: <AdminRoutes Component={AdoptionRecord} />
+        },
+        {
+          path:'feedback',
+          element: <AdminRoutes Component={Feedback} />
+        },
+      ]
+    }
+  ])
+
+  
   
   const dispatch = useDispatch<any>();
   const {data, isLoading, error} = useAuthMeQuery();

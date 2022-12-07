@@ -67,7 +67,7 @@ margin: 100px 0px;
 background: #EAEAEA;
 & > .feedback__h1 {
     text-align: center;
-    margin: 120px;
+    margin: 50px;
     font-size: 2em;
   }
 `

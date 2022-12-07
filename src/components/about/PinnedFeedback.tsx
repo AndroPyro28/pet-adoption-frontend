@@ -11,6 +11,7 @@ function PinnedFeedback({ feedback }: Props) {
     for (let i = 0; i < feedback.rate; i++) {
         ratePopulate.push(i);
     }
+
     
     return (
         <PinnedFeedbackContainer>
@@ -18,11 +19,11 @@ function PinnedFeedback({ feedback }: Props) {
                 <img src='/images/content/1.jpg' />
                  
                 <PinnedFeedbackBody>
-                    <span>{feedback.user.profile.fist_name} {feedback.user.profile.last_name} {
-                        ratePopulate.map((rate) => <i className="fa-solid fa-paw star" key={rate}></i>)
+                    <span>{feedback?.user?.profile?.fist_name} {feedback?.user?.profile?.last_name} {
+                        ratePopulate?.map((rate) => <i className="fa-solid fa-paw star" key={rate}></i>)
                     }
                     </span>
-                    <p>{feedback.message}</p>
+                    <p>{feedback?.message}</p>
                 </PinnedFeedbackBody>
 
 
