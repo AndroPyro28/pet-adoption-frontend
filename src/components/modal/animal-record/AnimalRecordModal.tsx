@@ -18,7 +18,7 @@ function AnimalRecordModal({ toast, setOpenAnimalRecordModal }: modalProps) {
       breed: '',
       type: '',
       gender: '',
-      age: null,
+      age: 0,
       description: '',
       // status: '',
       healthNotes: '',

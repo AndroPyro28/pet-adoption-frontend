@@ -19,8 +19,9 @@ const dispatch = useDispatch()
         return toast('All fields are required!', {type:'warning'})
       }
       dispatch(toggleLoading(true))
-      
-      const result = await createRecord(recordData);
+      const result = await createRecord({...recordData,
+      age: Number(recordData.age) 
+    });
       setOpenAnimalRecordModal(false)
       return toast('Pet Created!', {type:'success'})
     } catch (error) {
@@ -36,7 +37,8 @@ const dispatch = useDispatch()
       if(e.target.name == 'imageUrl' && e.target.files) {
         return {...prev, imageUrl : e.target.files[0]}
       } 
-        return {...prev, [e.target.name] : e.target.name == "age"  ? e.target.valueAsNumber : e.target.value }
+      console.log(e.target.value)
+        return {...prev, [e.target.name] : e.target.name == "age"  ? e.target.value : e.target.value }
     });
   };
 
