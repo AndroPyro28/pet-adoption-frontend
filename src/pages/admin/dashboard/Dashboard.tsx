@@ -1,20 +1,24 @@
-import AdoptionRecord from "../../../components/dashboard/AdoptionRecord"
-import AdoptionStatus from "../../../components/dashboard/AdoptionStatus"
+import AdoptionsChart from "../../../components/dashboard/AdoptionsChart"
+import PetsChart from "../../../components/dashboard/PetsChart"
 // import AdoptionStatus from "../../../components/dashboard/AdoptionStatus"
-import AnimalList from "../../../components/dashboard/AnimalList"
+import UsersChart from "../../../components/dashboard/UsersChart"
 import {DashboardContainer, FirstCol, SecondCol} from "./components"
 import { useGetAllAdoptionRequestQuery } from "../../../services/adoptionRecordApis"
 import Calendar from "../../../components/dashboard/Calendar"
+import { useEffect } from "react"
+
 function Dashboard() {
+  const { data, isLoading, error, refetch } = useGetAllAdoptionRequestQuery('');
 
-  const { data, isLoading, error } = useGetAllAdoptionRequestQuery();
-
+  useEffect(() => {
+    refetch()
+  }, [])
   return (<>
     <DashboardContainer>
       <FirstCol>
-        <AnimalList />
-        <AdoptionRecord records={data}/>
-        <AdoptionStatus records={data}/>
+        <UsersChart />
+        <AdoptionsChart />
+        <PetsChart />
       </FirstCol>
       <SecondCol>
         <Calendar records={data}/>

@@ -1,10 +1,11 @@
 import { Form, Formik } from "formik";
 import Logic from "./logic";
 import { Container, GlobalStyles, Logo, Buttons } from "./components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputWithIcon from "../../../formik/inputs/inputWithIcon";
 import { NavLink } from "react-router-dom";
 import {toast, ToastContainer} from "react-toastify"
+import AdminLogin from "../../../components/modal/login-admin/AdminLogin";
 
 function Login() {
   const {
@@ -13,11 +14,27 @@ function Login() {
     onSubmitLogin,
   } = Logic({toast});
 
+  const [showAdminLogin, setShowAdminLogin] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener('keydown', (e: any) => {
+      const isKeyEventMet = e.ctrlKey && e.shiftKey && e.keyCode == 119
+      if(!showAdminLogin && isKeyEventMet) {
+        setShowAdminLogin(true);
+      }
+      if(showAdminLogin && (isKeyEventMet)) {
+        setShowAdminLogin(prev => false);
+      }
+    })
+  }, [])
+
   return (
     <Container>
       <NavLink to="/" className={`backBtn`}>
         <i className="fa-solid fa-arrow-left "></i>
       </NavLink>
+      
+      <AdminLogin setShowAdminLogin={setShowAdminLogin} showAdminLogin={showAdminLogin} toast={toast} />
 
       <GlobalStyles />
       <Formik
@@ -30,7 +47,7 @@ function Login() {
             <Form autoComplete="off" className="form">
               <Logo src="/images/logo/logowhite.png" width={60} height={60} />
               <ToastContainer autoClose={1500} />
-              <h1>Login</h1>
+              <h1>User Login</h1>
               <InputWithIcon
                 values={{
                   name: "email",

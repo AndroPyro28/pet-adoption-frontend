@@ -12,7 +12,8 @@ export const PetContainer = styled.div`
     height: 300px;
     margin: 20px;
     padding: 30px 5px;
-    background: rgba(5, 5, 5, 0.459);
+    /* background: rgba(5, 5, 5, 0.459); */
+    background: white;
     color: #EAEAEA;
     &:hover {
         cursor: pointer;
@@ -22,10 +23,15 @@ export const PetContainer = styled.div`
         font-weight: 700;
         text-transform: capitalize;
         margin-right: 10px;
-        color: white;
+        color: black;
         &::after {
             content: ":";
         }
+    }
+
+    @media screen and (max-width: 700px) {
+    /* width: 200px; */
+    margin:0;
     }
 `
 
@@ -45,8 +51,8 @@ export const Breed = styled.h4`
   margin: 5px 15px;
   font-size: 0.9em;
   font-weight: 700;
-
   text-transform: capitalize;
+  color:gray;
 `;
 
 export const Name = styled.h3`
@@ -54,6 +60,7 @@ export const Name = styled.h3`
   font-weight: 700;
   font-size: 0.9em;
   text-transform: capitalize;
+  color:gray;
 `;
 
 export const Status = styled.h5`
@@ -69,10 +76,12 @@ export const Traits = styled.p`
   margin: 5px 15px;
   font-size: 0.9em;
   font-weight: 700;
+  color:gray;
 `;
 
 export const Description = styled.p`
   margin: 5px 15px;
   font-size: 0.9em;
   font-weight: 700;
+  color:gray;
 `;

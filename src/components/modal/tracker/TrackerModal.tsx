@@ -22,10 +22,11 @@ function TrackerModal({data, setAdoptionData} : PetAdoptionProps) {
         <PetImage src={data.imageUrl} />
         <PetInfo>
             <Info><Title>Name:</Title> <Data>{data.name}</Data></Info>
-            <Info><Title>Status:</Title> <Data>{data.status}</Data></Info>
+            <Info><Title>Status:</Title> <Data>{data.status === 'READY' ? 'AVAILABLE' : data.status}</Data></Info>
             <Info><Title>Breed:</Title> <Data>{data.breed}</Data></Info>
+            <Info><Title>Age:</Title> <Data>{data.age} yrs old</Data></Info>
             <Info><Title>Traits:</Title> <Data>{data.traits}</Data></Info>
-            <Info><Title>Condition:</Title> <Data>{data.condition} / 10</Data></Info>
+            {/* <Info><Title>Condition:</Title> <Data>{data.condition} / 10</Data></Info> */}
         </PetInfo>
       </motion.div>
     </ModalBackdrop>

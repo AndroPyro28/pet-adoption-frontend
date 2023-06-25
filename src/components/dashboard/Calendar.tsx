@@ -6,9 +6,9 @@ import { CalendarContainer } from "./components"
 
 function Calendar({ records }: { records: AdoptionRecord[] | undefined }) {
     const handleDateClick = (args: any) => {
-        console.log(args)
     }
-    const fetchAdoption = records?.filter((data) => data.status === 'APPROVED').map(record => ({title: `Adoption for ${record.adoptee.name}, Adopted by ${record.adopter.profile.fist_name} ${record.adopter.profile.fist_name}`, date: record.schedule }))
+    
+    const fetchAdoption = records?.filter((data) => data.status === 'APPROVED').map(record => ({ title: `Adoption for ${record.adoptee?.name}, Adopted by ${record.adopter?.profile?.fist_name} ${record.adopter?.profile?.fist_name}`, date: record.schedule.split('.')[0] }))
     return (
         <CalendarContainer>
             <FullCalendar

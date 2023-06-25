@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const logoutModalSlice = createSlice({
-    name: "User",
+    name: "Logout",
     initialState: false,
 
     reducers: {

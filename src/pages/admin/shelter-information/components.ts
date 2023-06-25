@@ -14,6 +14,8 @@ export const Information = styled.div`
     background: white;
     border-radius: 20px;
     align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
 `
 export const ShelterTeam = styled.div`
     margin: 20px;
@@ -35,6 +37,10 @@ export const ShelterImageContainer = styled.div`
         border-radius: 50%;
         object-fit: cover;
         margin: 20px;
+        @media screen and (max-width:500px) {
+            width: 90px;
+            height: 90px;
+        }
     }
 `
 
@@ -59,5 +65,10 @@ export const EmployeeImageContainer = styled.div`
         border-radius: 50%;
         object-fit: cover;
         margin: 20px;
+        @media screen and (max-width:500px) {
+            width: 40px;
+            height: 40px;
+            margin: 10px;
+        }
     }
 `

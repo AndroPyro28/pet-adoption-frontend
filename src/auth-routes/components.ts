@@ -24,14 +24,28 @@ export const AdminComponentContainer = styled.div`
   flex-direction: column;
   padding-left: 40px;
   padding-right: 40px;
+  @media screen and (max-width:800px) {
+    padding-inline:20px;
+  }
 `;
 
 export const UserLayout = styled.div`
   padding-top: ${({givePaddingToTop}: {givePaddingToTop: boolean}) => givePaddingToTop ? "220px" : "0px"};
   overflow-x: hidden;
-
 `;
 
-export const UserLayout2 = styled.section`
+export const PublicRoutesContainer = styled.section`
+  overflow-x: hidden;
+
+  & .chatbot {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 15px;
+    background: rgb(210,0,51);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5em;
+  }
 
 `

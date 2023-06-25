@@ -16,7 +16,7 @@ export const TableHead = styled.div`
   justify-content: center;
   font-size: 1.1em;
   &:nth-child(1) {
-    flex: 0.5;
+    flex: 1;
   }
 `;
 
@@ -37,7 +37,7 @@ export const TableData = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   &:nth-child(1) {
-    flex: 0.5;
+    flex: 1;
   }
   & > span {
     color: white;

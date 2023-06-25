@@ -8,15 +8,15 @@ type TableDataProps = {
 function TableDatas({ data }: TableDataProps) {
   return (
     <TableContainer>
-      <TableData> {data.id}</TableData>
-      <TableData> {data.name}</TableData>
-      <TableData> {data.breed}</TableData>
-      <TableData> {data.type}</TableData>
-      <TableData> {data.gender}</TableData>
-      <TableData> {data.age}</TableData>
-      <TableData> {data.description}</TableData>
-      <TableData>
-        <span className={data.status}>{data.status} </span>
+      <TableData className="id"> {data.animalId}</TableData>
+      <TableData className="Name"> {data.name}</TableData>
+      <TableData className="Breed"> {data.breed}</TableData>
+      <TableData className="Type"> {data.type}</TableData>
+      <TableData className="Gender"> {data.gender}</TableData>
+      {/* <TableData> {data.age}</TableData> */}
+      <TableData className="Color"> {data.description}</TableData>
+      <TableData className="Status">
+        <span className={data.status}>{data.status === 'READY' ? 'AVAILABLE' : data.status} </span>
       </TableData>
     </TableContainer>
   );

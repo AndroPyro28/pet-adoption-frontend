@@ -12,11 +12,14 @@ import { useSelector } from "react-redux";
 import { User } from "../models/User";
 import LogoutModal from "../components/modal/logout/LogoutModal";
 import { Navigate } from "react-router-dom";
+import { LoaderBackdrop } from "../components/loader/components";
+import Loader from "../components/loader/Loader";
 
 const AdminRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
   const state: any = useSelector(state => state);
   const user: User = state.user;
   const logoutModal = state.logoutModal;
+  const loader = state.loader;
   let userCookie: string | undefined = Cookies.get("userToken");
   
   if (!userCookie || userCookie.length <= 0) {
@@ -40,6 +43,10 @@ const AdminRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
         {
             logoutModal && <LogoutModal />
         }
+        {
+          loader && <Loader />
+        }
+        
       <AdminComponentContainer>
         <AdminNavbar />
         <Component />

@@ -11,17 +11,19 @@ export const AnimalRecordModalBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 5;
 
   & > .AnimaRecordForm {
+    overflow-x: hidden;
     position: absolute;
+    overflow-y: auto;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
   width: 40%;
-  max-height: 90%;
+  max-height: 95%;
   border-radius: 10px;
   background: white;
  
@@ -98,9 +100,11 @@ align-items: center;
 export const InputCol = styled.div`
     max-width: 300px;
     margin:10px;
-    & > input[type="text"], input[type="number"] {
+    & > input[type="text"], input[type="number"], select{
     width: 100% !important;
     height:fit-content;
+    border-radius: 0.1px;
+    color: gray;
     outline: none;
     padding: 5px;
     justify-self: flex-start;
@@ -108,10 +112,14 @@ export const InputCol = styled.div`
     border-bottom: solid 1px gray;
     margin: 10px;
     padding: 10px 5px;
+    
     &:focus {
       border-bottom: solid 1px rgb(211,1,52);
     }
   }
+  & >  input[type="text"] {
+      width: 97% !important;
+    }
 
   & > label {
     margin: 10px;
@@ -149,8 +157,13 @@ export const IconContainer = styled.div`
       top: 0;
       right: 0;
       margin: 20px;
-      font-size: 1.5em;
+      font-size: 1em;
       color: rgb(211,1,52);
+      background: #EAEAEA;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 10px;
+      border: none;
     }
 
   & > .back {

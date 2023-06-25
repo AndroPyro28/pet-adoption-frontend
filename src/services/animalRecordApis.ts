@@ -1,17 +1,8 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import Cookies from "js-cookie";
 import { Pet } from "../models/Pet";
+import { Stats } from "../models/Stats";
+import { baseApi } from "./Apis";
 
-const AnimalRecordApis = createApi({
-    reducerPath: `pets`,
-    baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_DEV_URL,
-        prepareHeaders: (headers) => {
-            headers.set('Authorization', `Bearer ${Cookies.get('userToken')!}`);
-            return headers;
-        }
-    }),
-    tagTypes:['Pet'],
+const AnimalRecordApis = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         createRecord: builder.mutation<void, Pet>({
             query: pet => ({
@@ -26,6 +17,7 @@ const AnimalRecordApis = createApi({
                 url:'/pets',
                 method:'GET',
             }),
+            transformResponse: (response: Pet[]) => response.sort((a, b) =>  b.id! - a.id!),
             providesTags:['Pet']
         }),
         getAllAnimalRecordExcludeAdopted: builder.query<Pet[], {filter: boolean, search: string}>({
@@ -33,11 +25,21 @@ const AnimalRecordApis = createApi({
                 url:`/pets?filter=${filter}&&search=${search}`,
                 method:'GET',
             }),
+            transformResponse: (response: Pet[]) => response.sort((a, b) =>  b.id! - a.id!),
             providesTags:['Pet']
         }),
-    })
+        getAllPetsStatus: builder.query<Stats[], void>({
+            query: _ => ({
+                url:`/pets/stats`,
+                method:'GET',
+            }),
+            providesTags:['Pet']
+        }),
+    }),
+    overrideExisting: false
+
 })
 
 export default AnimalRecordApis;
 
-export const { useCreateRecordMutation, useGetAllAnimalRecordQuery, useGetAllAnimalRecordExcludeAdoptedQuery } = AnimalRecordApis;
+export const { useCreateRecordMutation, useGetAllAnimalRecordQuery, useGetAllAnimalRecordExcludeAdoptedQuery, useGetAllPetsStatusQuery } = AnimalRecordApis;

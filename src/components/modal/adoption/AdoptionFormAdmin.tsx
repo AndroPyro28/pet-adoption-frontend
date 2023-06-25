@@ -33,9 +33,25 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
   const { profile } = adopter!;
   const dateLocal = dateTimeRemoveZ(adoptionData.schedule)
   const [date, setDate] = useState<string>(dateLocal.split('T')[0])
-  const [time, setTime] = useState<string>(dateLocal.split('T')[1].substring(0, dateLocal.split('T')[1].indexOf(':00')))
+  const [time, setTime] = useState<string>(dateLocal.split('T')[1])
   const { handleUpdateAdoptionRequest } = Logic({ date, time, toast, adoptionData, setAdoptionDataRecord: setAdoptionData });
- 
+  
+  let contentStatus;
+
+  console.log(adoptionData?.status);
+  if(adoptionData?.status === 'PENDING') {
+    contentStatus = `${adoptionData?.status} for interview`
+  }
+  if(adoptionData?.status === 'REJECTED') {
+    contentStatus = `${adoptionData?.status} application`
+  }
+  if(adoptionData?.status === 'APPROVED' ) {
+    contentStatus = `APPROVED Schedule for interview`
+  }
+  if(adoptionData?.status === 'APPROVED_INTERVIEW' ) {
+    contentStatus = `ADOPTED | Application approved`
+  }
+
   return (
     <AdoptionBackdrop>
       <motion.div
@@ -46,13 +62,11 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
         className='form'>
         <ExitModal onClick={() => setAdoptionData({} as AdoptionRecord)}>
           <i className="fa-solid fa-square-minus minimize"></i>
-
         </ExitModal>
 
-
-        <IconContainer>
+        {/* <IconContainer>
         <i className="fa-regular fa-calendar-xmark deleteAdoption"></i>
-        </IconContainer>
+        </IconContainer> */}
         <Title>Adoption Form</Title>
 
         <PetDetails>
@@ -62,7 +76,9 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
             <Detail>{adoptee?.name}</Detail>
             <Detail>{adoptee?.breed}</Detail>
             <Detail>{adoptee?.description}</Detail>
-            <Detail status={adoptionData?.status}>{adoptionData?.status}</Detail>
+            <Detail status={adoptionData?.status}>
+            {contentStatus}
+              </Detail>
           </div>
         </PetDetails>
         <AdoptersDetail>
@@ -73,22 +89,29 @@ function AdoptionFormAdmin({ adoptionData, setAdoptionData, toast }: PetAdoption
           <Detail><label>Contact no.</label> <span>{profile.contact}</span></Detail>
         </AdoptersDetail>
 
-
-
         {
           adoptionData?.status == "PENDING" && <>
             <DateScheduleInput>
               <InputDate type={'date'} value={date} min={dateToday} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDate(e.target.value)} />
               <span>at</span>
-              <InputDate type={'time'} value={time} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTime(e.target.value)} />
+              <InputDate type={'time'} value={time} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTime(e.target.value+':00')} />
             </DateScheduleInput>
-
             <ButtonContainer>
               <RejectButton onClick={() => handleUpdateAdoptionRequest("REJECTED")}>Reject</RejectButton>
               <ApproveButton onClick={() => handleUpdateAdoptionRequest("APPROVED")}>Approve</ApproveButton>
             </ButtonContainer>
           </>
         }
+
+        {
+          adoptionData?.status == "APPROVED" && <>
+            <ButtonContainer>
+              <RejectButton onClick={() => handleUpdateAdoptionRequest("REJECTED")}>Reject</RejectButton>
+              <ApproveButton onClick={() => handleUpdateAdoptionRequest("APPROVED_INTERVIEW")}>Approve</ApproveButton>
+            </ButtonContainer>
+          </>
+        }
+
       </motion.div>
     </AdoptionBackdrop>
   )

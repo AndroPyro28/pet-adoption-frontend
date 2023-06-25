@@ -12,7 +12,7 @@ export const UpperContents = styled.div`
     & > .dotdotdot {
         font-size: 1.5em;
     }
-    & > button {
+    & button {
         background: rgb(211,1,52);
         padding: 10px 25px;
         color: white;
@@ -22,6 +22,9 @@ export const UpperContents = styled.div`
         cursor: pointer;
         transition: all .3s ease-in-out;
         font-weight: 600;
+        &.exportBtn {
+            margin: 10px;
+        }
         &:hover {
             background: white;
             color:rgb(211,1,52) ;
@@ -36,8 +39,29 @@ export const RecordList = styled.div`
     max-height: 70vh;
     padding: 20px;
     flex-direction: column;
+    overflow-y: auto;
+    overflow-x:hidden ;
 
-    
+    @media screen and (max-width:800px) {
+        & .Color, .Id, .Created {
+            display: none;
+        }
+    }
+    @media screen and (max-width:650px) {
+        & .Gender, .Adoptee {
+            display: none;
+        }
+    }
+    @media screen and (max-width:550px) {
+        & .Type, .Schedule{
+            display: none;
+        }
+    }
+    @media screen and (max-width:450px) {
+        & .Breed {
+            display: none;
+        }
+    }
 `
 
 export const RecordListHeaders = styled.div`

@@ -38,13 +38,13 @@ function Logic({ setCurrentField, toast }: logicProps) {
     first_name: yup
       .string()
       .required("This field is required")
-      .min(3)
-      .matches(/^[a-zA-Z]+$/, "Must container letters only"),
+      .min(3, 'Firstname must be atleast 3 characted') 
+      .matches(/^[A-Za-z\s]*$/, "Must container letters only"),
     last_name: yup
       .string()
       .required("This field is required")
-      .min(3)
-      .matches(/^[a-zA-Z]+$/, "Must container letters only"),
+      .min(3, 'Lastname must be atleast 3 characted')
+      .matches(/^[A-Za-z\s]*$/, "Must container letters only"),
     email: yup
       .string()
       .email("This is invalid email")
@@ -57,10 +57,11 @@ function Logic({ setCurrentField, toast }: logicProps) {
     password: yup.string().required("This field is required").min(6),
     password_confirmation: yup
       .string()
+      .required("This field is required")
       .when("password", (password, field) =>
         password
           ? field
-              .required()
+              .required('This field is required')
               .oneOf(
                 [yup.ref("password")],
                 "password and confirm password do not match"
@@ -100,6 +101,7 @@ function Logic({ setCurrentField, toast }: logicProps) {
   const initialValuesLogin = {
     email: "",
     password: "",
+    role: 'USER'
   };
 
   const validationSchemaLogin = yup.object().shape({
@@ -110,10 +112,10 @@ function Logic({ setCurrentField, toast }: logicProps) {
     password: yup.string().required("This field is required"),
   });
 
+
   const onSubmitLogin = async (values: SigninUser): Promise<void> => {
     try {
       const res: any = await signin(values);
-
       if ("data" in res) {
         const { access_token } = res.data;
         Cookies.set("userToken", access_token, {
@@ -121,12 +123,12 @@ function Logic({ setCurrentField, toast }: logicProps) {
           secure: true
         });
         toast("Signin success!", { type: "success" });
-        setTimeout(() => window.location.assign("/user"), 2500);
+        setTimeout(() => window.location.assign("/admin"), 2500);
       } 
       if ("error" in res) {
         console.log(res);
         const { message } = res.error.data;
-        toast(typeof message == "object" ? message[0] : message, {
+        toast('Invalid credentials', {
           type: "error",
         });
       }

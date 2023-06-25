@@ -25,6 +25,7 @@ export const AdminSidebarContainer = styled.div`
     align-self: center;
     color: gray;
     transition: all .3s ease-in-out;
+    text-decoration: none;
     &:hover {
         background: #EAEAEA;
         color: rgb(65, 65, 65);

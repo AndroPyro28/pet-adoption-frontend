@@ -2,17 +2,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Cookies from "js-cookie";
 import {UpdatePassword} from "../models/ResetPassword"
 import { User } from "../models/User";
+import {passwordResetApi} from "./Apis";
 
-const UpdatePasswordApis = createApi({
-    reducerPath:`updatePassword`,
-    baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_DEV_URL,
-        prepareHeaders: (headers) => {
-            headers.set('Authorization', `Bearer ${Cookies.get('resetToken')!}`);
-            return headers;
-        }
-    }),
-    tagTypes:['User'],
+const UpdatePasswordApis = passwordResetApi.injectEndpoints({
     endpoints: (builder) => ({
         authUpdatePasswordPage: builder.query<User, void>({
             query: () => ({
@@ -27,8 +19,10 @@ const UpdatePasswordApis = createApi({
                 method:'POST',
                 body: body,
             }),
+            invalidatesTags: ['User']
         }),
-    })
+    }),
+    overrideExisting: false
 })
 
 export default UpdatePasswordApis;

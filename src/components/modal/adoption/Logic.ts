@@ -7,6 +7,9 @@ import {
   useCreateAdoptionRequestMutation,
   useUpdateAdoptionRequestMutation,
 } from "../../../services/adoptionRecordApis";
+import { toggleLoading } from "../../../redux/loaderSlice";
+import { useDispatch } from "react-redux";
+
 interface Props {
   petData?: Pet;
   user?: User;
@@ -30,14 +33,21 @@ function Logic({
 }: Props) {
   const [createAdoptionRequest] = useCreateAdoptionRequestMutation();
   const [updateAdoptionRequest] = useUpdateAdoptionRequestMutation();
+  const dispatch = useDispatch();
 
   const submitAdoptionForm = async (): Promise<void> => {
     try {
       if (!date || !time) {
         return toast("Please choose a schedule!", { type: "warning" });
       }
+
+      if(time < '09:00' || time > '17:00' ) {
+        return toast("Please choose a time between 09:00 am - 05:00 pm", { type: "warning" });
+      }
+      
       const { id: petId } = petData!;
       const { id: userId } = user!;
+      dispatch(toggleLoading(true));
       const res = await createAdoptionRequest({
         adopteeId: petId!,
         adopterId: userId,
@@ -48,41 +58,49 @@ function Logic({
           "Adoption application submitted, please wait for our text confirmation!",
           { type: "success" }
         );
-        setTimeout(() => setAdoptionDataPet!({} as Pet), 2000);
+        dispatch(toggleLoading(false));
+        setAdoptionDataPet!({} as Pet)
       }
-     
     } catch (error: any) {
-      console.error(error.message);
+      console.error(error);
     }
   };
+
   const handleUpdateAdoptionRequest = async (
-    status: "REJECTED" | "APPROVED"
+    status: "REJECTED" | "APPROVED" | "APPROVED_INTERVIEW"
   ) => {
     try {
       const { id } = adoptionData!;
       let data = {};
-      const schedule = `${date}T${time}:00.000Z`;
+      const schedule = `${date}T${time}.000Z`;
       if (status == "APPROVED") {
-        if(!date || !time) {
-            return toast("Please choose a schedule!", { type: "warning" });
+        if (!date || !time) {
+          return toast("Please choose a schedule!", { type: "warning" });
         }
         data = { status, schedule };
       }
       if (status == "REJECTED") {
         data = { status };
       }
+
+      if(status === "APPROVED_INTERVIEW") {
+        data = { status };
+      }
+
+      dispatch(toggleLoading(true));
+      
       const res = await updateAdoptionRequest({ id, data } as {
         id: number;
         data: AdoptionUpdate;
       });
-      console.log({date, time})
-      console.log(res)
+      console.log(res, schedule);
       if ("data" in res) {
         toast(`Adoption ${status}!`, { type: "info" });
-        setTimeout(() => setAdoptionDataRecord!({} as AdoptionRecord), 2000);
+        dispatch(toggleLoading(false));
+        setAdoptionDataRecord!({} as AdoptionRecord)
       }
     } catch (error) {
-        console.error(error);
+      console.error(error);
       return toast("Something went wrong", { type: "info" });
     }
   };

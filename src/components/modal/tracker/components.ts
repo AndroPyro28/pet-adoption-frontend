@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
         display: flex;
     justify-content: space-between;
     padding: 20px;
-    background: transparent;
+    background: white;
     border: solid 1px white;
     width: 40vw;
     height: 40vh;
@@ -17,6 +17,25 @@ export const GlobalStyles = createGlobalStyle`
     bottom: 0;
     margin: auto;
     box-shadow: 1px 3px 5px black;
+    @media screen and (max-width: 800px) {
+    width: 50vw;
+    }
+    @media screen and (max-width: 700px) {
+    width: 60vw;
+    }
+    @media screen and (max-width: 600px) {
+    width: 70vw;
+    }
+    @media screen and (max-width: 500px) {
+    width: 80vw;
+    }
+    @media screen and (max-width: 400px) {
+    width: 90vw;
+    }
+    @media screen and (max-width: 300px) {
+    width: 100vw;
+    padding-inline: 10px;
+    }
     }
 `
 export const PetImage = styled.img`
@@ -38,13 +57,15 @@ export const PetInfo = styled.div`
 
 export const Title = styled.span`
     color: white;
-   text-shadow: 1px 3px 5px black;
+    color: black;
+
+   /* text-shadow: 1px 3px 5px black; */
    text-transform: uppercase;
 `
 
 export const Data = styled.span`
-    color: white;
-   text-shadow: 1px 3px 5px black;
+    color: black;
+   /* text-shadow: 1px 3px 5px black; */
    text-overflow: ellipsis;
    overflow: hidden;
    white-space: nowrap;

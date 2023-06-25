@@ -7,17 +7,40 @@ import { AdoptionRecord as AdoptionRecordInterface } from "../../../models/Adopt
 import AdoptionFormAdmin from "../../../components/modal/adoption/AdoptionFormAdmin"
 import { toast, ToastContainer } from "react-toastify";
 import { UpperContents, RecordListHeaders, RecordList, DataList, Pagination } from "../components"
+import exportFromJSON from 'export-from-json'
+import { dateTimeLocalFormatter, dateTimeRemoveZ } from "../../../helper/DateTimeFormmater";
+import { useSelector } from "react-redux";
 
 function AdoptionRecord() {
-  const { data, isLoading, error } = useGetAllAdoptionRequestQuery();
+
+  const {dataRecord}:any = useSelector((state) => state)
+  const data: AdoptionRecordInterface[] = dataRecord
   const [adoptionData, setAdoptionData] = useState<AdoptionRecordInterface>({} as AdoptionRecordInterface);
   const [maxPage, setMaxPage] = useState<number>()
   const [currentPage, setCurrentPage] = useState<number>(0)
-
   useEffect(() => {
     setMaxPage(Math.ceil(data?.length! / 6));
   }, [data])
 
+  const exportToExcel = () => {
+    const exportType = exportFromJSON.types.xls;
+    const fileName = 'Adoption Record'
+    if(data) {
+    const formattedData = data.map((d) => {
+     const {fist_name, last_name} = d.adopter.profile
+     const {name} = d.adoptee
+     const dateTimeLocal = dateTimeRemoveZ(d.schedule);
+     const {date, time} = dateTimeLocalFormatter(dateTimeLocal)
+      return {
+        adopter: `${fist_name} ${last_name}`,
+        adoptee: name,
+        schedule: `${date} at ${time}`,
+        status: d.status
+      }
+    }) 
+      exportFromJSON({data: formattedData, fileName , exportType})
+    }
+  }
   const fetchRecord = data?.length! > 0 ?
     data?.slice(6 * currentPage, 6 * currentPage + 6)
     .map((record, index) => {
@@ -29,15 +52,15 @@ function AdoptionRecord() {
       <ToastContainer autoClose={1500} />
       <UpperContents>
         <h2>Adoption Record</h2>
-
-        <i className="fa-solid fa-ellipsis dotdotdot"></i>
+        <button onClick={exportToExcel}> <i className="fa-solid fa-file-export"></i> Export to excel</button>
+        {/* <i className="fa-solid fa-ellipsis dotdotdot"></i> */}
       </UpperContents>
 
       <RecordList>
         <RecordListHeaders>
           <TableHeaders arrayOfTitles={
             [
-              '#', 'Adopter', 'Adoptee', 'Schedule', ''
+              'Id', 'Adopter', 'Adoptee', 'Schedule', 'Action'
             ]
           } />
         </RecordListHeaders>
@@ -47,11 +70,11 @@ function AdoptionRecord() {
           adoptionData?.id && <AdoptionFormAdmin toast={toast} setAdoptionData={setAdoptionData} adoptionData={adoptionData} />
         }
         {
-          isLoading ? <h1>loading please wait...</h1> : <DataList> {fetchRecord} </DataList>
+           <DataList> {fetchRecord} </DataList>
         }
         {
           maxPage! > 0 && <Pagination>
-            <button>Prev</button><span>{currentPage + 1}</span> / <span>{maxPage}</span>  <button>Next</button>
+            <button onClick={() => setCurrentPage(prev => prev > 0 ? prev - 1 : prev )}>Prev</button><span>{currentPage + 1}</span> / <span>{maxPage}</span>  <button onClick={() => setCurrentPage(prev => prev + 1< maxPage! ? prev + 1 : prev )}>Next</button>
           </Pagination>
         }
 

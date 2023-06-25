@@ -12,6 +12,7 @@ interface Props {
 }
 
 function Logic() {
+    console.log('rerender logics');
     const submitAdoptionForm = async ({data, user, date, time, setAdoptionData, toast}: Props): Promise<void> => {
         try {
             if(!date || !time) {

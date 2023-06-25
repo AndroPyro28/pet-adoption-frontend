@@ -12,12 +12,13 @@ export interface AdoptionRequest {
 export interface AdoptionRecord {
     id: number;
     schedule: string;
-    status: 'PENDING' | 'APPROVED' | 'REJECTED';
+    adoptionId: string;
+    status: 'PENDING' | 'APPROVED' | 'REJECTED' | 'APPROVED_INTERVIEW';
     adopter: User,
     adoptee: Pet
 }
 
 export interface AdoptionUpdate {
     schedule?: string;
-    status: 'PENDING' | 'APPROVED' | 'REJECTED';
+    status: 'PENDING' | 'APPROVED' | 'REJECTED' | 'APPROVED_INTERVIEW';
 }

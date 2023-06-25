@@ -6,15 +6,19 @@ export const GalleryPageContainer = styled.section`
   justify-content: center;
   width: 100%;
   height: 100%;
-  margin-top: ${({giveMarginToTop}: {giveMarginToTop:boolean}) => giveMarginToTop ? "100px" : "0px"};
-
+  margin-top: 80px;
   /* margin-top: 250px; */
 `;
 export const Dozens = styled.div`
   margin-bottom: 35px;
-  margin-top: 200px;
+  margin-top: 50px;
   text-align: center;
   font-size: 20px;
+  padding: 50px;
+  background: #EAEAEA;
+  & > h1 {
+    font-size: 2em;
+  }
 `;
 
 export const Pics = styled.div`
@@ -22,15 +26,31 @@ export const Pics = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 55%;
+  margin-top: 50px;
+  overflow: auto;
+  max-height: 70vh;
   & > #myImg {
     margin-bottom: 35px;
     margin-top: -20px;
     text-align: center;
     font-size: 20px;
     cursor: zoom-in;
+    object-fit: cover;
     & > #myImg {
       opacity: 0.7;
+    object-fit: cover;
     }
+  }
+
+  & > img {
+    margin-bottom: 35px;
+    margin-top: -20px;
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    
+    cursor: zoom-in;
+    object-fit: cover;
   }
 `;
 

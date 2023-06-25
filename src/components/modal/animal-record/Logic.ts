@@ -1,6 +1,7 @@
 import { Pet } from "../../../models/Pet";
 import {useCreateRecordMutation} from "../../../services/animalRecordApis"
-
+import {toggleLoading} from "../../../redux/loaderSlice"
+import {useDispatch} from "react-redux";
 interface Props {
   setRecordData: React.Dispatch<React.SetStateAction<Pet>>,
   recordData: Pet,
@@ -10,19 +11,24 @@ interface Props {
 
 function Logic({setRecordData, recordData, toast, setOpenAnimalRecordModal} : Props) {
 const [createRecord] = useCreateRecordMutation();
-
+const dispatch = useDispatch()
   const onSubmit = async () : Promise<void> => {
     try {
       const isFilled = Object.values(recordData).every(data => data != "" || data.length > 0)
       if(!isFilled) {
         return toast('All fields are required!', {type:'warning'})
       }
-      console.log(recordData);
-      const result = await createRecord(recordData);
+      dispatch(toggleLoading(true))
+      const result = await createRecord({...recordData,
+      age: Number(recordData.age) 
+    });
       setOpenAnimalRecordModal(false)
-      return toast('Nice!', {type:'success'})
+      return toast('Pet Created!', {type:'success'})
     } catch (error) {
-      
+      console.error('error', error);
+
+    } finally {
+      dispatch(toggleLoading(false))
     }
   };
 
@@ -31,7 +37,8 @@ const [createRecord] = useCreateRecordMutation();
       if(e.target.name == 'imageUrl' && e.target.files) {
         return {...prev, imageUrl : e.target.files[0]}
       } 
-        return {...prev, [e.target.name] : e.target.name == "age"  ? e.target.valueAsNumber : e.target.value }
+      console.log(e.target.value)
+        return {...prev, [e.target.name] : e.target.name == "age"  ? e.target.value : e.target.value }
     });
   };
 

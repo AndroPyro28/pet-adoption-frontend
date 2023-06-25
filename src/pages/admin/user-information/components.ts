@@ -45,5 +45,24 @@ export const Row = styled.div`
     text-align: center;
     white-space: nowrap;
     text-overflow: ellipsis;
+
+    @media screen and (max-width: 800px) {
+        &.address {
+            display: none;
+        }
+        &.contact {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        &.name {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 400px) {
+        &.id {
+            display: none;
+        }
+    }
 `
 

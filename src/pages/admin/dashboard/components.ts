@@ -3,6 +3,10 @@ import styled from "styled-components";
 
 export const DashboardContainer = styled.div`
     display: flex;
+
+    @media screen and (max-width:800px) {
+        flex-direction: column;
+    }
 `
 
 export const FirstCol = styled.div`
@@ -21,7 +25,8 @@ export const FirstCol = styled.div`
         border-radius: 10px;
     }
     & > div {
-        
+        @media screen and (max-width:800px) {
+    }
         & > h1 {
             margin: 5px;
         }
@@ -35,6 +40,7 @@ export const SecondCol = styled.div`
     flex: 1;
     padding: 10px;
     overflow: auto;
+    
     & > div {
         & > h1 {
             margin: 5px;

@@ -109,6 +109,9 @@ export const ProcedureContainer = styled.div`
       }
     }
   }
+  @media screen and (max-width: 750px) {
+    width: 90%;
+  }
 `
 export const PoliciesContainer = styled.div`
   display: flex;
@@ -119,10 +122,17 @@ export const PoliciesContainer = styled.div`
     font-size: 1.6em;
     /* text-align: center; */
   }
+  @media screen and (max-width: 750px) {
+    width: 100%;
+  }
 `
 export const PoliciesContentContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 750px) {
+    flex-direction: column;
+  }
 
 `
 

@@ -7,7 +7,7 @@ export const AdoptionBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 100 !important;
   & > .form {
     position: fixed;
     top: 0;
@@ -24,6 +24,18 @@ export const AdoptionBackdrop = styled.div`
     background: white;
     justify-content: center;
     overflow: hidden;
+
+    @media screen and (max-width: 900px) {
+      width: 55vw;
+    }
+    @media screen and (max-width: 500px) {
+      width: 65vw;
+    }
+    @media screen and (max-width: 400px) {
+      width: 80vw;
+      padding: 10px 20px;
+
+    }
 
     & .deleteAdoption {
       position: absolute;
@@ -95,7 +107,7 @@ export const Detail = styled.div`
   align-items: center;
   color: ${({status}: 
   {status?: string}) => status === "PENDING" ?
-   "gray" : status === "APPROVED" ? 
+   "gray" : status === "APPROVED" || status === "APPROVED_INTERVIEW" ? 
    "green" :  status === "REJECTED" ? 
    "rgb(210, 0, 51)" : "black"};
   

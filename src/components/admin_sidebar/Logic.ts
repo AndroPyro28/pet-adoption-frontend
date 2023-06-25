@@ -3,10 +3,8 @@ import { useLocation } from 'react-router-dom';
 function Logic() {
     const {pathname} = useLocation()
 
-    
-
     const navLinkStylesFirst = ({isActive}: any) => { // this is temporary cause it bugged
-      if(pathname != '/admin') {
+      if((pathname !== '/admin') ) {
         isActive=false
       }
       return {
@@ -16,6 +14,7 @@ function Logic() {
     }
   
     const navLinkStyles = ({isActive}: any) => {
+     
       return {
         background: isActive ? "#EAEAEA" : "",
         color: isActive ? "rgb(65, 65, 65)" : "gray",

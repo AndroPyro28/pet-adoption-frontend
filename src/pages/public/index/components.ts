@@ -69,6 +69,32 @@ export const Content = styled.div`
     z-index: -1;
     transition: 0.5s;
   }
+
+  @media screen and (max-width: 650px) {
+    & {
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      & > h1 {
+        font-size: 2em;
+      }
+      & > h2 {
+        font-size: 3em;
+      }
+    }
+
+    @media screen and (max-width: 450px) {
+      & > h1 {
+        font-size: 1.5em;
+      }
+      & > h2 {
+        font-size: 2em;
+      }
+    }
+  }
 `;
 
 export const About = styled.div`
@@ -187,4 +213,42 @@ export const Paypal = styled.div`
       color: rgb(19,93,205);
       text-decoration: underline;
     }
+`
+
+export const FAQS = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  & > h1 {
+    margin: 50px;
+    font-size: 1.5em;
+  }
+`
+
+export const FAQSLIST = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 80%;
+  gap: 10px;
+`
+
+export const FAQ = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  border: solid 1px rgb(210,0,51) ;
+  border-left: solid 8px rgb(210,0,51);
+  cursor: pointer;
+  & > .q {
+    font-size: 1.5em;
+    padding: 10px;
+  }
+  & > .a {
+    font-size: 1.3em;
+    margin: 20px;
+    color: gray;
+  }
 `

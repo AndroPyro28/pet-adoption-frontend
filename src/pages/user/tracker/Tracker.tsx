@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Pet from "../../../components/tracker/Pet";
 import { TrackerContainer, TrackerContent, SearchBar, Search, PetList, SearchBarContainer } from "./components"
 import { useGetAllAnimalRecordExcludeAdoptedQuery } from "../../../services/animalRecordApis"
@@ -9,7 +9,12 @@ function Tracker() {
   const [search, setSearch] = useState<string>('')
   const [adoptionData, setAdoptionData] = useState<PetInterface>({} as PetInterface);
 
-  const { data: animalRecordData, isLoading, error } = useGetAllAnimalRecordExcludeAdoptedQuery({ filter: false, search });
+  const { data: animalRecordData, isLoading, error, refetch } = useGetAllAnimalRecordExcludeAdoptedQuery({ filter: false, search });
+  
+  useEffect(() => {
+    refetch()
+  }, [])
+
   if(error) {
     console.error(error);
   }
@@ -17,10 +22,10 @@ function Tracker() {
   // will make a pet cards later
   return (
     <TrackerContainer>
+
     {
       adoptionData.id && <TrackerModal data={adoptionData} setAdoptionData={setAdoptionData}/>
     }
-   
       <TrackerContent>
         <SearchBarContainer>
           <SearchBar>
@@ -34,12 +39,14 @@ function Tracker() {
             </Search>
           </SearchBar>
         </SearchBarContainer>
-        <PetList>
+       
+      </TrackerContent>
+      <h1>List of our pets</h1>
+       <PetList>
           {
             fetchdata
           }
         </PetList>
-      </TrackerContent>
     </TrackerContainer>
   )
 }

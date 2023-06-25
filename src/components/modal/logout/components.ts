@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ModalBackdrop = styled.div`
   height: 100vh;
   width: 100vw;
-  background: rgba(0, 0, 0, 0.4);
+  /* background: rgba(0, 0, 0, 0.4); */
   position: fixed;
   top: 0;
   left: 0;

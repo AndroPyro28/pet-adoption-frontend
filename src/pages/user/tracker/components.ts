@@ -4,12 +4,26 @@ export const TrackerContainer = styled.div`
     display: flex;
     flex-direction: column;
 
+    & > h1 {
+        text-align: center;
+        margin: 130px 0px 80px 0px;
+        font-weight: 400;
+        font-size: 2em;
+        text-transform: uppercase;
+        @media screen and (max-width:550px) {
+        margin-bottom:150px ;
+            
+        }
+    }
+
+    
+
 `
 
 export const TrackerContent = styled.div`
     display: flex;
-    justify-content: space-evenly;
-    height: 900px;
+    justify-content: flex-start;
+    height: 600px;
     background: url('/images/content/tracker.png');
     background-size: cover;
     & > div {
@@ -21,8 +35,12 @@ export const TrackerContent = styled.div`
 `
 export const SearchBarContainer = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
+    margin-inline:150px ;
+    @media screen and (max-width: 800px ) {
+        margin-inline: auto;
+    }
 `
 export const SearchBar = styled.div`
     display: flex;
@@ -45,6 +63,17 @@ export const SearchBar = styled.div`
         font-weight: 500;
         font-size: 3em;
         margin: 5px;
+    }
+
+    @media screen and (max-width: 400px ) {
+
+    & > .truly__the__most {
+        font-size: 3em;
+    }
+    
+    & > .heartfelt__animal, .shelter {
+        font-size: 2em;
+    }
     }
     
 `
@@ -79,17 +108,35 @@ export const Search = styled.div`
         padding: 10px 20px;
         cursor: pointer;
     }
+
+    @media screen and (max-width:500px) {
+        & > input {
+            width: 100%;
+        }
+    }
 `
 export const PetList = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: auto;
     grid-gap: 20px;
-    margin-top: 120px;
+    margin-top: 30px;
     overflow-y:auto ;
     padding: 20px;
+    place-items: center;
+
+    @media screen and (max-width:1024px){
+    grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width:950px){
+    grid-template-columns: repeat(2, 1fr);
+    }
     @media screen and (max-width:700px){
         flex-direction: column;
         margin-top: -90px;
+    }
+
+    @media screen and (max-width:550px) {
+    grid-template-columns: repeat(1, 1fr);
     }
 `

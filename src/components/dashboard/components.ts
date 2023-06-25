@@ -2,6 +2,17 @@ import styled from "styled-components";
 
 export const FirstColContent = styled.div`
   margin-top: 25px;
+  background:white;
+  border-radius: 10px;
+  box-shadow: 1px 3px 5px gray;
+  padding: 10px;
+  text-align: center;
+  max-height: 300px;
+  
+  & > h1 {
+    font-size: 1.3em;
+    margin: 20px;
+  }
 `;
 
 export const ListBox = styled.div`
@@ -41,6 +52,13 @@ export const Data = styled.div`
   &.PENDING {
     color: gray;
   }
+
+  &.REJECTED {
+    color: maroon;
+  }
+  &.APPROVED {
+    color: rgba(7, 207, 90, 0.822);
+  }
 `;
 
 export const CalendarContainer = styled.div`
@@ -48,4 +66,5 @@ export const CalendarContainer = styled.div`
   background: white;
   border-radius: 10px;
   padding: 10px;
+  box-shadow: 1px 3px 5px gray;
 `

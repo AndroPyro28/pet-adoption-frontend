@@ -6,13 +6,15 @@ import { useLocation } from "react-router-dom";
 import {UserLayout} from "./components";
 import { useSelector } from "react-redux";
 import { User } from "../models/User";
-import LogoutModal from "../components/modal/logout/LogoutModal";
 import { Navigate } from "react-router-dom";
-
+import UserProfile from "../components/modal/user-profile/UserProfile";
+import Loader from "../components/loader/Loader";
 const UserRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
   const state: any = useSelector(state => state);
   const user: User = state.user;
-  const logoutModal = state.logoutModal;
+  const profileModal = state.profileModal;
+  const loader = state.loader;
+
   const {pathname} = useLocation();
   let userCookie: string | undefined = Cookies.get("userToken");
 
@@ -35,7 +37,10 @@ const UserRoutes = ({ Component }: RoutePropTypes): JSX.Element => {
   return (
       <UserLayout givePaddingToTop={ false /* marginedRoutes.includes(pathname) */ }>
         {
-            logoutModal && <LogoutModal />
+            profileModal && <UserProfile />
+        }
+        {
+          loader && <Loader />
         }
       <UserNavbar color={ colorChanger ? "white" : "black"}/>
       <Component />
